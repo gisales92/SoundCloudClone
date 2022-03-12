@@ -81,7 +81,7 @@ information.
 - Request
 
   - Method: POST
-  - URL: /users/login
+  - URL: /login
   - Headers:
     - Content-Type: application/json
   - Body:
@@ -151,7 +151,7 @@ user's information.
 - Request
 
   - Method: POST
-  - URL: /users
+  - URL: /signup
   - Headers:
     - Content-Type: application/json
   - Body:
@@ -298,7 +298,7 @@ Returns the details of a song specified by its id.
 - Request
 
   - Method: GET
-  - URL: /songs/:id
+  - URL: /songs/:songId
   - Body: none
 
 - Successful Response
@@ -354,7 +354,7 @@ Creates and returns a new song.
 - Request
 
   - Method: POST
-  - URL: /albums/:id/add
+  - URL: /albums/:albumId/add
   - Headers:
     - Content-Type: application/json
   - Body:
@@ -428,8 +428,8 @@ Updates and returns an existing song.
 - Require proper authorization: Song must belong to the current user
 - Request
 
-  - Method: POST
-  - URL: /songs/:id
+  - Method: PUT or PATCH
+  - URL: /songs/:songId
   - Headers:
     - Content-Type: application/json
   - Body:
@@ -504,8 +504,8 @@ Deletes an existing song.
 - Require proper authorization: Song must belong to the current user
 - Request
 
-  - Method: POST
-  - URL: /songs/:id/delete
+  - Method: DELETE
+  - URL: /songs/:songId
   - Body: none
 
 - Successful Response
@@ -612,7 +612,7 @@ Returns the details of an album specified by its id.
 - Request
 
   - Method: GET
-  - URL: /albums/:id
+  - URL: /albums/:albumId
   - Body: none
 
 - Successful Response
@@ -731,8 +731,8 @@ Updates and returns an existing album.
 - Require proper authorization: Album must belong to the current user
 - Request
 
-  - Method: POST
-  - URL: /albums/:id
+  - Method: PUT or PATCH
+  - URL: /albums/:albumId
   - Headers:
     - Content-Type: application/json
   - Body:
@@ -803,8 +803,8 @@ Deletes an existing album.
 - Require proper authorization: Album must belong to the current user
 - Request
 
-  - Method: POST
-  - URL: /albums/:id/delete
+  - Method: DELETE
+  - URL: /albums/:albumId
   - Body: none
 
 - Successful Response
@@ -843,7 +843,7 @@ Returns all the comments that belong to a song specified by id.
 - Request
 
   - Method: GET
-  - URL: /songs/:id/comments
+  - URL: /songs/:songId/comments
   - Body: none
 
 - Successful Response
@@ -894,7 +894,7 @@ Create and return a new comment for a song specified by id.
 - Request
 
   - Method: POST
-  - URL: /songs/:id/comments
+  - URL: /songs/:songId/comments
   - Headers:
     - Content-Type: application/json
   - Body:
@@ -962,8 +962,8 @@ Update and return an existing comment.
 - Require proper authorization: Comment must belong to the current user
 - Request
 
-  - Method: POST
-  - URL: /comments/:id
+  - Method: PUT or PATCH
+  - URL: /comments/:commentsId
   - Headers:
     - Content-Type: application/json
   - Body:
@@ -1031,8 +1031,8 @@ Delete an existing comment.
 - Require proper authorization: Comment must belong to the current user
 - Request
 
-  - Method: POST
-  - URL: /comments/:id/delete
+  - Method: DELETE
+  - URL: /comments/:commentId
   - Body: none
 
 - Successful Response
@@ -1071,7 +1071,7 @@ Returns the details of an artist specified by their id.
 - Request
 
   - Method: GET
-  - URL: /users/:id
+  - URL: /artists/:artistId
   - Body: none
 
 - Successful Response
@@ -1113,7 +1113,7 @@ Returns all the songs created by the specified artist.
 - Request
 
   - Method: GET
-  - URL: /users/:id/songs
+  - URL: /artists/:artistId/songs
   - Body: none
 
 - Successful Response
@@ -1163,7 +1163,7 @@ Returns all the albums created by the specified artist.
 - Request
 
   - Method: GET
-  - URL: /users/:id/albums
+  - URL: /artists/:artistId/albums
   - Body: none
 
 - Successful Response
@@ -1211,7 +1211,7 @@ Returns all the playlists created by the specified artist.
 - Request
 
   - Method: GET
-  - URL: /users/:id/playlists
+  - URL: /artists/:artistId/playlists
   - Body: none
 
 - Successful Response
@@ -1314,7 +1314,7 @@ Add a song to a playlist specified by the playlist's id.
 - Request
 
   - Method: POST
-  - URL: /playlist/:id/add
+  - URL: /playlists/:playlistId/add
   - Headers:
     - Content-Type: application/json
   - Body:
@@ -1376,7 +1376,7 @@ Returns the details of a playlist specified by its id.
 - Request
 
   - Method: GET
-  - URL: /playlists/:id
+  - URL: /playlists/:playlistId
   - Body: none
 
 - Successful Response
@@ -1432,8 +1432,8 @@ Updates and returns an existing playlist.
 - Require proper authorization: Playlist must belong to the current user
 - Request
 
-  - Method: POST
-  - URL: /playlists/:id
+  - Method: PUT or PATCH
+  - URL: /playlists/:playlistId
   - Headers:
     - Content-Type: application/json
   - Body:
@@ -1502,8 +1502,8 @@ Deletes an existing playlist.
 - Require proper authorization: Playlist must belong to the current user
 - Request
 
-  - Method: POST
-  - URL: /playlists/:id/delete
+  - Method: DELETE
+  - URL: /playlists/:playlistId
   - Body: none
 
 - Successful Response
@@ -1575,7 +1575,7 @@ Return songs filtered by query parameters.
 - Request
 
   - Method: GET
-  - URL: /songs/:params
+  - URL: /songs/
   - Query Parameters
     - page: integer, minimum: 0, maximum: 10, default: 0
     - size: integer, minimum: 0, maximum: 20, default: 20
