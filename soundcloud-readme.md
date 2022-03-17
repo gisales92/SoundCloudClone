@@ -354,7 +354,7 @@ Creates and returns a new song.
 - Request
 
   - Method: POST
-  - URL: /albums/:albumId/add
+  - URL: /albums/:albumId
   - Headers:
     - Content-Type: application/json
   - Body:
