@@ -23,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       userId: {
         type: DataTypes.INTEGER,
+        allowNull: false
       },
       name: {
         type: DataTypes.STRING(100),

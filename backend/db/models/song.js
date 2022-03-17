@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Album extends Model {
+  class Song extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,16 +11,28 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Album.belongsTo(models.User, {
+      Song.belongsTo(models.User, {
         foreignKey: "userId",
       });
-      Album.hasMany(models.Song, {
-        foreignKey: 'albumId'
+      Song.belongsTo(models.Album, {
+        foreignKey: 'albumId',
       });
+      Song.belongsToMany(models.Playlist, {
+        through: models.Playlist_Song,
+        foreignKey: 'songId',
+        otherKey: 'playlistId',
+      });
+      Song.hasMany(models.Comment, {
+        foreignKey: "songId"
+      })
     }
   }
-  Album.init({
+  Song.init({
     userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    albumId: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
@@ -30,15 +42,15 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notNull: {
           args: true,
-          msg: "Please provide a value for Album title",
+          msg: "Please provide a value for Song title",
         },
         notEmpty: {
           args: true,
-          msg: "Please provide a value for Album title",
+          msg: "Please provide a value for Song title",
         },
         len: {
           args: [1, 100],
-          msg: "Album title must not be more than 100 characters long",
+          msg: "Song title must not be more than 100 characters long",
         },
       },
     },
@@ -47,14 +59,19 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: {
           args: [0, 256],
-          msg: "Album description must not be more than 256 characters long",
+          msg: "Song description must not be more than 256 characters long",
         },
       }
     },
-    previewImage: DataTypes.STRING
+    soundFileURL: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    previewImage: DataTypes.STRING,
+    playCount: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'Album',
+    modelName: 'Song',
   });
-  return Album;
+  return Song;
 };
