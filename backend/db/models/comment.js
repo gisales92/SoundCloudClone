@@ -33,11 +33,11 @@ module.exports = (sequelize, DataTypes) => {
         validate: {
           notNull: {
             args: true,
-            msg: "Please provide a value for your comment",
+            msg: "Comment body text is required",
           },
           notEmpty: {
             args: true,
-            msg: "Please provide a value for your comment",
+            msg: "Comment body text is required",
           },
           len: {
             args: [1, 180],

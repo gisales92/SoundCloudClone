@@ -30,12 +30,62 @@ module.exports = (sequelize, DataTypes) => {
       email: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
         validate: {
-          len: [3, 256],
+          notNull: {
+            args: true,
+            msg: "Email is required",
+          },
+          notEmpty: {
+            args: true,
+            msg: "Email is required",
+          },
+          len: {
+            args: [3, 256],
+            msg: "Email must be less than 256 characters",
+          },
+          isEmail: {
+            args: true,
+            msg: "Invalid email",
+          },
         },
       },
-      firstName: DataTypes.STRING,
-      lastName: DataTypes.STRING,
+      firstName: {
+        type: DataTypes.STRING(20),
+        allowNull: false,
+        validate: {
+          notNull: {
+            args: true,
+            msg: "First Name is required",
+          },
+          notEmpty: {
+            args: true,
+            msg: "First Name is required",
+          },
+          len: {
+            args: [1, 20],
+            msg: "First name must be less than 20 characters",
+          },
+        },
+      },
+      lastName: {
+        type: DataTypes.STRING(20),
+        allowNull: false,
+        validate: {
+          notNull: {
+            args: true,
+            msg: "Last Name is required",
+          },
+          notEmpty: {
+            args: true,
+            msg: "Last Name is required",
+          },
+          len: {
+            args: [1, 20],
+            msg: "Last name must be less than 20 characters",
+          },
+        },
+      },
       previewImage: DataTypes.STRING,
       bio: DataTypes.STRING,
       city: DataTypes.STRING,
@@ -44,6 +94,14 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING.BINARY,
         allowNull: false,
         validate: {
+          notNull: {
+            args: true,
+            msg: "Password is required",
+          },
+          notEmpty: {
+            args: true,
+            msg: "Password is required",
+          },
           len: [60, 60],
         },
       },
@@ -96,13 +154,13 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   User.signup = async function ({ username, email, password }) {
-    const hashedPassword = bcrypt.hashSync(password)
+    const hashedPassword = bcrypt.hashSync(password);
     const user = await User.create({
       username,
       email,
       hashedPassword,
-    })
-    return await User.scope('currentUser').findByPk(user.id)
+    });
+    return await User.scope("currentUser").findByPk(user.id);
   };
 
   return User;

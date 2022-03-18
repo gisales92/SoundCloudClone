@@ -30,11 +30,11 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notNull: {
           args: true,
-          msg: "Please provide a value for Album title",
+          msg: "Album title is required",
         },
         notEmpty: {
           args: true,
-          msg: "Please provide a value for Album title",
+          msg: "Album title is required",
         },
         len: {
           args: [1, 100],

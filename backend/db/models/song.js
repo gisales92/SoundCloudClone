@@ -42,11 +42,11 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notNull: {
           args: true,
-          msg: "Please provide a value for Song title",
+          msg: "Song title is required",
         },
         notEmpty: {
           args: true,
-          msg: "Please provide a value for Song title",
+          msg: "Song title is required",
         },
         len: {
           args: [1, 100],
@@ -65,7 +65,17 @@ module.exports = (sequelize, DataTypes) => {
     },
     soundFileURL: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        notNull: {
+          args: true,
+          msg: "Audio is required"
+        },
+        notEmpty: {
+          args: true,
+          msg: "Audio is required"
+        }
+      }
     },
     previewImage: DataTypes.STRING,
     playCount: DataTypes.INTEGER
