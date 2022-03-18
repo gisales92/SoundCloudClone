@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const apiRouter = require("./api");
+const asyncHandler = require("express-async-handler");
+const db = require("../db/models")
 
 router.use("/api", apiRouter);
 
@@ -9,4 +11,11 @@ router.get("/hello/world", function (req, res) {
   res.send("Hello World!");
 });
 
+// router.get("/test", asyncHandler(async (req, res) => {
+//   const playlistTracks = await db.Playlist.findAll({
+//     where: {id: 1},
+//     include: db.Song
+//   });
+//   res.json({playlistTracks})
+// }))
 module.exports = router;
