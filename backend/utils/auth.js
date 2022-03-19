@@ -32,7 +32,8 @@ const restoreUser = (req, res, next) => {
 
   return jwt.verify(token, secret, null, async (err, jwtPayload) => {
     if (err) {
-
+      err.message = "Authentication required";
+      err.status = 401;
       return next(err);
     }
 
