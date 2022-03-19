@@ -60,7 +60,6 @@ app.use((_req, _res, next) => {
 app.use((err, _req, _res, next) => {
   // check if error is a Sequelize error:
   if (err instanceof ValidationError) {
-    console.log(err);
     err.errors = {};
     err.errors.forEach((e) => err.errors[`${e.param}`] = e.message);
     err.title = "Validation error";
@@ -71,7 +70,7 @@ app.use((err, _req, _res, next) => {
 app.use((err, _req, res, _next) => {
   res.status(err.status || 500);
   console.error(err);
-  if (err.status === 401 || err.status === 403) {
+  if (err.status === 401) {
     return res.json({
       message: err.message,
       statusCode: err.status
