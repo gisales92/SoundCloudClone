@@ -13,4 +13,8 @@ router.use("/session", sessionRouter);
 
 router.use("/users", usersRouter);
 
+router.get('/require-auth', requireAuth, (req, res) => {
+  return res.json(req.user)
+})
+
 module.exports = router;
