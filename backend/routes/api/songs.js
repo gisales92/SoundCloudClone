@@ -7,7 +7,7 @@ const {
   restoreUser,
   requireAuth,
 } = require("../../utils/auth");
-const { Song } = require("../../db/models");
+const { Song, User, Album } = require("../../db/models");
 const { handleValidationErrors } = require("../../utils/validation");
 const router = express.Router();
 
@@ -27,6 +27,43 @@ router.get(
       previewImage: songObj.previewImage,
     }));
     res.json({ Songs });
+  })
+);
+
+router.get(
+  "/:songId",
+  asyncHandler(async (req, res, next) => {
+    const song = await Song.findByPk(req.params.songId, {
+      include: [User, Album],
+    });
+    if (song) {
+      const mappedSong = {
+        id: song.id,
+        userId: song.userId,
+        albumId: song.albumId,
+        title: song.title,
+        description: song.description,
+        url: song.soundFileURL,
+        createdAt: song.createdAt,
+        updatedAt: song.updatedAt,
+        previewImage: song.previewImage,
+        Artist: {
+          id: song.User.id,
+          username: song.User.username,
+          previewImage: song.User.previewImage,
+        },
+        Album: {
+          id: song.Album.id,
+          title: song.Album.title,
+          previewImage: song.Album.previewImage,
+        },
+      };
+      res.json(mappedSong);
+    } else {
+        const err = new Error("Song couldn't be found");
+        err.status = 404;
+        next(err)
+    }
   })
 );
 
