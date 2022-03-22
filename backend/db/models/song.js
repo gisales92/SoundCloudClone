@@ -83,5 +83,12 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Song',
   });
+  Song.byUser = async function (userId) {
+    const userSongs = await Song.findAll({
+      where: {userId}
+    });
+    return userSongs;
+  };
+
   return Song;
 };

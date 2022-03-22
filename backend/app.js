@@ -61,7 +61,11 @@ app.use((err, _req, _res, next) => {
   // check if error is a Sequelize error:
   if (err instanceof ValidationError) {
     err.errors = {};
-    err.errors.forEach((e) => err.errors[`${e.param}`] = e.message);
+    err.errors.forEach((e) => {
+      if (!err.errors[`${e.param}`]) {
+        err.errors[`${e.param}`] = e.message;
+      }
+    });
     err.title = "Validation error";
   }
   next(err);
@@ -73,15 +77,15 @@ app.use((err, _req, res, _next) => {
   if (err.status === 401 || err.status === 404) {
     return res.json({
       message: err.message,
-      statusCode: err.status
-    })
+      statusCode: err.status,
+    });
   }
   if (err.status === 400) {
     return res.json({
       message: err.message,
       statusCode: err.status,
       errors: err.errors,
-    })
+    });
   }
   res.json({
     title: err.title || "Server Error",

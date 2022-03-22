@@ -8,11 +8,11 @@ const { handleValidationErrors } = require("../../utils/validation");
 const router = express.Router();
 
 const validateLogin = [
-  check("credential")
+  check("email") // can check credential to check both email and username
     .exists({ checkFalsy: true })
-    .withMessage("A valid email or username is required")
+    .withMessage("A valid email is required")
     .notEmpty()
-    .withMessage("A valid email or username is required"),
+    .withMessage("A valid email is required"),
   check("password")
     .exists({ checkFalsy: true })
     .withMessage("Password is required"),
@@ -24,9 +24,9 @@ router.post(
   "/",
   validateLogin,
   asyncHandler(async (req, res, next) => {
-    const { credential, password } = req.body;
+    const { email, password } = req.body;
 
-    const user = await User.login({ credential, password });
+    const user = await User.login(email, password);
 
     if (!user) {
       const err = new Error("Invalid credentials");
@@ -36,14 +36,14 @@ router.post(
       return next(err);
     }
 
-    await setTokenCookie(res, user);
+    const token = await setTokenCookie(res, user);
 
     return res.json({
       id: user.id,
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,
-      token: req.cookies.token,
+      token: token,
     });
   })
 );
