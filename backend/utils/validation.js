@@ -1,4 +1,5 @@
 const { validationResult } = require("express-validator");
+const { check } = require("express-validator");
 
 // middleware for formatting errors from express-validator middleware
 // (to customize, see express-validator's documentation)
@@ -22,6 +23,18 @@ const handleValidationErrors = (req, _res, next) => {
   next();
 };
 
-module.exports = {
+const validateSong = [
+  check("title") // can check credential to check both email and username
+    .exists({ checkFalsy: true })
+    .withMessage("Song title is required")
+    .notEmpty()
+    .withMessage("Song title is required"),
+  check("url")
+    .exists({ checkFalsy: true })
+    .withMessage("Audio is required"),
   handleValidationErrors,
+];
+
+module.exports = {
+  handleValidationErrors, validateSong
 };
