@@ -44,6 +44,16 @@ const validateAlbum = [
   handleValidationErrors,
 ];
 
+
+const validateComment = [
+  check("body")
+    .exists({ checkFalsy: true })
+    .withMessage("Comment body text is required")
+    .notEmpty()
+    .withMessage("Comment body text is required"),
+  handleValidationErrors,
+];
+
 module.exports = {
-  handleValidationErrors, validateSong, validateAlbum
+  handleValidationErrors, validateSong, validateAlbum, validateComment
 };

@@ -7,13 +7,15 @@ const {
   restoreUser,
   requireAuth,
 } = require("../../utils/auth");
-const { Song, User, Album } = require("../../db/models");
+const { Song, User, Album, Comment } = require("../../db/models");
 const {
   handleValidationErrors,
   validateSong,
+  validateComment
 } = require("../../utils/validation");
 const router = express.Router();
 
+// get all songs
 router.get(
   "/",
   asyncHandler(async (req, res) => {
@@ -33,6 +35,7 @@ router.get(
   })
 );
 
+// get song details
 router.get(
   "/:songId",
   asyncHandler(async (req, res, next) => {
@@ -70,6 +73,7 @@ router.get(
   })
 );
 
+// edit a song
 router.put(
   "/:songId",
   requireAuth,
@@ -110,25 +114,79 @@ router.put(
   })
 );
 
-router.delete("/:songId",
-requireAuth,
-asyncHandler(async (req, res, next) => {
-  const songId = req.params.songId;
+// delete a song
+router.delete(
+  "/:songId",
+  requireAuth,
+  asyncHandler(async (req, res, next) => {
+    const songId = req.params.songId;
     const userId = req.user.id;
     const song = await Song.findByPk(songId);
     if (song) {
       if (song.userId === userId) {
-         await song.destroy();
-         res.status(200);
-         return res.json({message: "Successfully deleted", statusCode: 200})
+        await song.destroy();
+        res.status(200);
+        return res.json({ message: "Successfully deleted", statusCode: 200 });
       } else {
         res.status(403);
-        res.json({ message: "Forbidden", statusCode: 403 });
+        return res.json({ message: "Forbidden", statusCode: 403 });
       }
     } else {
       res.status(404);
       return res.json({ message: "Song couldn't be found", statusCode: 404 });
     }
+  })
+);
+
+// Get all comments to a song
+router.get(
+  "/:songId/comments",
+  asyncHandler(async (req, res, next) => {
+    const song = await Song.findByPk(req.params.songId, {
+      include: [
+        {model: Comment,
+          include: [User]},
+      ],
+    });
+    if (song) {
+      const Comments = song.Comments.map((commentObj, i) => ({
+        id: commentObj.id,
+        userId: commentObj.userId,
+        songId: song.userId,
+        body: commentObj.body,
+        createdAt: commentObj.createdAt,
+        updatedAt: commentObj.updatedAt,
+        User: {
+           id: commentObj.User.id,
+           username: commentObj.User.username
+        },
+      }));
+      res.status(200);
+      return res.json({Comments});
+    } else {
+      const err = new Error("Song couldn't be found");
+      err.status = 404;
+      next(err);
+    }
+  })
+);
+
+// Create a comment for a song
+router.post("/:songId/comments",
+requireAuth,
+validateComment,
+asyncHandler(async (req, res, next) => {
+  const song = await Song.findByPk(req.params.songId);
+  if (song) {
+    const {body} = req.body;
+    const comment = await Comment.create({userId: req.user.id, songId: song.id, body});
+    res.status(200);
+    res.json(comment);
+  } else {
+    const err = new Error("Song couldn't be found");
+      err.status = 404;
+      next(err);
+  }
 }))
 
 module.exports = router;

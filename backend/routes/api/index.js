@@ -3,6 +3,7 @@ const sessionRouter = require("./session.js");
 const usersRouter = require("./users.js");
 const songsRouter = require("./songs");
 const albumRouter = require("./albums");
+const commentRouter = require("./comments");
 const myRouter = require("./my");
 const asyncHandler = require("express-async-handler");
 const { User } = require("../../db/models");
@@ -20,10 +21,8 @@ router.use("/songs", songsRouter);
 
 router.use("/albums", albumRouter);
 
-router.use("/my", myRouter);
+router.use("/comments", commentRouter);
 
-router.get('/require-auth', requireAuth, (req, res) => {
-  return res.json(req.user)
-})
+router.use("/my", myRouter);
 
 module.exports = router;
