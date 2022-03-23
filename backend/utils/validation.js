@@ -24,7 +24,7 @@ const handleValidationErrors = (req, _res, next) => {
 };
 
 const validateSong = [
-  check("title") // can check credential to check both email and username
+  check("title")
     .exists({ checkFalsy: true })
     .withMessage("Song title is required")
     .notEmpty()
@@ -35,6 +35,15 @@ const validateSong = [
   handleValidationErrors,
 ];
 
+const validateAlbum = [
+  check("title")
+    .exists({ checkFalsy: true })
+    .withMessage("Album title is required")
+    .notEmpty()
+    .withMessage("Album title is required"),
+  handleValidationErrors,
+];
+
 module.exports = {
-  handleValidationErrors, validateSong
+  handleValidationErrors, validateSong, validateAlbum
 };
