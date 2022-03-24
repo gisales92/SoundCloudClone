@@ -29,6 +29,60 @@ asyncHandler(async (req, res, next) => {
         err.status = 404;
         next(err);
     }
+}));
+
+router.get("/:artistId/songs",
+asyncHandler(async (req, res, next) => {
+    const artist = await User.findByPk(req.params.artistId, {
+        include: [Song]
+    });
+    if (artist) {
+        const songs = artist.Songs.map((songObj) => (
+            {
+                id: songObj.id,
+                userId: songObj.userId,
+                albumId: songObj.albumId,
+                title: songObj.title,
+                description: songObj.description,
+                url: songObj.soundFileURL,
+                createdAt: songObj.createdAt,
+                updatedAt: songObj.updatedAt,
+                previewImage: songObj.previewImage,
+            })
+        )
+        res.status(200);
+        return res.json({Songs: songs});
+    } else {
+        const err = new Error("Artist couldn't be found");
+        err.status = 404;
+        next(err);
+    }
+}))
+
+router.get("/:artistId/albums",
+asyncHandler(async (req, res, next) => {
+    const artist = await User.findByPk(req.params.artistId, {
+        include: [Album]
+    });
+    if (artist) {
+        const albums = artist.Albums.map((albumObj) => (
+            {
+                id: albumObj.id,
+                userId: albumObj.userId,
+                title: albumObj.title,
+                description: albumObj.description,
+                createdAt: albumObj.createdAt,
+                updatedAt: albumObj.updatedAt,
+                previewImage: albumObj.previewImage,
+            })
+        )
+        res.status(200);
+        return res.json({Albums: albums});
+    } else {
+        const err = new Error("Artist couldn't be found");
+        err.status = 404;
+        next(err);
+    }
 }))
 
 module.exports = router;
