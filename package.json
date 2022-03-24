@@ -22,7 +22,5 @@
     "url": "https://github.com/gisales92/SoundCloudClone/issues"
   },
   "homepage": "https://github.com/gisales92/SoundCloudClone#readme",
-  "dependencies": {
-    "heroku": "^7.60.0"
-  }
+  "dependencies": {}
 }
