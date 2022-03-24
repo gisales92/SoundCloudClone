@@ -15,6 +15,7 @@ const {
 } = require("../../utils/validation");
 const router = express.Router();
 
+// Get all albums
 router.get(
   "/",
   asyncHandler(async (req, res) => {
@@ -32,6 +33,7 @@ router.get(
   })
 );
 
+// Get album details
 router.get(
   "/:albumId",
   asyncHandler(async (req, res, next) => {
@@ -67,7 +69,7 @@ router.get(
           previewImage: songObj.previewImage,
         };
       });
-      res.json(mappedAlbum);
+      return res.json(mappedAlbum);
     } else {
       const err = new Error("Album couldn't be found");
       err.status = 404;

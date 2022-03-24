@@ -10,6 +10,7 @@ const { Song, User, Album, Comment } = require("../../db/models");
 
 const router = express.Router();
 
+// Get artist details
 router.get("/:artistId",
 asyncHandler(async (req, res, next) => {
     const artist = await User.findByPk(req.params.artistId, {
@@ -31,6 +32,7 @@ asyncHandler(async (req, res, next) => {
     }
 }));
 
+//Get all songs by an artist
 router.get("/:artistId/songs",
 asyncHandler(async (req, res, next) => {
     const artist = await User.findByPk(req.params.artistId, {
@@ -59,6 +61,7 @@ asyncHandler(async (req, res, next) => {
     }
 }))
 
+//Get all albums by an artist
 router.get("/:artistId/albums",
 asyncHandler(async (req, res, next) => {
     const artist = await User.findByPk(req.params.artistId, {

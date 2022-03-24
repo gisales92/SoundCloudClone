@@ -11,6 +11,7 @@ const { Song, User, Album, Playlist } = require("../../db/models");
 const { handleValidationErrors } = require("../../utils/validation");
 const router = express.Router();
 
+// get a user's songs
 router.get(
   "/songs",
   requireAuth,
@@ -31,6 +32,7 @@ router.get(
   })
 );
 
+// get a user's albums
 router.get(
     "/albums",
     requireAuth,
