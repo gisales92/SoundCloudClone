@@ -17,7 +17,7 @@ router.get(
   requireAuth,
   asyncHandler(async (req, res, next) => {
       const userSongs = await Song.byUser(req.user.id);
-      const Songs = userSongs.map((songObj) => ({
+      const songs = userSongs.map((songObj) => ({
         id: songObj.id,
         userId: songObj.userId,
         albumId: songObj.albumId,
@@ -28,7 +28,7 @@ router.get(
         updatedAt: songObj.updatedAt,
         previewImage: songObj.previewImage,
       }));
-      return res.json({ Songs });
+      return res.json({ Songs: songs });
   })
 );
 
@@ -38,7 +38,7 @@ router.get(
     requireAuth,
     asyncHandler(async (req, res, next) => {
         const userAlbums = await Album.byUser(req.user.id);
-        const Albums = userAlbums.map((albumObj) => ({
+        const albums = userAlbums.map((albumObj) => ({
             id: albumObj.id,
             userId: albumObj.userId,
             title: albumObj.title,
@@ -47,7 +47,7 @@ router.get(
             updatedAt: albumObj.updatedAt,
             previewImage: albumObj.previewImage,
           }));
-          res.json({ Albums });
+          res.json({ Albums: albums });
     })
   );
 
