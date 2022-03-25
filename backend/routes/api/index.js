@@ -4,7 +4,8 @@ const usersRouter = require("./users.js");
 const songsRouter = require("./songs");
 const albumRouter = require("./albums");
 const commentRouter = require("./comments");
-const artistRouter = require("./artists")
+const artistRouter = require("./artists");
+const playlistRouter = require("./playlists");
 const myRouter = require("./my");
 const asyncHandler = require("express-async-handler");
 const { User } = require("../../db/models");
@@ -25,6 +26,8 @@ router.use("/albums", albumRouter);
 router.use("/comments", commentRouter);
 
 router.use("/artists", artistRouter);
+
+router.use("/playlists", playlistRouter);
 
 router.use("/my", myRouter);
 

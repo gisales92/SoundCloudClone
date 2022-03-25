@@ -105,7 +105,7 @@ router.put(
         return res.json(updatedSong);
       } else {
         res.status(403);
-        res.json({ message: "Forbidden", statusCode: 403 });
+        return res.json({ message: "Forbidden", statusCode: 403 });
       }
     } else {
       res.status(404);

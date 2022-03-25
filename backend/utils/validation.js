@@ -54,6 +54,15 @@ const validateComment = [
   handleValidationErrors,
 ];
 
+const validatePlaylist = [
+  check("name")
+    .exists({ checkFalsy: true })
+    .withMessage("Playlist name is required")
+    .notEmpty()
+    .withMessage("Playlist name is required"),
+  handleValidationErrors,
+];
+
 module.exports = {
-  handleValidationErrors, validateSong, validateAlbum, validateComment
+  handleValidationErrors, validateSong, validateAlbum, validateComment, validatePlaylist
 };

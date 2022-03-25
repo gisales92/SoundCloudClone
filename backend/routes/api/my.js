@@ -51,4 +51,23 @@ router.get(
     })
   );
 
+  // get a user's playlists
+router.get(
+  "/playlists",
+  requireAuth,
+  asyncHandler(async (req, res, next) => {
+      const userPlaylists = await Playlist.byUser(req.user.id);
+      const playlists = userPlaylists.map((playlistObj) => ({
+          id: playlistObj.id,
+          userId: playlistObj.userId,
+          name: playlistObj.name,
+          createdAt: playlistObj.createdAt,
+          updatedAt: playlistObj.updatedAt,
+          previewImage: playlistObj.previewImage,
+        }));
+        res.status(200);
+        return res.json({Playlists: playlists});
+  })
+);
+
 module.exports = router;

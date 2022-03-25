@@ -69,6 +69,7 @@ router.get(
           previewImage: songObj.previewImage,
         };
       });
+      res.status(200);
       return res.json(mappedAlbum);
     } else {
       const err = new Error("Album couldn't be found");

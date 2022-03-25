@@ -6,7 +6,7 @@ const {
   restoreUser,
   requireAuth,
 } = require("../../utils/auth");
-const { Song, User, Album, Comment } = require("../../db/models");
+const { Song, User, Album, Playlist } = require("../../db/models");
 
 const router = express.Router();
 
@@ -86,6 +86,32 @@ asyncHandler(async (req, res, next) => {
         err.status = 404;
         next(err);
     }
-}))
+}));
+
+// get all playlists of an artist
+router.get("/:artistId/playlists",
+asyncHandler(async (req, res, next) => {
+    const artist = await User.findByPk(req.params.artistId, {
+        include: [Playlist]
+    });
+    if (artist) {
+        const playlists = artist.Playlists.map((listObj) => (
+            {
+                id: listObj.id,
+                userId: listObj.userId,
+                name: listObj.name,
+                createdAt: listObj.createdAt,
+                updatedAt: listObj.updatedAt,
+                previewImage: listObj.previewImage,
+            })
+        )
+        res.status(200);
+        return res.json({Playlists: playlists});
+    } else {
+        const err = new Error("Artist couldn't be found");
+        err.status = 404;
+        next(err);
+    }
+}));
 
 module.exports = router;
