@@ -1314,7 +1314,7 @@ Add a song to a playlist specified by the playlist's id.
 - Request
 
   - Method: POST
-  - URL: /playlists/:playlistId/add
+  - URL: /playlists/:playlistId
   - Headers:
     - Content-Type: application/json
   - Body:
@@ -1575,7 +1575,7 @@ Return songs filtered by query parameters.
 - Request
 
   - Method: GET
-  - URL: /songs/
+  - URL: /songs?
   - Query Parameters
     - page: integer, minimum: 0, maximum: 10, default: 0
     - size: integer, minimum: 0, maximum: 20, default: 20

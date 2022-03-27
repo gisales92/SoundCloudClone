@@ -23,8 +23,15 @@ module.exports = (sequelize, DataTypes) => {
         otherKey: 'playlistId',
       });
       Song.hasMany(models.Comment, {
-        foreignKey: "songId"
-      })
+        foreignKey: "songId",
+        onDelete: "CASCADE",
+        hooks: true,
+      });
+      Song.hasMany(models.Playlist_Song, {
+        foreignKey: "songId",
+        onDelete: "CASCADE",
+        hooks: true,
+      });
     }
   }
   Song.init({
@@ -83,5 +90,12 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Song',
   });
+  Song.byUser = async function (userId) {
+    const userSongs = await Song.findAll({
+      where: {userId}
+    });
+    return userSongs;
+  };
+
   return Song;
 };

@@ -56,5 +56,13 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Album',
   });
+
+  Album.byUser = async function (userId) {
+    const userAlbums = await Album.findAll({
+      where: {userId}
+    });
+    return userAlbums;
+  };
+
   return Album;
 };

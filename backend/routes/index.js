@@ -6,9 +6,9 @@ const db = require("../db/models")
 
 router.use("/api", apiRouter);
 
-router.get("/hello/world", function (req, res) {
+router.get("/", function (req, res) {
   res.cookie("XSRF-TOKEN", req.csrfToken());
-  res.send("Hello World!");
+  res.send("Hello World! I have not created a homepage yet.");
 });
 
 // router.get("/test", asyncHandler(async (req, res) => {

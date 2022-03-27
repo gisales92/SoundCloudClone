@@ -11,6 +11,18 @@ module.exports = (sequelize, DataTypes) => {
 
     static associate(models) {
       // define association here
+      User.hasMany(models.Comment, {
+        foreignKey: "userId"
+      });
+      User.hasMany(models.Song, {
+        foreignKey: "userId"
+      });
+      User.hasMany(models.Playlist, {
+        foreignKey: "userId"
+      });
+      User.hasMany(models.Album, {
+        foreignKey: "userId"
+      })
     }
   }
   User.init(
@@ -138,7 +150,7 @@ module.exports = (sequelize, DataTypes) => {
     return await User.scope("currentUser").findByPk(id);
   };
 
-  User.login = async function ({ credential, password }) {
+  User.login = async function (credential, password ) {
     const { Op } = require("sequelize");
     const user = await User.scope("loginUser").findOne({
       where: {
@@ -153,12 +165,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
 
-  User.signup = async function ({ username, email, password }) {
+  User.signup = async function ({ username, email, password, firstName, lastName }) {
     const hashedPassword = bcrypt.hashSync(password);
     const user = await User.create({
       username,
       email,
       hashedPassword,
+      firstName,
+      lastName,
     });
     return await User.scope("currentUser").findByPk(user.id);
   };
