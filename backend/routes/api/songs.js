@@ -74,10 +74,6 @@ router.get(
         createdAt = new Date(createdAt.substring(0,10));
       }
 
-      // adjust for timezone
-      createdAt.setHours( createdAt.getHours() + 7 )
-
-
       const dayStart = createdAt.getTime();
       const dayEnd = createdAt.setDate(createdAt.getDate() + 1);
 
