@@ -1,5 +1,4 @@
-const { validationResult } = require("express-validator");
-const { check } = require("express-validator");
+const { validationResult, check, query, } = require("express-validator");
 
 // middleware for formatting errors from express-validator middleware
 // (to customize, see express-validator's documentation)
@@ -63,6 +62,31 @@ const validatePlaylist = [
   handleValidationErrors,
 ];
 
+const validateQuery = [
+  check("page")
+    .optional()
+    .isInt({gt: -1})
+    .withMessage("Page must be greater than or equal to 0")
+    .isInt({lt: 11})
+    .withMessage("Page must be less than or equal to 10"),
+  check("size")
+    .optional()
+    .isInt({gt: -1})
+    .withMessage("Size must be greater than or equal to 0")
+    .isInt({lt: 21})
+    .withMessage("Size must be less than or equal to 20"),
+  check("createdAt")
+    .optional()
+    .isISO8601()
+    .custom(value => {
+      const formattedDate = new Date(value);
+      let today = new Date();
+      return (formattedDate<today);
+    })
+    .withMessage("CreatedAt is invalid"),
+  handleValidationErrors,
+];
+
 module.exports = {
-  handleValidationErrors, validateSong, validateAlbum, validateComment, validatePlaylist
+  handleValidationErrors, validateSong, validateAlbum, validateComment, validatePlaylist, validateQuery
 };
