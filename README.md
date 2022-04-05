@@ -4,6 +4,8 @@
 
 ![Database Schema](/dbSchema.png)
 
+For a live demo of this api go to: https://gisales01.herokuapp.com/api
+
 ## API Documentation
 
 ## All endpoints that require authentication
