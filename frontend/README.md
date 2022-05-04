@@ -20,9 +20,9 @@ As a registered and unauthorized user, I want to be able to log in to the websit
 
 * When I'm on the /login page:
   * I would like to be able to enter my email and password on a clearly laid out form.
-    * I would like the website to log me in upon successful completion of the lob-up form.
+    * I would like the website to log me in upon successful completion of the log-in form.
     * So that I can seamlessly access the site's functionality
-  * When I enter invalid data on the log-up form:
+  * When I enter invalid data on the log-in form:
     * I would like the website to inform me of the validations I failed to pass, and repopulate the form with my valid entries (except my password).
     * So that I can try again without needing to refill forms I entered valid data into.
 
