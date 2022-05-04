@@ -17,7 +17,6 @@ function App() {
     isLoaded && (
       <>
         <Navigation isLoaded={isLoaded}/>
-        <h1>Hello from Playlist Pal</h1>
         <Switch>
           <Route path="/login">
             <LoginFormPage />

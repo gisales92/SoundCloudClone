@@ -1,0 +1,62 @@
+h2 {
+    font-size: 3vmax;
+    margin: auto;
+    padding: 5px;
+}
+
+#sign-up-form-container {
+    background-color: var(--secondary);
+    display: flex;
+    flex-direction: column;
+}
+
+fieldset {
+    background-color: var(--secondary-light);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: auto;
+    border-radius: 10px;
+}
+
+label {
+    font-size: 13pt;
+    display: flex;
+    text-align: center;
+    margin: auto;
+}
+
+input {
+ margin: auto;
+ border-radius: 5px;
+}
+
+.form-input {
+    padding: 8px 15px;
+}
+
+input:focus {
+    background-color: var(--secondary);
+}
+
+.errors-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.errors-list li {
+    text-align: center;
+    margin: 0 15% 5px 15%;
+    font-weight: bold;
+}
+
+#sign-up-form-submit {
+    width: 90%;
+    margin: auto;
+    border-radius: 25px;
+    font-size: 2.75vmax;
+    padding: 5px;
+    margin-top: 10px;
+    background-color: var(--primary);
+    color: white;
+}
