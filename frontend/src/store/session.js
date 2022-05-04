@@ -3,6 +3,8 @@ import { csrfFetch } from "./csrf";
 const SET_USER = "session/setUser";
 const REMOVE_USER = "session/removeUser";
 
+export const userSelector = (state) => state.session.user;
+
 const setUser = (user) => {
   return {
     type: SET_USER,
@@ -30,13 +32,43 @@ export const login = (user) => async (dispatch) => {
   return response;
 };
 
+export const restoreUser = () => async (dispatch) => {
+    const response = await csrfFetch("/api/session");
+    const data = await response.json();
+    dispatch(setUser(data.user));
+    return response;
+  };
+
+  export const signup = (user) => async (dispatch) => {
+    const { username, email, password } = user;
+    const response = await csrfFetch("/api/users", {
+      method: "POST",
+      body: JSON.stringify({
+        username,
+        email,
+        password,
+      }),
+    });
+    const data = await response.json();
+    dispatch(setUser(data.user));
+    return response;
+  };
+
+  export const logout = () => async (dispatch) => {
+      const response = await csrfFetch('/api/session', {
+        method: 'DELETE',
+      });
+      dispatch(removeUser());
+      return response;
+    };
+
 const sessionReducer = (state = {user: null}, action) => {
   let newState;
   switch (action.type) {
     case SET_USER:
       newState = Object.assign({}, state);
       newState.user = action.user;
-      delete newState.user.token;
+      delete newState.user?.token; // Not sure if we need to delete this
       return newState;
     case REMOVE_USER:
       newState = Object.assign({}, state);
