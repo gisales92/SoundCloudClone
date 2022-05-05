@@ -2,17 +2,19 @@ header {
   background-color: var(--primary);
   position: sticky;
   display: grid;
-  grid-template-columns: 1fr 0.5fr 1fr;
+  grid-template-columns: .75fr 0.5fr 1fr;
   justify-content: space-between;
   top: 0;
-  height: fit-content;
+  height: 10vmin;
+  min-width: 300px;
 }
 
 ul {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  /* display: grid;
+  grid-template-columns: 1fr 1fr 1fr; */
+  display: flex;
+  justify-content: flex-end;
   list-style-type: none;
-  justify-content: space-between;
   padding: 0;
   height: 100%;
   margin: 0;
@@ -24,40 +26,49 @@ a {
   text-decoration: none;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   margin: auto;
-  font-size: 3vmin;
+  font-size: 2.8vmin;
+  text-align: center;
+  text-shadow: 1px 1px 2px black;
 }
 
 #logo {
   display: grid;
-  grid-template-columns: 25% 75%;
+  grid-template-columns: 15% 85%;
   width: auto;
   height: auto;
   text-align: center;
   overflow: hidden;
 }
 
+#logo a:first-child {
+  height: 100%;
+}
+
 h1 {
     font-size: 6vw;
-    max-width: fit-content;
-    margin: auto;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
 }
+
 
 img {
   max-width: 100%;
-  width: auto;
-  height: auto;
+  height: 100%;
   margin: auto;
-}
+  padding-left: 10px;
+  }
 
 li {
     text-align: center;
-    margin: auto;
+    margin: auto 15px auto 0;
 }
 
 #login-button {
     all: unset;
     color: white;
     font-size: 3vmin;
+    text-shadow: 1px 1px 2px black
  }
 
  #login-button:hover {
