@@ -12,6 +12,8 @@ const validateLogin = [
     .exists({ checkFalsy: true })
     .withMessage("A valid email is required")
     .notEmpty()
+    .withMessage("A valid email is required")
+    .isEmail()
     .withMessage("A valid email is required"),
   check("password")
     .exists({ checkFalsy: true })
@@ -33,7 +35,8 @@ router.post(
       err.status = 401;
       err.title = "Login failed";
       err.errors = ["The provided credentials were invalid."];
-      return next(err);
+      next(err);
+      return err;
     }
 
     const token = await setTokenCookie(res, user);

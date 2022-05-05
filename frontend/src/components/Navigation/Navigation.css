@@ -5,7 +5,7 @@ header {
   grid-template-columns: .75fr 0.5fr 1fr;
   justify-content: space-between;
   top: 0;
-  height: 10vmin;
+  height: fit-content;
   min-width: 300px;
 }
 
