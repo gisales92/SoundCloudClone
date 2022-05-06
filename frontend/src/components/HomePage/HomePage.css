@@ -1,0 +1,14 @@
+:root {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Nicolas_St_Disc_Jockey.jpg/1200px-Nicolas_St_Disc_Jockey.jpg?20210804172255");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+}
+
+#home-header {
+    width: fit-content;
+    margin: auto;
+    padding: 20px;
+    color: white;
+    text-shadow: 2px 2px 4px black;
+}

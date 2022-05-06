@@ -63,9 +63,12 @@ function LoginForm() {
           />
         </div>
       </fieldset>
-      <button id="login-form-submit" type="submit" name="login">
+      <button className="login-modal-button" id="login-form-submit" type="submit" name="login">
         Log In
       </button>
+      <button id="demo-user" className="login-modal-button" name="demo-user" onClick={() => {
+        dispatch(sessionActions.login({ email: "demo@user.io", password: "password" }))
+      }}>Proceed as Guest</button>
     </form>
   );
 }

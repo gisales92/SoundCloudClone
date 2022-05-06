@@ -2,6 +2,7 @@ h2 {
     font-size: 3vmax;
     margin: auto;
     padding: 5px;
+    text-shadow: 2px 2px 4px white;
 }
 
 #sign-up-form-container {
@@ -33,6 +34,7 @@ input {
  line-height: 24px;
  padding: 7px 8px;
  width: 25vw;
+ min-width: 190px;
 }
 
 input:focus {
@@ -52,6 +54,7 @@ input:focus {
 
 #sign-up-form-submit {
     width: 25vw;
+    min-width: 190px;
     margin: 10px auto;
     border-radius: 5px;
     font-size: 2.4vmax;
