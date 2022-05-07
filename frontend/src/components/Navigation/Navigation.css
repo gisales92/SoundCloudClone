@@ -55,6 +55,7 @@ a {
 
 h1 {
   font-size: 32px;
+  font-weight: 100;
   max-width: 100%;
   margin: 0 auto 0 10px;
   padding: 0;
@@ -90,16 +91,20 @@ li {
   background-color: transparent;
   border-radius: 5px;
   cursor: pointer;
+  height: 35px;
 }
 
 #active-menu {
   background-color: var(--primary-dark);
-  border-radius: 5px;
   cursor: pointer;
+  border-radius: 5px;
+  height: 35px;
 }
 
 #menu-icon {
-  padding: 0 5px;
+  padding: 5px;
+  height: 100%;
+  margin: auto 0;
 }
 
 #active-menu {
