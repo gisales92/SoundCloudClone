@@ -53,7 +53,7 @@ function SignupFormPage() {
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <fieldset>
+        <fieldset id="signup-fieldset">
           <div className="form-input">
             <label htmlFor="email">Email</label>
             <input

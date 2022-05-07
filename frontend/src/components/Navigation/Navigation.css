@@ -1,12 +1,23 @@
 header {
   background-color: var(--primary);
   position: sticky;
-  display: grid;
-  grid-template-columns: .75fr 0.5fr 1fr;
-  justify-content: space-between;
   top: 0;
-  height: fit-content;
-  min-width: 300px;
+  height: 50px;
+  width: 100vw;
+  min-width: 550px;
+  margin: 0;
+  padding: 0;
+
+}
+
+#header-content {
+  display: grid;
+  grid-template-columns: 0.85fr 0.5fr 1fr;
+  justify-content: space-between;
+  max-width: 1250px;
+  margin: 0 auto;
+  height: 100%;
+  padding: 0 25px;
 }
 
 ul {
@@ -23,15 +34,15 @@ a {
   color: white;
   text-decoration: none;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  margin: auto;
-  font-size: 2.8vmin;
+  margin: auto 0;
+  font-size: 18px;
+  font-weight: 100;
   text-align: center;
   text-shadow: 1px 1px 2px black;
 }
 
 #logo {
-  display: grid;
-  grid-template-columns: 15% 85%;
+  display: flex;
   width: auto;
   height: auto;
   text-align: center;
@@ -43,35 +54,37 @@ a {
 }
 
 h1 {
-    font-size: 6vw;
-    max-width: 100%;
-    margin: 0;
-    padding: 0;
+  font-size: 32px;
+  max-width: 100%;
+  margin: 0 auto 0 10px;
+  padding: 0;
 }
 
-
-img {
+#home-logo {
   max-width: 100%;
-  height: 100%;
-  margin: auto;
-  padding-left: 10px;
-  }
+  min-width: 30px;
+  height: 50px;
+  margin: auto 0;
+  padding: 3px 0;
+}
 
 li {
-    text-align: center;
-    margin: auto 15px auto 0;
+  text-align: center;
+  margin: auto 0;
+  width: 60px;
 }
 
 #login-button {
-    all: unset;
-    color: white;
-    font-size: 3vmin;
-    text-shadow: 1px 1px 2px black
- }
+  all: unset;
+  color: white;
+  font-size: 18px;
+  font-weight: 100;
+  text-shadow: 1px 1px 2px black;
+}
 
- #login-button:hover {
+#login-button:hover {
   cursor: pointer;
- }
+}
 
 #menu-icon-button {
   background-color: transparent;
@@ -98,8 +111,7 @@ li {
   flex-direction: column;
   background-color: var(--secondary-light);
   position: fixed;
-  right: 1.5vw
-
+  right: 1.5vw;
 }
 
 #logout-button {

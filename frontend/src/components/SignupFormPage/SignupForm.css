@@ -11,7 +11,7 @@ h2 {
     flex-direction: column;
 }
 
-fieldset {
+#signup-fieldset {
     background-color: var(--secondary-light);
     display: flex;
     flex-direction: column;

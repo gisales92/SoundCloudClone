@@ -33,7 +33,7 @@ function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <fieldset>
+      <fieldset id="login-fieldset">
         <legend>Log in!</legend>
         <ul className="errors-list">
           {errors.map((error, idx) => (
@@ -66,7 +66,8 @@ function LoginForm() {
       <button className="login-modal-button" id="login-form-submit" type="submit" name="login">
         Log In
       </button>
-      <button id="demo-user" className="login-modal-button" name="demo-user" onClick={() => {
+      <button id="demo-user" className="login-modal-button" name="demo-user" onClick={(e) => {
+        e.preventDefault();
         dispatch(sessionActions.login({ email: "demo@user.io", password: "password" }))
       }}>Proceed as Guest</button>
     </form>

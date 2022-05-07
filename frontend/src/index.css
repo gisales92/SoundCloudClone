@@ -12,3 +12,8 @@
     --secondary-light: #ffffff;
     --secondary-dark: #bdb9b7;
 }
+
+body {
+    margin: 0;
+    min-width: 550px;
+}
