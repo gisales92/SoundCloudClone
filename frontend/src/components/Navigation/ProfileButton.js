@@ -33,7 +33,8 @@ function ProfileButton() {
 
       {showMenu ? (
         <div id="drop-menu">
-          <NavLink className="user-nav-link" to="/">{user.email}</NavLink>
+          <NavLink className="user-nav-link" to="/">My Profile</NavLink>
+          <NavLink className="user-nav-link" to="/my/playlists">My Playlists</NavLink>
           <button id="logout-button" onClick={() => dispatch(logout())}>Log out</button>
         </div>
       ) : null}

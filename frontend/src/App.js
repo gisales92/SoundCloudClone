@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { Switch, Route } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Switch, Route, Redirect } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormModal";
 import SignupFormPage from "./components/SignupFormPage";
 import HomePage from "./components/HomePage";
+import Playlists from "./components/Playlists";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const user = useSelector(sessionActions.userSelector)
 
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
@@ -28,6 +30,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route path="/my/playlists">
+            {user ? <Playlists userId={user.id}/> : <Redirect to="/" />}
           </Route>
         </Switch>
       </>

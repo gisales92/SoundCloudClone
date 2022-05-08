@@ -133,6 +133,7 @@ li {
 
 #logout-button:hover {
   background-color: var(--secondary-dark);
+  font-weight: bold;
 }
 
 .user-nav-link {
@@ -148,4 +149,5 @@ li {
 
 .user-nav-link:hover {
   background-color: var(--secondary-dark);
+  font-weight: bold;
 }
