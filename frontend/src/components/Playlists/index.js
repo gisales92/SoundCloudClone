@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { userSelector } from "../../store/session";
+import CreatePlaylistModal from "../CreatePlaylistFormModal";
 import "./PlaylistPreview.css"
 
 function Playlists ({userId}) {
@@ -12,12 +13,7 @@ if (currentUser.id === userId) mine = true;
             <div className="playlist-content">
                 {mine ?
                     <div className="create-playlist-container">
-                        <button className="add-button" onClick={(e) => {
-                            e.preventDefault();
-                            //TODO add functionality to bring up create playlist page
-                        }}>
-                            <img className="add-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/OOjs_UI_icon_add-invert.svg/640px-OOjs_UI_icon_add-invert.svg.png" alt="Add Playlist" />
-                        </button>
+                        <CreatePlaylistModal />
                         <p>Create new playlist</p>
                     </div>:
                     null
