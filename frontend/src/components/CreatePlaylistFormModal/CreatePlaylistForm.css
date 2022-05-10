@@ -1,0 +1,65 @@
+#modal-content {
+    border-radius: 5px;
+    min-width: 280px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+#new-playlist-fieldset {
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px 30px;
+}
+
+.form-input {
+    margin: auto;
+    border-radius: 5px;
+    font-size: 18px;
+    line-height: 24px;
+    padding: 7px 8px;
+    width: 25vw;
+    min-width: 255px;
+   }
+
+.drop-input {
+    display: flex;
+    flex-direction: column;
+}
+
+#new-playlist-form-submit {
+    width: 25vw;
+    min-width: 255px;
+    height: 5vmax;
+    margin: 10px auto;
+    border-radius: 5px;
+    font-size: 2.4vmax;
+    padding: 10px 15px;
+    background-color: var(--primary);
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    cursor: pointer;
+    text-align: center;
+}
+
+input:focus {
+    background-color: var(--secondary);
+}
+
+.playlist-errors-list {
+    display: flex;
+    flex-direction: column;
+    width: 25vw;
+    min-width: 190px;
+}
+
+.playlist-errors-list li {
+    width: 100%;
+    margin: 0;
+    padding: 5px 0;
+}

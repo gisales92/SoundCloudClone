@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import LoginForm from "../LoginFormModal/LoginForm";
+import CreatePlaylistForm from "./CreatePlaylistForm";
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { userSelector } from "../../store/session";
 import { Modal } from "../../context/Modal";
+import "./CreatePlaylistForm.css"
 
 function CreatePlaylistModal() {
   const [showModal, setShowModal] = useState(false);
@@ -31,7 +32,7 @@ function CreatePlaylistModal() {
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <LoginForm />
+          <CreatePlaylistForm />
         </Modal>
       )}
     </>
