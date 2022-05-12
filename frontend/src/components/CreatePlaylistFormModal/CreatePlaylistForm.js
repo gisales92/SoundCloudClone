@@ -38,7 +38,7 @@ function CreatePlaylistForm() {
 
   return (
     <div id="new-playlist-form-container">
-      <h2>Create a new playlist</h2>
+      <h2 className="new-playlist-header">Create a new playlist</h2>
       <form onSubmit={handleSubmit}>
         <ul className="playlist-errors-list">
           {errors.map((error, idx) => (
@@ -47,7 +47,7 @@ function CreatePlaylistForm() {
         </ul>
         <fieldset id="new-playlist-fieldset">
           <div className="form-input">
-            <label htmlFor="playlist-name">Playlist Name</label>
+            <label htmlFor="playlist-name">Playlist Title</label>
             <input
               type="text"
               value={playlistName}
@@ -58,7 +58,7 @@ function CreatePlaylistForm() {
             />
           </div>
           <div className="drop-input">
-              <p>Upload a cover image for your playlist:</p>
+              <p className="upload-cover-text">Upload a cover image for your playlist:</p>
           <PlaylistImageDrop />
           </div>
         </fieldset>

@@ -1,11 +1,24 @@
 #modal-content {
     border-radius: 5px;
-    min-width: 280px;
+    min-width: 480px;
+}
+
+#new-playlist-form-container {
+    display: flex;
+    flex-direction: column;
 }
 
 form {
     display: flex;
     flex-direction: column;
+}
+
+.new-playlist-header {
+    width: fit-content;
+    min-width: 255px;
+    margin: auto;
+    text-align: center;
+    text-decoration: underline;
 }
 
 
@@ -24,12 +37,17 @@ form {
     line-height: 24px;
     padding: 7px 8px;
     width: 25vw;
-    min-width: 255px;
+    min-width: 271px;
    }
 
 .drop-input {
     display: flex;
     flex-direction: column;
+}
+
+input {
+    min-width: 255px;
+
 }
 
 #new-playlist-form-submit {
@@ -62,4 +80,15 @@ input:focus {
     width: 100%;
     margin: 0;
     padding: 5px 0;
+}
+
+.dropzone {
+    background-color: var(--secondary);
+    border: 1px solid var(--secondary-dark);
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.upload-cover-text {
+    margin: 0 auto;
 }

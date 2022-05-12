@@ -39,12 +39,14 @@ function PlaylistImageDrop() {
         <p>Drag 'n' drop an image file here, or click to select files</p>
         <em>(Only *.jpeg and *.png images will be accepted)</em>
       </div>
-      <aside>
+      {acceptedFiles.length ? <p className='file-upload-feedback'>{`File ${acceptedFileItems[0].key} has been successfully added`}</p>: null }
+      {fileRejections.length ? <p className='file-upload-feedback'>{`File ${fileRejectionItems[0].key} has been rejected`}</p>: null }
+      {/* <aside>
         <h4>Accepted files:</h4>
         <ul>{acceptedFileItems}</ul>
         <h4>Rejected files:</h4>
         <ul>{fileRejectionItems}</ul>
-      </aside>
+      </aside> */}
     </section>
   );
 }
