@@ -1,6 +1,6 @@
 #modal-content {
     border-radius: 5px;
-    min-width: 480px;
+    min-width: 580px;
 }
 
 #new-playlist-form-container {
@@ -35,9 +35,9 @@ form {
     border-radius: 5px;
     font-size: 18px;
     line-height: 24px;
-    padding: 7px 8px;
+    padding: 7px 0;
     width: 25vw;
-    min-width: 271px;
+    min-width: 255px;
    }
 
 .drop-input {
@@ -47,7 +47,6 @@ form {
 
 input {
     min-width: 255px;
-
 }
 
 #new-playlist-form-submit {
@@ -91,4 +90,10 @@ input:focus {
 
 .upload-cover-text {
     margin: 0 auto;
+    width: 25vw;
+    min-width: 563.5px;
+}
+
+.file-upload-feedback {
+    width: 563.5px;
 }

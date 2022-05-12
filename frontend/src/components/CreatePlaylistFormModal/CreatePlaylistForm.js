@@ -1,45 +1,62 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
-import PlaylistImageDrop from "./PlaylistImageDrop";
+import { useDropzone } from "react-dropzone";
 import * as playlistActions from "../../store/playlist";
 
-function CreatePlaylistForm() {
+function CreatePlaylistForm({ closeModal }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [playlistName, setPlaylistName] = useState("");
+  const [image, setImage] = useState(null);
+  const uploadedImage = useSelector((state) => state.playlists.addImage);
   const [errors, setErrors] = useState([]);
 
-  if (!sessionUser) return <Redirect to="/" />;
+  const onDrop = useCallback((acceptedFiles) => {
+    setImage(acceptedFiles[0])})
+  const { acceptedFiles, fileRejections, getRootProps, getInputProps } =
+    useDropzone({
+      accept: {
+        "image/jpeg": [],
+        "image/png": [],
+      },
+      maxFiles: 1,
+      onDrop,
+    });
+
+  if (!sessionUser) {
+    window.alert("You must be logged in to view your playlists");
+    return <Redirect to="/" />;
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     setErrors([]);
-    // return dispatch(
-    //   sessionActions.signup({
-    //     email: email.toLowerCase(),
-    //     username,
-    //     password,
-    //     firstName,
-    //     lastName,
-    //   })
-    // ).catch(async (res) => {
-    //   const data = await res.json();
-    //   if (data && data.errors) {
-    //     const newErrors = [
-    //       "Please correct the following error(s):",
-    //       ...Object.values(data.errors),
-    //     ];
-    //     setErrors(newErrors);
-    //   }
-    // });
+    return dispatch(
+      playlistActions.createPlaylist({
+        name: playlistName,
+        image,
+      })
+    )
+      .then(() => {
+        closeModal(false);
+      })
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) {
+          const newErrors = [
+            "Please correct the following error(s):",
+            ...Object.values(data.errors),
+          ];
+          setErrors(newErrors);
+        }
+      });
   };
 
   return (
     <div id="new-playlist-form-container">
       <h2 className="new-playlist-header">Create a new playlist</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
         <ul className="playlist-errors-list">
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
@@ -47,7 +64,7 @@ function CreatePlaylistForm() {
         </ul>
         <fieldset id="new-playlist-fieldset">
           <div className="form-input">
-            <label htmlFor="playlist-name">Playlist Title</label>
+            <label htmlFor="playlist-name">Playlist Title*</label>
             <input
               type="text"
               value={playlistName}
@@ -58,8 +75,25 @@ function CreatePlaylistForm() {
             />
           </div>
           <div className="drop-input">
-              <p className="upload-cover-text">Upload a cover image for your playlist:</p>
-          <PlaylistImageDrop />
+            <p className="upload-cover-text">
+              Upload a cover image for your playlist:
+            </p>
+            <section className="container">
+              <div {...getRootProps({ className: "dropzone" })}>
+                <input {...getInputProps()} />
+                <p>
+                  Drag 'n' drop an image file here, or click to select files
+                </p>
+                <em>(Only *.jpeg and *.png images will be accepted)</em>
+              </div>
+              {acceptedFiles.length ? (
+                <p className="file-upload-feedback">{`File ${image?.name} has been successfully added`}</p>
+              ) : null}
+              {fileRejections.length ? (
+                <p className="file-upload-feedback">{`File ${fileRejections[0]?.file?.name} has been rejected - ${fileRejections[0]?.errors[0]?.message}`}</p>
+              ) : null}
+              {uploadedImage && <img src={uploadedImage} alt="preview" />}
+            </section>
           </div>
         </fieldset>
         <button id="new-playlist-form-submit" type="submit">
