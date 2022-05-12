@@ -50,18 +50,42 @@ p {
     height: 50px;
 }
 
+.playlist-grid {
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    max-width: 100%;
+    margin: auto;
+}
+
 .playlist-thumb {
     display: flex;
     flex-direction: column;
-    min-width: 550px;
-    max-width: 1250px;
+    justify-content: center;
     margin: auto;
+    padding: 0 25px;
+    width: 80%;
+    height: 90%;
     border-radius: 5px;
-    background-color: var(--secondary-light);
     padding-top: 15px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.playlist-thumb:hover {
+    background-color: var(--secondary);
+    cursor: pointer;
 }
 
 .playlist-thumb-img {
     width: 150px;
     height: 150px;
+    margin-top: 10px;
+}
+
+.playlist-title {
+    color: black;
+    text-shadow: none;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }

@@ -1,9 +1,10 @@
+import {Link} from "react-router-dom"
+
 function PlaylistTumbnails({ playlist }) {
-  console.log(playlist.name);
-  const { name, previewImage } = playlist;
+  const { name, previewImage, id: playlistId } = playlist;
   return (
     <div className="playlist-thumb">
-      <a className="playlist-thumb-link">
+      <Link to={`/playlists/${playlistId}`} className="playlist-thumb-link">
         <img
           src={
             previewImage
@@ -13,7 +14,7 @@ function PlaylistTumbnails({ playlist }) {
           className="playlist-thumb-img"
         />
         <p className="playlist-title">{name}</p>
-      </a>
+      </Link>
     </div>
   );
 }

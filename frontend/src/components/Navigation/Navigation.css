@@ -115,15 +115,18 @@ li {
   display: flex;
   flex-direction: column;
   background-color: var(--secondary-light);
-  position: fixed;
-  right: 1.5vw;
+  width: 10vw;
+  min-width: 200px;
+  position: absolute;
+  top: 50px;
+  margin-right: auto;
 }
 
 #logout-button {
   font-size: 18px;
   padding: 10px 15px;
   cursor: pointer;
-  width: 20vw;
+  width: 10vw;
   min-width: 200px;
   height: 52px;
   text-align: left;
@@ -138,8 +141,8 @@ li {
 
 .user-nav-link {
   font-size: 18px;
-  width: 20vw;
-  min-width: 200px;
+  width: 100%;
+  min-width: 100px;
   padding: 15px 10px;
   text-align: left;
   color: black;
@@ -151,3 +154,9 @@ li {
   background-color: var(--secondary-dark);
   font-weight: bold;
 }
+
+@media (max-width: 1450px) {
+  #drop-menu {
+    right: 1vw;
+  }
+ }

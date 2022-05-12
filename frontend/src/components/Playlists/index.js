@@ -42,8 +42,8 @@ function Playlists({ userId }) {
             <p>Create new playlist</p>
           </div>
         ) : null}
-        <div className="playlist-grid">
-          <ul>{loadedPlaylists?.map((playlistObj) => {
+        <div className="loaded-playlists">
+          <ul className="playlist-grid">{loadedPlaylists?.map((playlistObj) => {
             return <PlaylistTumbnails key={playlistObj.id} playlist={playlistObj} />
           })}</ul>
         </div>
