@@ -1,12 +1,37 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
 import { userSelector } from "../../store/session";
 import CreatePlaylistModal from "../CreatePlaylistFormModal";
+import PlaylistTumbnails from "./playlistThumbnails";
+import * as playlistActions from "../../store/playlist";
+import { csrfFetch } from "../../store/csrf";
 import "./PlaylistPreview.css";
 
 function Playlists({ userId }) {
+  const dispatch = useDispatch();
   let mine = false;
   const currentUser = useSelector(userSelector);
-  if (currentUser.id === userId) mine = true;
+  if (currentUser.id === userId) {
+    mine = true;
+  }
+  const loadedPlaylists = useSelector(
+    (state) => state.playlists?.loadedPlaylists?.Playlists
+  );
+
+  useEffect(() => {
+    if (mine) {
+      async function getMyPlaylists() {
+        const res = await csrfFetch("/api/my/playlists", {
+          method: "GET",
+        });
+        const data = await res.json();
+        dispatch(playlistActions.getPlaylists(data));
+        return res;
+      }
+      getMyPlaylists();
+    }
+  }, [loadedPlaylists?.length]);
+
   return (
     <div id="playlist-preview">
       <h2 id="playlist-header">Playlists</h2>
@@ -18,16 +43,9 @@ function Playlists({ userId }) {
           </div>
         ) : null}
         <div className="playlist-grid">
-          <div className="playlist-thumb">
-            <a className="playlist-thumb-link">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Play-rounded-button-outline.svg"
-                className="playlist-thumb-img"
-              />
-            </a>
-            <p className="playlist-title">New name for first playlist</p>
-            <p className="playlist-artist">Demo-lition</p>
-          </div>
+          <ul>{loadedPlaylists?.map((playlistObj) => {
+            return <PlaylistTumbnails key={playlistObj.id} playlist={playlistObj} />
+          })}</ul>
         </div>
       </div>
     </div>

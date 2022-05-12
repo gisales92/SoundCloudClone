@@ -9,11 +9,11 @@ function CreatePlaylistForm({ closeModal }) {
   const sessionUser = useSelector((state) => state.session.user);
   const [playlistName, setPlaylistName] = useState("");
   const [image, setImage] = useState(null);
-  const uploadedImage = useSelector((state) => state.playlists.addImage);
   const [errors, setErrors] = useState([]);
 
   const onDrop = useCallback((acceptedFiles) => {
-    setImage(acceptedFiles[0])})
+    setImage(acceptedFiles[0]);
+  });
   const { acceptedFiles, fileRejections, getRootProps, getInputProps } =
     useDropzone({
       accept: {
@@ -92,7 +92,6 @@ function CreatePlaylistForm({ closeModal }) {
               {fileRejections.length ? (
                 <p className="file-upload-feedback">{`File ${fileRejections[0]?.file?.name} has been rejected - ${fileRejections[0]?.errors[0]?.message}`}</p>
               ) : null}
-              {uploadedImage && <img src={uploadedImage} alt="preview" />}
             </section>
           </div>
         </fieldset>
