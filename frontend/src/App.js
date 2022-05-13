@@ -35,8 +35,8 @@ function App() {
           <Route path="/my/playlists">
             {user ? <Playlists userId={user.id}/> : <Redirect to="/" />}
           </Route>
-          <Route>
-            <PlaylistDetail path="/playlists/:playlistId" />
+          <Route path="/playlists/:playlistId">
+            <PlaylistDetail />
           </Route>
           <Route path="">
             Sorry, we could not find that resource

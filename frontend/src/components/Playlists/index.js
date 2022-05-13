@@ -21,15 +21,6 @@ function Playlists({ userId }) {
 
   useEffect(() => {
     if (mine) {
-      // async function getMyPlaylists() {
-      //   const res = await csrfFetch("/api/my/playlists", {
-      //     method: "GET",
-      //   });
-      //   const data = await res.json();
-      //   dispatch(playlistActions.getPlaylists(data));
-      //   return res;
-      // }
-      // getMyPlaylists();
       dispatch(playlistActions.getMyPlaylists());
       setUpdated(true)
     }
