@@ -7,6 +7,7 @@ import HomePage from "./components/HomePage";
 import Playlists from "./components/Playlists";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import PlaylistDetail from "./components/PlaylistDetail";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route path="/my/playlists">
             {user ? <Playlists userId={user.id}/> : <Redirect to="/" />}
+          </Route>
+          <Route>
+            <PlaylistDetail path="/playlists/:playlistId" />
           </Route>
           <Route path="">
             Sorry, we could not find that resource

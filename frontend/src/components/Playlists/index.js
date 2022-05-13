@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { userSelector } from "../../store/session";
 import CreatePlaylistModal from "../CreatePlaylistFormModal";
 import PlaylistTumbnails from "./playlistThumbnails";
@@ -9,6 +9,7 @@ import "./PlaylistPreview.css";
 
 function Playlists({ userId }) {
   const dispatch = useDispatch();
+  const [updated, setUpdated] = useState(false);
   let mine = false;
   const currentUser = useSelector(userSelector);
   if (currentUser.id === userId) {
@@ -20,17 +21,19 @@ function Playlists({ userId }) {
 
   useEffect(() => {
     if (mine) {
-      async function getMyPlaylists() {
-        const res = await csrfFetch("/api/my/playlists", {
-          method: "GET",
-        });
-        const data = await res.json();
-        dispatch(playlistActions.getPlaylists(data));
-        return res;
-      }
-      getMyPlaylists();
+      // async function getMyPlaylists() {
+      //   const res = await csrfFetch("/api/my/playlists", {
+      //     method: "GET",
+      //   });
+      //   const data = await res.json();
+      //   dispatch(playlistActions.getPlaylists(data));
+      //   return res;
+      // }
+      // getMyPlaylists();
+      dispatch(playlistActions.getMyPlaylists());
+      setUpdated(true)
     }
-  }, [loadedPlaylists?.length]);
+  }, [updated]);
 
   return (
     <div id="playlist-preview">

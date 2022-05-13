@@ -62,11 +62,12 @@ router.post(
   asyncHandler(async (req, res, next) => {
     const { name } = req.body;
     try {
-      const image = await singlePublicFileUpload(req.file);
+      let image;
+      req.file ? image = await singlePublicFileUpload(req.file) : null;
       const playlist = await Playlist.create({
         userId: req.user.id,
         name,
-        previewImage: image.url,
+        previewImage: image?.url || null,
       });
       res.status(201);
       return res.json(playlist);

@@ -1,5 +1,6 @@
 import { csrfFetch } from "./csrf";
 
+
 const GET_PLAYLIST_DETAIL = "playlists/getPlaylistDetail"
 const GET_PLAYLISTS = "playlists/getPlaylists"
 const CREATE_PLAYLIST = "playlists/createPlaylist"
@@ -16,6 +17,13 @@ export const getPlaylists = (playlists) => {
   return {
     type: GET_PLAYLISTS,
     playlists
+  }
+}
+
+const playlistDetail = (playlist) => {
+  return {
+    type: GET_PLAYLIST_DETAIL,
+    playlist,
   }
 }
 
@@ -37,12 +45,12 @@ export const createPlaylist = (playlist) => async (dispatch) => {
   };
 
 export const getPlaylistsByUser = (userId) => async (dispatch) => {
-
+    // TODO add playlist by user functionality
 }
 
 export const getMyPlaylists = () => async (dispatch) => {
-  console.log("action has been run")
-   const res = await csrfFetch("api/my/playlists", {
+  console.log("Action is running");
+   const res = await csrfFetch("/api/my/playlists", {
      method: "GET"
    });
    const data = await res.json();
@@ -50,12 +58,23 @@ export const getMyPlaylists = () => async (dispatch) => {
    return res;
 }
 
+export const getPlaylistDetail = (playlistId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/playlists/${playlistId}`, {
+    method: "GET"
+  });
+  const data = await res.json();
+  dispatch(playlistDetail(data));
+  return res;
+}
+
   const playlistsReducer = (state = {}, action) => {
     switch (action.type) {
       case SET_IMAGE:
         return { ...state, addImage: action.image };
       case GET_PLAYLISTS:
-        return {...state, loadedPlaylists: action.playlists}
+        return {...state, loadedPlaylists: action.playlists};
+      case GET_PLAYLIST_DETAIL:
+        return {...state, detail: action.playlist};
       default:
         return state;
     }
