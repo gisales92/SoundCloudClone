@@ -4,6 +4,7 @@ const GET_PLAYLIST_DETAIL = "playlists/getPlaylistDetail";
 const GET_PLAYLISTS = "playlists/getPlaylists";
 const EDIT_PLAYLIST = "playlists/editPlaylist";
 const DELETE_PLAYLIST = "playlists/deletePlaylist";
+const ADD_SONG_TO_PLAYLIST = "playlists/addSongToPlaylist"
 const SET_IMAGE = "playlists/SET_IMAGE";
 
 const setImage = (image) => ({
@@ -37,6 +38,13 @@ const editPlaylist = (playlist) => {
     playlist,
   };
 };
+
+const addSongToPlaylist = joinInfo => {
+  return {
+    type: ADD_SONG_TO_PLAYLIST,
+    joinInfo
+  }
+}
 
 export const createPlaylist = (playlist) => async (dispatch) => {
   const formData = new FormData();
@@ -104,6 +112,18 @@ export const editMyPlaylist = (playlist) => async (dispatch) => {
   return response;
 };
 
+export const addSong =
+  ({ songId, playlistId }) =>
+  async (dispatch) => {
+    const res = await csrfFetch(`/api/playlists/${playlistId}`, {
+      method: "POST",
+      body: JSON.stringify({ songId }),
+    });
+    const data = await res.json();
+    dispatch(addSongToPlaylist(data));
+    return res;
+  };
+
 const playlistsReducer = (state = {}, action) => {
   switch (action.type) {
     case SET_IMAGE:
@@ -125,6 +145,8 @@ const playlistsReducer = (state = {}, action) => {
         previewImage: action.playlist.previewImage,
         Songs: state.detail.Songs
       } };
+    case ADD_SONG_TO_PLAYLIST:
+      return {...state, loadedPlaylists: {[action.joinInfo.playlistId]: action.joinInfo.songId}}
     default:
       return state;
   }

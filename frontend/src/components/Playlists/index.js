@@ -4,7 +4,6 @@ import { userSelector } from "../../store/session";
 import CreatePlaylistModal from "../CreatePlaylistFormModal";
 import PlaylistTumbnails from "./playlistThumbnails";
 import * as playlistActions from "../../store/playlist";
-import { csrfFetch } from "../../store/csrf";
 import "./PlaylistPreview.css";
 
 function Playlists({ userId }) {
@@ -24,7 +23,7 @@ function Playlists({ userId }) {
       dispatch(playlistActions.getMyPlaylists());
       setUpdated(true)
     }
-  }, [updated]);
+  }, [updated, mine, dispatch]);
 
   return (
     <div id="playlist-preview">

@@ -5,6 +5,7 @@ import AddCommentModal from "./AddComment";
 import * as songActions from "../../store/song";
 import DeleteComment from "./DeleteComment";
 import EditCommentModal from "./EditComment";
+import AddSongToPlaylistModal from "./AddSongToPlaylistModal";
 import "./SongDetail.css";
 
 export default function SongDetail() {
@@ -43,6 +44,7 @@ export default function SongDetail() {
       </div>
       <div className="song-actions">
         <AddCommentModal songId={songDetails?.id} />
+        {currentUserId ? <AddSongToPlaylistModal song={songDetails} /> : null}
       </div>
       <h4 className="song-header">Comments</h4>
       <div className="song-comments">
