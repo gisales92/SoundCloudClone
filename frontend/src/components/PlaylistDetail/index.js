@@ -1,19 +1,26 @@
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as playlistActions from "../../store/playlist";
-import "./PlaylistDetail.css"
+import { userSelector } from "../../store/session";
+import EditPlaylist from "./EditPlaylist";
+import DeletePlaylist from "./DeletePlaylist";
+import "./PlaylistDetail.css";
 
 function PlaylistDetail() {
   const { playlistId } = useParams();
-  console.log("Id: ", playlistId);
+  let mine = false;
+  const currentUser = useSelector(userSelector);
   const dispatch = useDispatch();
   const playlistDetails = useSelector((state) => state.playlists?.detail);
-
-  console.log("Selected Store Data:", playlistDetails);
   useEffect(() => {
     dispatch(playlistActions.getPlaylistDetail(playlistId));
   }, [playlistId]);
+
+  if (currentUser.id === playlistDetails?.userId) {
+    mine = true;
+  }
+
   return (
     <div className="playlist-detail-container">
       <div className="playlist-detail-header">
@@ -26,6 +33,11 @@ function PlaylistDetail() {
           }
           className="playlist-detail-thumb-img"
         />
+        <h3 className="playlist-detail-sub-title">{playlistDetails?.artist}</h3>
+      </div>
+     <div className="playlist-actions">
+        <EditPlaylist playlistId={playlistDetails?.id}/>
+        <DeletePlaylist playlistId={playlistDetails?.id}/>
       </div>
     </div>
   );

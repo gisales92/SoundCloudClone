@@ -17,12 +17,13 @@ router.get(
   "/:playlistId",
   asyncHandler(async (req, res, next) => {
     const playlist = await Playlist.findByPk(req.params.playlistId, {
-      include: [Song],
+      include: [Song, User],
     });
     if (playlist) {
       const mappedPlaylist = {
         id: playlist.id,
         userId: playlist.userId,
+        artist: playlist.User.username,
         name: playlist.name,
         createdAt: playlist.createdAt,
         updatedAt: playlist.updatedAt,

@@ -27,6 +27,12 @@ const playlistDetail = (playlist) => {
   }
 }
 
+const deletePlaylist = () => {
+  return {
+    type: DELETE_PLAYLIST,
+  }
+};
+
 export const createPlaylist = (playlist) => async (dispatch) => {
   const formData = new FormData();
   const { name, image } = playlist;
@@ -67,6 +73,15 @@ export const getPlaylistDetail = (playlistId) => async (dispatch) => {
   return res;
 }
 
+export const deleteMyPlaylist = (playlistId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/playlists/${playlistId}`, {
+    method: "DELETE"
+  });
+  const data = await res.json();
+  dispatch(deletePlaylist());
+  return res;
+}
+
   const playlistsReducer = (state = {}, action) => {
     switch (action.type) {
       case SET_IMAGE:
@@ -75,6 +90,8 @@ export const getPlaylistDetail = (playlistId) => async (dispatch) => {
         return {...state, loadedPlaylists: action.playlists};
       case GET_PLAYLIST_DETAIL:
         return {...state, detail: action.playlist};
+        case DELETE_PLAYLIST:
+          return {...state, detail: {}}
       default:
         return state;
     }

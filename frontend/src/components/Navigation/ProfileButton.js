@@ -6,7 +6,6 @@ import { logout, userSelector } from "../../store/session";
 function ProfileButton() {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
-  const user = useSelector(userSelector);
 
   const openMenu = () => {
     if (!showMenu) setShowMenu(true);

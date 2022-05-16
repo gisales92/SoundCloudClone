@@ -1,0 +1,10 @@
+.audio-control-section {
+    height: 50px;
+    background-color: var(--primary);
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
+    display: flex;
+}
