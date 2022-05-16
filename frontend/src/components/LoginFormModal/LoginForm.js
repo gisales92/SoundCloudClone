@@ -35,7 +35,7 @@ function LoginForm() {
     <form onSubmit={handleSubmit}>
       <fieldset id="login-fieldset">
         <legend>Log in!</legend>
-        <ul className="errors-list">
+        <ul className="login-errors-list">
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
@@ -47,6 +47,7 @@ function LoginForm() {
             value={email}
             name="email"
             placeholder="Email"
+            className="login-input"
             onChange={(e) => setEmail(e.target.value)}
             required
           />
@@ -58,6 +59,7 @@ function LoginForm() {
             value={password}
             name="password"
             placeholder="Password"
+            className="login-input"
             onChange={(e) => setPassword(e.target.value)}
             required
           />

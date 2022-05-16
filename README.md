@@ -1538,7 +1538,7 @@ Deletes an existing playlist.
 
 ## Get all Playlists created by the Current User
 
-Returns all the Albums created by the current user.
+Returns all the Playlists created by the current user.
 
 - Require Authentication: true
 - Request

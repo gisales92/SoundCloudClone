@@ -1,6 +1,11 @@
 #modal-content {
     border-radius: 5px;
-    min-width: 280px;
+    min-width: 580px;
+}
+
+#new-playlist-form-container {
+    display: flex;
+    flex-direction: column;
 }
 
 form {
@@ -8,12 +13,16 @@ form {
     flex-direction: column;
 }
 
-legend {
-    font-size: 3vh;
+.new-playlist-header {
+    width: fit-content;
+    min-width: 255px;
+    margin: auto;
     text-align: center;
+    text-decoration: underline;
 }
 
-#login-fieldset {
+
+#new-playlist-fieldset {
     border: 0;
     display: flex;
     flex-direction: column;
@@ -21,17 +30,26 @@ legend {
     padding: 5px 30px;
 }
 
-.login-input {
+.form-input {
     margin: auto;
     border-radius: 5px;
     font-size: 18px;
     line-height: 24px;
-    padding: 7px 8px;
+    padding: 7px 0;
     width: 25vw;
     min-width: 255px;
    }
 
-.login-modal-button {
+.drop-input {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    min-width: 255px;
+}
+
+#new-playlist-form-submit {
     width: 25vw;
     min-width: 255px;
     height: 5vmax;
@@ -50,15 +68,32 @@ input:focus {
     background-color: var(--secondary);
 }
 
-.login-errors-list {
+.playlist-errors-list {
     display: flex;
     flex-direction: column;
     width: 25vw;
     min-width: 190px;
 }
 
-.login-errors-list li {
+.playlist-errors-list li {
     width: 100%;
     margin: 0;
     padding: 5px 0;
+}
+
+.dropzone {
+    background-color: var(--secondary);
+    border: 1px solid var(--secondary-dark);
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.upload-cover-text {
+    margin: 0 auto;
+    width: 25vw;
+    min-width: 563.5px;
+}
+
+.file-upload-feedback {
+    width: 563.5px;
 }

@@ -1,0 +1,96 @@
+#playlist-header {
+    width: fit-content;
+    margin: auto;
+    padding: 20px;
+    color: white;
+    text-shadow: 2px 2px 4px black;
+    font-weight: 400;
+}
+
+.playlist-content {
+    display: flex;
+    flex-direction: column;
+    min-width: 550px;
+    max-width: 1250px;
+    margin: auto;
+    border-radius: 5px;
+    background-color: var(--secondary-light);
+}
+
+.create-playlist-container {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    border-bottom: 1px solid var(--secondary);
+}
+
+p {
+    font-size: 25px;
+    font-weight: 100;
+    line-height: 40px;
+}
+
+.add-button {
+    background-color: var(--primary-dark);
+    border-radius: 50%;
+    padding: 0;
+    width: 60px;
+    height: 60px;
+    margin: auto 15px auto 25px;
+    box-shadow: 3px 3px 6px var(--secondary-dark);
+}
+
+.add-button:hover {
+    cursor: pointer;
+    background-color: var(--primary);
+}
+
+.add-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.playlist-grid {
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    max-width: 100%;
+    margin: auto;
+}
+
+.playlist-thumb {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    padding: 0 25px;
+    width: 80%;
+    min-width: 200px;
+    height: 90%;
+    border-radius: 5px;
+    padding-top: 15px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.playlist-thumb:hover {
+    background-color: var(--secondary);
+    cursor: pointer;
+}
+
+.playlist-thumb-img {
+    width: 150px;
+    height: 150px;
+    margin-top: 10px;
+}
+
+.playlist-thumb-link {
+    min-width: 150px;
+}
+
+.playlist-title {
+    color: black;
+    text-shadow: none;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

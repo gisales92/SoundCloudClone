@@ -70,12 +70,11 @@ const sessionReducer = (state = { user: null }, action) => {
   let newState;
   switch (action.type) {
     case SET_USER:
-      newState = Object.assign({}, state);
+      newState = {...state};
       newState.user = action.user;
-      delete newState.user?.token; // Not sure if we need to delete this
       return newState;
     case REMOVE_USER:
-      newState = Object.assign({}, state);
+      newState = {...state};
       newState.user = null;
       return newState;
     default:

@@ -14,6 +14,13 @@
 }
 
 body {
-    margin: 0;
+    margin: 0 0 50px 0;
     min-width: 550px;
+    position: relative;
+    z-index: -99;
+}
+
+#root {
+    position: relative;
+    z-index: -100;
 }
