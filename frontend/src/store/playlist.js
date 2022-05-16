@@ -1,9 +1,7 @@
-import EditPlaylist from "../components/PlaylistDetail/EditPlaylist";
 import { csrfFetch } from "./csrf";
 
 const GET_PLAYLIST_DETAIL = "playlists/getPlaylistDetail";
 const GET_PLAYLISTS = "playlists/getPlaylists";
-const CREATE_PLAYLIST = "playlists/createPlaylist";
 const EDIT_PLAYLIST = "playlists/editPlaylist";
 const DELETE_PLAYLIST = "playlists/deletePlaylist";
 const SET_IMAGE = "playlists/SET_IMAGE";
@@ -84,7 +82,7 @@ export const deleteMyPlaylist = (playlistId) => async (dispatch) => {
   const res = await csrfFetch(`/api/playlists/${playlistId}`, {
     method: "DELETE",
   });
-  const data = await res.json();
+  await res.json();
   dispatch(deletePlaylist());
   return res;
 };

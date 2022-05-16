@@ -132,7 +132,7 @@ router.get(
   "/:songId",
   asyncHandler(async (req, res, next) => {
     const song = await Song.findByPk(req.params.songId, {
-      include: [User, Album],
+      include: [User, Album, Comment],
     });
     if (song) {
       const mappedSong = {
@@ -155,6 +155,9 @@ router.get(
           title: song.Album.title,
           previewImage: song.Album.previewImage,
         },
+        Comments: [
+          ...song.Comments
+        ]
       };
       res.json(mappedSong);
     } else {

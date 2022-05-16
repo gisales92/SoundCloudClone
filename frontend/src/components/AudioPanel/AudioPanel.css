@@ -103,9 +103,13 @@ input[type=range] {
 	-webkit-appearance: none;
 	width: 100%;
 	border-radius: 5px;
-	background: #3b7677;
+	background: var(--primary-dark);
 	transition: background 0.2s ease;
 	cursor: pointer;
     padding: 0;
     margin: 22.5px 0 22.5px 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
 }

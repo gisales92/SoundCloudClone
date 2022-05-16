@@ -9,6 +9,7 @@
 
 .playlist-detail-header {
   width: 100%;
+  min-width: 850px;
   height: 380px;
   padding: 0px 25px;
   background: rgb(41, 67, 78);
@@ -26,16 +27,21 @@
 .playlist-detail-sub-title {
   width: fit-content;
   position: absolute;
-  top: 30px;
+  top: 40px;
   left: 30px;
 }
 
 .playlist-detail-title {
   white-space: nowrap;
   line-height: 40px;
+  font-size: 40px;
   width: fit-content;
+  max-width: 460px;
   float: left;
   display: block;
+  margin-top: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .playlist-detail-thumb-img {

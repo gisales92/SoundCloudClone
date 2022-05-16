@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import AudioControls from "./AudioControls";
 import "./AudioPanel.css";
 
@@ -6,8 +6,6 @@ function AudioPanel({ tracks }) {
   const [trackIndex, setTrackIndex] = useState(0);
   const [trackProgress, setTrackProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-
-  console.log("Audio component props: ", tracks);
 
   const { name, artist, previewImage, url } = tracks.tracks[trackIndex];
 
@@ -19,21 +17,21 @@ function AudioPanel({ tracks }) {
 
   const toPrevTrack = () => {
     if (trackIndex - 1 < 0) {
-      setTrackIndex(tracks.length - 1);
+      setTrackIndex(tracks.tracks.length - 1);
     } else {
       setTrackIndex(trackIndex - 1);
     }
   };
 
-  const toNextTrack = () => {
-    if (trackIndex < tracks.length - 1) {
+  const toNextTrack = useCallback(() => {
+    if (trackIndex < tracks.tracks.length - 1) {
       setTrackIndex(trackIndex + 1);
     } else {
       setTrackIndex(0);
     }
-  };
+  }, [trackIndex, tracks.tracks.length])
 
-  const startTimer = () => {
+  const startTimer = useCallback(() => {
     // Clear any timers already running
     clearInterval(intervalRef.current);
 
@@ -44,8 +42,8 @@ function AudioPanel({ tracks }) {
         setTrackProgress(audioRef.current.currentTime);
       }
     }, [1000]);
-  };
-
+  }, [toNextTrack]
+  )
   const onScrub = (value) => {
     // Clear any timers already running
     clearInterval(intervalRef.current);
@@ -69,7 +67,7 @@ function AudioPanel({ tracks }) {
       clearInterval(intervalRef.current);
       audioRef.current.pause();
     }
-  }, [isPlaying]);
+  }, [isPlaying, startTimer]);
 
   useEffect(() => {
     // Pause and clean up on unmount
@@ -94,11 +92,11 @@ function AudioPanel({ tracks }) {
       // Set the isReady ref as true for the next pass
       isReady.current = true;
     }
-  }, [trackIndex]);
+  }, [trackIndex, startTimer, url]);
 
   const currentPercentage = duration ? `${(trackProgress / duration) * 100}%` : '0%';
 const trackStyling = `
-  -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(${currentPercentage}, #fff), color-stop(${currentPercentage}, #777))
+  -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(${currentPercentage}, #ffffff), color-stop(${currentPercentage}, #bdb9b7))
 `;
 
   return (
@@ -108,7 +106,7 @@ const trackStyling = `
           <div className="track-thumb">
             <img
               className="artwork"
-              src={previewImage}
+              src={previewImage ? previewImage : "https://upload.wikimedia.org/wikipedia/commons/e/e4/Play-rounded-button-outline.svg"}
               alt={`track artwork for ${name} by ${artist}`}
             />
             <div className="track-info">
@@ -137,7 +135,7 @@ const trackStyling = `
             onKeyUp={onScrubEnd}
             style={{ background: trackStyling }}
           />
-          <p className="total-time">{`${Math.floor(duration/60)}:${Math.trunc(duration%60).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})}`}</p>
+          <p className="total-time">{duration ? `${Math.floor(duration/60)}:${Math.trunc(duration%60).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})}` : "0:00"}</p>
         </div>
       </div>
     </div>

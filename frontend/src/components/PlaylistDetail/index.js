@@ -25,7 +25,7 @@ function PlaylistDetail() {
       );
     }
     getPlaylists();
-  }, [playlistId]);
+  }, [playlistId, dispatch, history]);
 
   if (currentUser && currentUser?.id === playlistDetails?.userId) {
     mine = true;
@@ -42,6 +42,7 @@ function PlaylistDetail() {
               : "https://upload.wikimedia.org/wikipedia/commons/e/e4/Play-rounded-button-outline.svg"
           }
           className="playlist-detail-thumb-img"
+          alt="Playlist thumbnail"
         />
         <h3 className="playlist-detail-sub-title">{playlistDetails?.artist}</h3>
       </div>

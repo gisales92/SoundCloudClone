@@ -1,0 +1,77 @@
+.song-detail {
+    background-color: var(--secondary-light);
+    border-radius: 5px;
+    max-width: 1250px;
+    margin: auto;
+    position: relative;
+    z-index: -3;
+    }
+
+  .song-detail-header {
+    width: 100%;
+    min-width: 850px;
+    height: 380px;
+    padding: 0px 25px;
+    background: rgb(41, 67, 78);
+    background: linear-gradient(
+      270deg,
+      rgba(41, 67, 78, 1) 12%,
+      rgba(84, 110, 122, 1) 43%,
+      rgba(189, 185, 183, 1) 100%
+    );
+    display: block;
+    position: relative;
+    z-index: -2;
+  }
+
+  .song-detail-sub-title {
+    width: fit-content;
+    position: absolute;
+    top: 40px;
+    left: 30px;
+  }
+
+  .song-detail-title {
+    white-space: nowrap;
+    line-height: 40px;
+    font-size: 40px;
+    width: fit-content;
+    max-width: 460px;
+    float: left;
+    display: block;
+    margin-top: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .song-detail-thumb-img {
+    height: 340px;
+    width: 340px;
+    float: right;
+    position: relative;
+    top: 20px;
+    background-color: var(--secondary);
+    padding: 10px;
+    z-index: -1;
+  }
+
+  .song-comments-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 25px 10px 25px;
+  }
+
+  .song-comment {
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    border-bottom: 1px solid var(--secondary-dark);
+    width: 100%;
+    margin: 0;
+    line-height: 60px;
+  }
+
+  .song-comment:hover {
+    background-color: var(--secondary);
+  }

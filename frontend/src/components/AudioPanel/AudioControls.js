@@ -1,4 +1,4 @@
-import React, {ReactComponent} from 'react';
+import React  from 'react';
 import { ReactComponent as Play } from './Play.svg';
 import { ReactComponent as Pause } from './Pause.svg';
 import { ReactComponent as Next } from './Next.svg';
