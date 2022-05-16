@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/gisales92/SoundCloudClone#readme",
   "dependencies": {
-    "react-scripts": "5.0.1"
+    "react-scripts": "^5.0.1"
   }
 }
