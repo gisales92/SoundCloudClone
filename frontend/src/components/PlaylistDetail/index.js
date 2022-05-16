@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as playlistActions from "../../store/playlist";
 import { userSelector } from "../../store/session";
-import EditPlaylist from "./EditPlaylist";
+import EditPlaylistModal from "./EditPlaylist";
 import DeletePlaylist from "./DeletePlaylist";
 import "./PlaylistDetail.css";
 
@@ -36,7 +36,7 @@ function PlaylistDetail() {
         <h3 className="playlist-detail-sub-title">{playlistDetails?.artist}</h3>
       </div>
      <div className="playlist-actions">
-        <EditPlaylist playlistId={playlistDetails?.id}/>
+        <EditPlaylistModal playlistId={playlistDetails?.id}/>
         <DeletePlaylist playlistId={playlistDetails?.id}/>
       </div>
     </div>

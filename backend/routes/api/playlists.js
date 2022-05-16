@@ -64,7 +64,7 @@ router.post(
     const { name } = req.body;
     try {
       let image;
-      req.file ? image = await singlePublicFileUpload(req.file) : null;
+      req.file ? (image = await singlePublicFileUpload(req.file)) : null;
       const playlist = await Playlist.create({
         userId: req.user.id,
         name,
@@ -127,6 +127,7 @@ router.post(
 router.put(
   "/:playlistId",
   requireAuth,
+  singleMulterUpload("image"),
   validatePlaylist,
   asyncHandler(async (req, res, next) => {
     const playlistId = req.params.playlistId;
@@ -134,21 +135,30 @@ router.put(
     const playlist = await Playlist.findByPk(playlistId);
     if (playlist) {
       if (playlist.userId === userId) {
-        const { name, imageUrl } = req.body;
-        await playlist.update({
-          name,
-          previewImage: imageUrl,
-        });
-        const updatedPlaylist = {
-          id: playlist.id,
-          userId: playlist.userId,
-          name: playlist.name,
-          createdAt: playlist.createdAt,
-          updatedAt: playlist.updatedAt,
-          previewImage: playlist.previewImage,
-        };
-        res.status(200);
-        return res.json(updatedPlaylist);
+        const { name } = req.body;
+
+        try {
+          let image;
+          req.file ? (image = await singlePublicFileUpload(req.file)) : null;
+          await playlist.update({
+            name,
+            previewImage: image?.url || null,
+          });
+
+          const updatedPlaylist = {
+            id: await playlist.id,
+            userId: await playlist.userId,
+            name: await playlist.name,
+            createdAt: await playlist.createdAt,
+            updatedAt: await playlist.updatedAt,
+            previewImage: await playlist.previewImage,
+          };
+
+          res.status(200);
+          return res.json(updatedPlaylist);
+        } catch (err) {
+          res.status(500).json(err);
+        }
       } else {
         res.status(403);
         return res.json({ message: "Forbidden", statusCode: 403 });
