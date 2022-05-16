@@ -17,7 +17,7 @@ function AddCommentModal({songId}) {
 
   return (
     <>
-      <button type="button"  className="edit-playlist-button"
+      <button type="button"  className="add-comment-button"
         onClick={(e) => {
           e.preventDefault();
           setShowModal(true);

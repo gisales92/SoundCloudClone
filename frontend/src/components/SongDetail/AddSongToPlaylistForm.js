@@ -58,7 +58,7 @@ function AddSongToPlaylistForm({ props }) {
 
   return (
     <div className="playlist-add-song-form-container">
-      <h2 className="playlist-add-song-header">{`Add ${song.title} to one of your playlists:`}</h2>
+      <h2 className="playlist-add-song-header">{`Add "${song.title}" to one of your playlists:`}</h2>
       <form onSubmit={handleSubmit}>
         <ul className="playlist-add-song-errors-list">
           {errors.map((error, idx) => (
@@ -66,7 +66,7 @@ function AddSongToPlaylistForm({ props }) {
           ))}
         </ul>
         <fieldset id="playlist-add-song-fieldset">
-          <div className="form-input">
+          <div className="add-song-form-input">
             <label htmlFor="playlist-add-song-name">Select one of your playlists:</label>
             <select className="playlist-add-song-name" value={selectedPlaylist} onChange={e => {
                 e.preventDefault();
