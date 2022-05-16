@@ -1,0 +1,22 @@
+.song-playlist-preview {
+    display: flex;
+    flex-direction: row;
+    height: 60px;
+    border-bottom: 1px solid var(--secondary-dark);
+}
+
+.song-playlist-preview:hover {
+    background-color: var(--secondary);
+}
+
+.song-playlist-cover {
+    height: 50px;
+    width: 50px;
+    padding: 5px;
+    margin: auto 0 auto 0;
+}
+
+.song-playlist-info {
+    line-height: normal;
+    margin: auto 0 auto 0;
+}

@@ -17,7 +17,13 @@ router.get(
   "/:playlistId",
   asyncHandler(async (req, res, next) => {
     const playlist = await Playlist.findByPk(req.params.playlistId, {
-      include: [Song, User],
+      include: [
+        {
+          model: Song,
+          include: [User],
+        },
+        User,
+      ],
     });
     if (playlist) {
       const mappedPlaylist = {
@@ -34,6 +40,7 @@ router.get(
         mappedPlaylist.Songs[i] = {
           id: songObj.id,
           userId: songObj.userId,
+          artist: songObj.User.username,
           albumId: songObj.albumId,
           title: songObj.title,
           description: songObj.description,

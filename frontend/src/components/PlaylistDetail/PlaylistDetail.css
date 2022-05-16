@@ -5,7 +5,7 @@
   margin: auto;
   position: relative;
   z-index: -3;
-}
+  }
 
 .playlist-detail-header {
   width: 100%;
@@ -74,4 +74,20 @@
 }
 .delete-playlist-button:hover {
   cursor: pointer;
+}
+
+.playlist-songs {
+  margin: 10px auto 0px auto;
+  max-width: 1250px;
+  padding: 0 25px 10px 25px;
+}
+
+.playlist-songs-list {
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+}
+
+.song-header {
+  padding-left: 25px;
 }

@@ -10,7 +10,7 @@ function EditPlaylistModal({playlistId}) {
   const sessionUser = useSelector(userSelector);
 
   if (!sessionUser) {
-    window.alert("Please log in to create a playlist");
+    window.alert("Please log in to edit a playlist");
     return <Redirect to="/" />;
   }
 

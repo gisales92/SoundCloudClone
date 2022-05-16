@@ -12,7 +12,7 @@ function Playlists({ userId }) {
   const [updated, setUpdated] = useState(false);
   let mine = false;
   const currentUser = useSelector(userSelector);
-  if (currentUser.id === userId) {
+  if (currentUser?.id === userId) {
     mine = true;
   }
   const loadedPlaylists = useSelector(

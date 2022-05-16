@@ -117,7 +117,16 @@ const playlistsReducer = (state = {}, action) => {
     case DELETE_PLAYLIST:
       return { ...state, detail: {} };
     case EDIT_PLAYLIST:
-      return {...state, detail: action.playlist};
+      return {...state, detail: {
+        id: state.detail.id,
+        userId: state.detail.userId,
+        artist: state.detail.artist,
+        name: action.playlist.name,
+        createdAt: state.detail.createdAt,
+        updatedAt: action.playlist.updatedAt,
+        previewImage: action.playlist.previewImage,
+        Songs: state.detail.Songs
+      } };
     default:
       return state;
   }

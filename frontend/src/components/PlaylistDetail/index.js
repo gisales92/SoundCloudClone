@@ -1,23 +1,34 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useParams, useHistory } from "react-router-dom";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as playlistActions from "../../store/playlist";
 import { userSelector } from "../../store/session";
 import EditPlaylistModal from "./EditPlaylist";
 import DeletePlaylist from "./DeletePlaylist";
+import SongListThumb from "../SongListThumb";
 import "./PlaylistDetail.css";
 
 function PlaylistDetail() {
   const { playlistId } = useParams();
+  const history = useHistory();
   let mine = false;
   const currentUser = useSelector(userSelector);
+  console.log("Current User: ", currentUser )
   const dispatch = useDispatch();
   const playlistDetails = useSelector((state) => state.playlists?.detail);
   useEffect(() => {
-    dispatch(playlistActions.getPlaylistDetail(playlistId));
+    async function getPlaylists() {
+      await dispatch(playlistActions.getPlaylistDetail(playlistId)).catch(
+        async (res) => {
+          window.alert("No Playlist with the specified Id");
+          history.push("/");
+        }
+      );
+    }
+    getPlaylists();
   }, [playlistId]);
 
-  if (currentUser.id === playlistDetails?.userId) {
+  if (currentUser && currentUser?.id === playlistDetails?.userId) {
     mine = true;
   }
 
@@ -35,9 +46,21 @@ function PlaylistDetail() {
         />
         <h3 className="playlist-detail-sub-title">{playlistDetails?.artist}</h3>
       </div>
-     <div className="playlist-actions">
-        <EditPlaylistModal playlistId={playlistDetails?.id}/>
-        <DeletePlaylist playlistId={playlistDetails?.id}/>
+      <div className="playlist-actions">
+        {mine ? (
+          <>
+            <EditPlaylistModal playlistId={playlistDetails?.id} />
+            <DeletePlaylist playlistId={playlistDetails?.id} />
+          </>
+        ) : null}
+      </div>
+      <h4 className="song-header">Songs</h4>
+      <div className="playlist-songs">
+        <ul className="playlist-songs-list">
+          {playlistDetails?.Songs.map((song) => {
+            return <SongListThumb key={song.id} song={song} />;
+          })}
+        </ul>
       </div>
     </div>
   );
