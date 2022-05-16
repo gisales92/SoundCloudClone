@@ -1,10 +1,111 @@
-.audio-control-section {
-    height: 50px;
-    background-color: var(--primary);
-    position: fixed;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    margin-bottom: 0px;
+.audio-control-panel {
+  height: 50px;
+  background-color: var(--primary);
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin-bottom: 0px;
+}
+
+.audio-control-content {
     display: flex;
+    flex-direction: row-reverse;
+    max-width: 1250px;
+    width: 100%;
+    padding: 0 25px 0 25px;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.audio-player {
+  display: flex;
+  flex-direction: row-reverse;
+  margin: 0;
+}
+
+.track-thumb {
+  display: flex;
+  flex-direction: row;
+}
+
+.track-info {
+  display: flex;
+  flex-direction: column;
+  padding-top: 5px;
+}
+
+.title {
+  margin: 4px auto 0 auto;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.artist {
+  margin: 0 auto 0 auto;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.artwork {
+  height: 50px;
+  width: 50px;
+  padding: 5px;
+}
+
+.audio-control-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.audio-controls {
+    display: flex;
+    margin-top: 2.5px;
+}
+
+.audio-controls .play svg,
+.audio-controls .pause svg {
+  height: 40px;
+  width: 40px;
+  margin: auto;
+}
+
+.audio-controls .prev svg,
+.audio-controls .next svg {
+  width: 35px;
+  height: 35px;
+}
+
+.audio-left {
+    display: flex;
+
+}
+
+.current-time {
+    width: 35px;
+    font-size: small;
+    padding-right: 5px;
+    margin: auto;
+}
+
+.total-time {
+    width: 35px;
+    font-size: small;
+    padding-left: 5px;
+    margin: auto;
+}
+
+input[type=range] {
+	height: 5px;
+	-webkit-appearance: none;
+	width: 100%;
+	border-radius: 5px;
+	background: #3b7677;
+	transition: background 0.2s ease;
+	cursor: pointer;
+    padding: 0;
+    margin: 22.5px 0 22.5px 0;
 }

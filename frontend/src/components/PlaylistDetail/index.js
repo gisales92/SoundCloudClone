@@ -13,7 +13,6 @@ function PlaylistDetail() {
   const history = useHistory();
   let mine = false;
   const currentUser = useSelector(userSelector);
-  console.log("Current User: ", currentUser )
   const dispatch = useDispatch();
   const playlistDetails = useSelector((state) => state.playlists?.detail);
   useEffect(() => {

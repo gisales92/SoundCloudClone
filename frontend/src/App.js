@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Switch, Route, Redirect } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormModal";
@@ -9,11 +9,14 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import PlaylistDetail from "./components/PlaylistDetail";
 import AudioPanel from "./components/AudioPanel";
+import { SongContext } from "./context/Song";
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   const user = useSelector(sessionActions.userSelector)
+  const tracks = useContext(SongContext);
+  console.log("Tracks context: ", tracks)
 
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
@@ -43,7 +46,7 @@ function App() {
             Sorry, we could not find that resource
           </Route>
         </Switch>
-        <AudioPanel />
+        <AudioPanel tracks={tracks}/>
       </>
     )
   );
