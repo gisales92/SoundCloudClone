@@ -22,7 +22,7 @@ function CreatePlaylistForm({ closeModal }) {
       },
       maxFiles: 1,
       onDrop,
-    });
+    }, [useDropzone, setImage]);
 
   if (!sessionUser) {
     window.alert("You must be logged in to view your playlists");

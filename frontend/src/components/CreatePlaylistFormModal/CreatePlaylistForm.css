@@ -96,4 +96,6 @@ input:focus {
 
 .file-upload-feedback {
     width: 563.5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
