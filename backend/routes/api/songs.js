@@ -132,7 +132,7 @@ router.get(
   "/:songId",
   asyncHandler(async (req, res, next) => {
     const song = await Song.findByPk(req.params.songId, {
-      include: [User, Album, Comment],
+      include: [User, Album, {model: Comment, include: [User]}],
     });
     if (song) {
       const mappedSong = {

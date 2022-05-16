@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AddCommentModal from "./AddComment";
 import * as songActions from "../../store/song";
+import DeleteComment from "./DeleteComment";
+import EditCommentModal from "./EditComment";
 import "./SongDetail.css";
 
 export default function SongDetail() {
@@ -10,6 +12,7 @@ export default function SongDetail() {
   const dispatch = useDispatch();
   const history = useHistory();
   const songDetails = useSelector((state) => state.songs?.detail);
+  const currentUserId = useSelector(state => state.session?.user.id)
 
   useEffect(() => {
     async function getSongs() {
@@ -45,7 +48,17 @@ export default function SongDetail() {
       <div className="song-comments">
         <ul className="song-comments-list">
           {songDetails?.Comments.map((comment) => {
-            return <p key={comment.id} className="song-comment">{comment.body}</p>;
+            return (
+              <div key={comment.id}>
+                <div className="song-comment">{`${comment.body} -- ${comment.User.username}`}
+                {currentUserId === comment.userId ? <div className="comment-actions">
+                    <EditCommentModal comment={comment}/>
+                    <DeleteComment comment={comment} />
+                </div> : null}
+                </div>
+
+              </div>
+            );
           })}
         </ul>
       </div>

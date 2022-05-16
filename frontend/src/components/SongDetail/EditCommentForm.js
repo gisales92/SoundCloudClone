@@ -1,33 +1,33 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import * as commentActions from "../../store/comment";
 
-export default function AddCommentForm({ props }) {
-  const { setShowModal, songId } = props;
+function EditPlaylistForm({ props }) {
+  const { setShowModal, comment } = props;
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const [commentBody, setCommentBody] = useState("");
-  const history = useHistory();
+  const [commentBody, setCommentBody] = useState(comment.body);
   const [errors, setErrors] = useState([]);
+  const history = useHistory();
 
   if (!sessionUser) {
-    window.alert("You must be logged in to add a comment");
-    return <Redirect to={`/songs/${songId}`} />;
+    window.alert("You must be logged in to edit your playlists");
+    return <Redirect to="/" />;
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
     return dispatch(
-      commentActions.addCommentToSong({
-        songId,
+      commentActions.editComment({
+        id: comment.id,
         body: commentBody,
       })
     )
       .then(() => {
         setShowModal(false);
-        history.push(`/songs/${songId}`)
+        history.push(`/songs/${comment.songId}`);
       })
       .catch(async (res) => {
         const data = await res.json();
@@ -40,9 +40,11 @@ export default function AddCommentForm({ props }) {
         }
       });
   };
-  return <div className="comment-form-container">
-      <h2 className="comment-header">Create a new comment</h2>
-      <form onSubmit={handleSubmit} >
+
+  return (
+    <div className="comment-form-container">
+      <h2 className="comment-header">Edit your comment</h2>
+      <form onSubmit={handleSubmit}>
         <ul className="comment-errors-list">
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
@@ -59,8 +61,13 @@ export default function AddCommentForm({ props }) {
               required
             />
           </div>
-          </fieldset>
-          <button type="submit" className="comment-submit">Submit Comment</button>
-          </form>
-  </div>;
+        </fieldset>
+        <button type="submit" className="comment-submit">
+          Submit Comment
+        </button>
+      </form>
+    </div>
+  );
 }
+
+export default EditPlaylistForm;

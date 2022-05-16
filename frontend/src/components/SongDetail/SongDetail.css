@@ -75,3 +75,12 @@
   .song-comment:hover {
     background-color: var(--secondary);
   }
+
+  .comment-actions {
+    margin: auto 0 auto auto;
+  }
+
+  .comment-actions button {
+    padding: 5px 15px;
+    margin-left: 15px;
+  }
