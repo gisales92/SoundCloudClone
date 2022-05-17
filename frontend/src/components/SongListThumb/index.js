@@ -9,6 +9,7 @@ export default function SongListThumb({ song }) {
   const history = useHistory();
 
   const handleClick = (e) => {
+    e.preventDefault();
     setTracks([...tracks, { name: title, artist, previewImage, url }]);
   };
 
