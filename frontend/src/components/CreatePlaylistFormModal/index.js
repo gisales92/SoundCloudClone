@@ -28,6 +28,7 @@ function CreatePlaylistModal() {
           className="add-icon"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/OOjs_UI_icon_add-invert.svg/640px-OOjs_UI_icon_add-invert.svg.png"
           alt="Add Playlist"
+          crossOrigin
         />
       </button>
       {showModal && (

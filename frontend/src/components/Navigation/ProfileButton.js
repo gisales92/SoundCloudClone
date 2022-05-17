@@ -26,7 +26,7 @@ function ProfileButton() {
     <>
       <div>
         <button onClick={openMenu}  id={showMenu ? "active-menu" : "menu-icon-button"}>
-          <img id="menu-icon" src="https://upload.wikimedia.org/wikipedia/commons/8/8d/VisualEditor_-_Icon_-_Menu.svg" alt="menu"/>
+          <img id="menu-icon" src="https://upload.wikimedia.org/wikipedia/commons/8/8d/VisualEditor_-_Icon_-_Menu.svg" alt="menu" crossOrigin/>
         </button>
       </div>
 

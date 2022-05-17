@@ -12,6 +12,7 @@ function PlaylistTumbnails({ playlist }) {
               : "https://upload.wikimedia.org/wikipedia/commons/e/e4/Play-rounded-button-outline.svg"
           }
           className="playlist-thumb-img"
+          crossOrigin
         />
         <p className="playlist-title">{name}</p>
       </Link>

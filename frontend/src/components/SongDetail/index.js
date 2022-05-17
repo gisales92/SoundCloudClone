@@ -37,6 +37,7 @@ export default function SongDetail() {
           }
           className="song-detail-thumb-img"
           alt="Playlist thumbnail"
+          crossOrigin
         />
         <h3 className="song-detail-sub-title">
           {songDetails?.Artist.username}

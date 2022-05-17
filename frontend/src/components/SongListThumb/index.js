@@ -26,6 +26,7 @@ export default function SongListThumb({ song }) {
             : "https://upload.wikimedia.org/wikipedia/commons/e/e4/Play-rounded-button-outline.svg"
         }
         alt="Song cover art thumbnail"
+        crossOrigin
       />
       <p className="song-playlist-info">{`${title} by ${artist}`}</p>
 

@@ -108,6 +108,7 @@ const trackStyling = `
               className="artwork"
               src={previewImage ? previewImage : "https://upload.wikimedia.org/wikipedia/commons/e/e4/Play-rounded-button-outline.svg"}
               alt={`track artwork for ${name} by ${artist}`}
+              crossOrigin
             />
             <div className="track-info">
               <p className="title">{name}</p>
