@@ -20,6 +20,8 @@
 .song-playlist-info {
     line-height: normal;
     margin: auto 0 auto 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .add-to-tracklist {
