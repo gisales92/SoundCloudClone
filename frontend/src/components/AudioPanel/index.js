@@ -11,7 +11,7 @@ function AudioPanel({ tracks }) {
 
   const audioRef = useRef(new Audio());
   audioRef.crossOrigin = "";
-  audioRef.url = url
+  audioRef.src = url
   const intervalRef = useRef();
   const isReady = useRef(false);
 
@@ -85,7 +85,8 @@ function AudioPanel({ tracks }) {
 
     audioRef.current = new Audio();
     audioRef.current.crossOrigin = "";
-    audioRef.current.url = url;
+    audioRef.current.src = url;
+    console.log(".current value: ",audioRef.current)
     setTrackProgress(audioRef.current.currentTime);
 
     if (isReady.current) {

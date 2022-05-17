@@ -13,7 +13,7 @@ export default function SongDetail() {
   const dispatch = useDispatch();
   const history = useHistory();
   const songDetails = useSelector((state) => state.songs?.detail);
-  const currentUserId = useSelector((state) => state.session?.user.id);
+  const currentUserId = useSelector((state) => state.session?.user?.id);
 
   useEffect(() => {
     async function getSongs() {
@@ -44,7 +44,7 @@ export default function SongDetail() {
         </h3>
       </div>
       <div className="song-actions">
-        <AddCommentModal songId={songDetails?.id} />
+        {currentUserId ? <AddCommentModal songId={songDetails?.id} /> : null}
         {currentUserId ? <AddSongToPlaylistModal song={songDetails} /> : null}
       </div>
       <h4 className="song-header">Comments</h4>
