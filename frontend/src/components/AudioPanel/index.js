@@ -9,8 +9,9 @@ function AudioPanel({ tracks }) {
 
   const { name, artist, previewImage, url } = tracks.tracks[trackIndex];
 
-  const audioRef = useRef(new Audio(url));
-  audioRef.crossOrigin="";
+  const audioRef = useRef(new Audio());
+  audioRef.crossOrigin = "";
+  audioRef.url = url
   const intervalRef = useRef();
   const isReady = useRef(false);
 
@@ -82,8 +83,9 @@ function AudioPanel({ tracks }) {
   useEffect(() => {
     audioRef.current.pause();
 
-    audioRef.current = new Audio(url);
-    audioRef.crossOrigin="";
+    audioRef.current = new Audio();
+    audioRef.current.crossOrigin = "";
+    audioRef.current.url = url;
     setTrackProgress(audioRef.current.currentTime);
 
     if (isReady.current) {

@@ -109,7 +109,3 @@ input[type=range] {
     padding: 0;
     margin: 22.5px 0 22.5px 0;
 }
-
-input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-}
