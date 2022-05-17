@@ -7,15 +7,24 @@ module.exports = {
       [
         {
           userId: 1,
-          name: "My first playlist",
+          name: "Demo-Traxx",
           createdAt: new Date(),
           updatedAt: new Date(),
+          previewImage: "https://res.cloudinary.com/pressplay/image/upload/v1652344411/laenuo964duz1gubfupq.png"
         },
         {
           userId: 2,
-          name: "U2's playlist",
+          name: "Not Your Mama's Playlist",
           createdAt: new Date(),
           updatedAt: new Date(),
+          previewImage: "https://res.cloudinary.com/pressplay/image/upload/v1652683232/zjyirq7ksplbipyykrit.jpg"
+        },
+        {
+          userId: 1,
+          name: "Another One",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          previewImage: "https://res.cloudinary.com/pressplay/image/upload/v1652332871/cld-sample.jpg"
         },
       ],
       {}
@@ -55,29 +64,42 @@ module.exports = {
         {
           userId: 1,
           albumId: 1,
-          title: "First Single",
-          description: "Fun, eclectic beat",
-          soundFileURL: "soundfile.mp3",
+          title: "Give It To Me (REDÜKT Remix)",
+          description: "Nelly Furtado never gets old",
+          soundFileURL: "https://res.cloudinary.com/pressplay/video/upload/v1652690707/Give_Me_Extended_master_16_44_ohkvzz.wav",
           createdAt: new Date(),
           updatedAt: new Date(),
+          previewImage: "https://i1.sndcdn.com/artworks-Kml4cJSBMFPLoRce-AyXCXg-t500x500.jpg"
         },
         {
           userId: 2,
           albumId: 2,
-          title: "Moar's Next Single",
-          description: "Hot beatz",
-          soundFileURL: "soundfile2.mp3",
+          title: "The Black Eyed Peas - Don't Phunk With My Heart (Stan Rave Bootleg)",
+          description: "Bass House Remix of the BEP",
+          soundFileURL: "https://res.cloudinary.com/pressplay/video/upload/v1652759951/The_Black_Eyed_Peas_-_Don_t_Phunk_With_My_Heart_Stan_Rave_Bootleg_MP3-320_nzobdh.mp3",
           createdAt: new Date(),
           updatedAt: new Date(),
+          previewImage: "https://i1.sndcdn.com/artworks-jTTNnzpO2zuygdav-vCxxyg-t500x500.jpg"
         },
         {
           userId: 3,
           albumId: 3,
-          title: "Still Single",
-          description: "Lone boy song",
-          soundFileURL: "soundfile3.mp3",
+          title: "Sweet Dreams (Maddmon Remix)",
+          description: "As is this needed a remix",
+          soundFileURL: "https://res.cloudinary.com/pressplay/video/upload/v1652760065/Sweet_Dreams_Maddmon_Remix_ghxva7.mp3",
           createdAt: new Date(),
           updatedAt: new Date(),
+          previewImage: "https://i1.sndcdn.com/artworks-sHzKYx22V1HbnU3d-jhAv5A-t500x500.jpg"
+        },
+        {
+          userId: 3,
+          albumId: 3,
+          title: "Doja Cat - Say So (Dipzy Remix)",
+          description: "Lone boy song",
+          soundFileURL: "https://res.cloudinary.com/pressplay/video/upload/v1652760224/Doja_Cat_-_Need_To_Know_Dipzy_Remix_fehubd.wav",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          previewImage: "https://i1.sndcdn.com/artworks-iuOhXOluozkyQPIz-y7khvQ-t500x500.jpg"
         },
       ],
       {}
@@ -107,6 +129,27 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          userId: 1,
+          songId: 1,
+          body: "Nah, it's fyah",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          userId: 2,
+          songId: 2,
+          body: "Loud Noises...",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          userId: 3,
+          songId: 4,
+          body: "A cat made this?",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );
@@ -129,6 +172,30 @@ module.exports = {
         {
           playlistId: 2,
           songId: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          playlistId: 2,
+          songId: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          playlistId: 3,
+          songId: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          playlistId: 3,
+          songId: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          playlistId: 3,
+          songId: 3,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
