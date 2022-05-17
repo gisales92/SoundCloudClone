@@ -26,6 +26,13 @@ module.exports = {
           updatedAt: new Date(),
           previewImage: "https://res.cloudinary.com/pressplay/image/upload/v1652332871/cld-sample.jpg"
         },
+        {
+          userId: 3,
+          name: "Songs?",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          previewImage: "https://res.cloudinary.com/pressplay/image/upload/v1652332844/sample.jpg"
+        },
       ],
       {}
     );
@@ -130,14 +137,14 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          userId: 1,
+          userId: 2,
           songId: 1,
           body: "Nah, it's fyah",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          userId: 2,
+          userId: 3,
           songId: 2,
           body: "Loud Noises...",
           createdAt: new Date(),
@@ -147,6 +154,20 @@ module.exports = {
           userId: 3,
           songId: 4,
           body: "A cat made this?",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          userId: 1,
+          songId: 2,
+          body: "Noice",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          userId: 1,
+          songId: 4,
+          body: "MeWow",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -196,6 +217,18 @@ module.exports = {
         {
           playlistId: 3,
           songId: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          playlistId: 4,
+          songId: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          playlistId: 4,
+          songId: 4,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
