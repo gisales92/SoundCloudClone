@@ -43,7 +43,7 @@ function PlaylistDetail() {
           }
           className="playlist-detail-thumb-img"
           alt="Playlist thumbnail"
-          crossOrigin
+          crossOrigin=""
         />
         <h3 className="playlist-detail-sub-title">{playlistDetails?.artist}</h3>
       </div>

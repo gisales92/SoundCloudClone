@@ -13,7 +13,7 @@ export default function SongDetail() {
   const dispatch = useDispatch();
   const history = useHistory();
   const songDetails = useSelector((state) => state.songs?.detail);
-  const currentUserId = useSelector(state => state.session?.user.id)
+  const currentUserId = useSelector((state) => state.session?.user.id);
 
   useEffect(() => {
     async function getSongs() {
@@ -37,7 +37,7 @@ export default function SongDetail() {
           }
           className="song-detail-thumb-img"
           alt="Playlist thumbnail"
-          crossOrigin
+          crossOrigin=""
         />
         <h3 className="song-detail-sub-title">
           {songDetails?.Artist.username}
@@ -53,13 +53,15 @@ export default function SongDetail() {
           {songDetails?.Comments.map((comment) => {
             return (
               <div key={comment.id}>
-                <div className="song-comment">{`${comment.body} -- ${comment.User.username}`}
-                {currentUserId === comment.userId ? <div className="comment-actions">
-                    <EditCommentModal comment={comment}/>
-                    <DeleteComment comment={comment} />
-                </div> : null}
+                <div className="song-comment">
+                  {`${comment.body} -- ${comment.User.username}`}
+                  {currentUserId === comment.userId ? (
+                    <div className="comment-actions">
+                      <EditCommentModal comment={comment} />
+                      <DeleteComment comment={comment} />
+                    </div>
+                  ) : null}
                 </div>
-
               </div>
             );
           })}

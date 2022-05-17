@@ -16,7 +16,7 @@ function ProfileButton() {
 
     const closeMenu = () => {
       setShowMenu(false);
-    }
+    };
     document.addEventListener("click", closeMenu);
 
     return () => document.removeEventListener("click", closeMenu);
@@ -25,16 +25,30 @@ function ProfileButton() {
   return (
     <>
       <div>
-        <button onClick={openMenu}  id={showMenu ? "active-menu" : "menu-icon-button"}>
-          <img id="menu-icon" src="https://upload.wikimedia.org/wikipedia/commons/8/8d/VisualEditor_-_Icon_-_Menu.svg" alt="menu" crossOrigin/>
+        <button
+          onClick={openMenu}
+          id={showMenu ? "active-menu" : "menu-icon-button"}
+        >
+          <img
+            id="menu-icon"
+            src="https://upload.wikimedia.org/wikipedia/commons/8/8d/VisualEditor_-_Icon_-_Menu.svg"
+            alt="menu"
+            crossOrigin=""
+          />
         </button>
       </div>
 
       {showMenu ? (
         <div id="drop-menu">
-          <NavLink className="user-nav-link" to="/">My Profile</NavLink>
-          <NavLink className="user-nav-link" to="/my/playlists">My Playlists</NavLink>
-          <button id="logout-button" onClick={() => dispatch(logout())}>Log out</button>
+          <NavLink className="user-nav-link" to="/">
+            My Profile
+          </NavLink>
+          <NavLink className="user-nav-link" to="/my/playlists">
+            My Playlists
+          </NavLink>
+          <button id="logout-button" onClick={() => dispatch(logout())}>
+            Log out
+          </button>
         </div>
       ) : null}
     </>

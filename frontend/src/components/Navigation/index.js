@@ -17,7 +17,7 @@ function Navigation() {
               id="home-logo"
               src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Play-rounded-button-outline.svg"
               alt="logo"
-              crossOrigin
+              crossOrigin=""
             />
           </NavLink>
           <NavLink exact to="/">

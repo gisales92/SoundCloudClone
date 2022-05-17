@@ -10,6 +10,7 @@ function AudioPanel({ tracks }) {
   const { name, artist, previewImage, url } = tracks.tracks[trackIndex];
 
   const audioRef = useRef(new Audio(url));
+  audioRef.crossOrigin="";
   const intervalRef = useRef();
   const isReady = useRef(false);
 
@@ -82,6 +83,7 @@ function AudioPanel({ tracks }) {
     audioRef.current.pause();
 
     audioRef.current = new Audio(url);
+    audioRef.crossOrigin="";
     setTrackProgress(audioRef.current.currentTime);
 
     if (isReady.current) {
@@ -108,7 +110,7 @@ const trackStyling = `
               className="artwork"
               src={previewImage ? previewImage : "https://upload.wikimedia.org/wikipedia/commons/e/e4/Play-rounded-button-outline.svg"}
               alt={`track artwork for ${name} by ${artist}`}
-              crossOrigin
+              crossOrigin=""
             />
             <div className="track-info">
               <p className="title">{name}</p>

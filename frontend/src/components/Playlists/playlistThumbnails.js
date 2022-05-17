@@ -1,4 +1,4 @@
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 function PlaylistTumbnails({ playlist }) {
   const { name, previewImage, id: playlistId } = playlist;
@@ -12,7 +12,7 @@ function PlaylistTumbnails({ playlist }) {
               : "https://upload.wikimedia.org/wikipedia/commons/e/e4/Play-rounded-button-outline.svg"
           }
           className="playlist-thumb-img"
-          crossOrigin
+          crossOrigin=""
         />
         <p className="playlist-title">{name}</p>
       </Link>
