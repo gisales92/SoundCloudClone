@@ -15,7 +15,7 @@ function Navigation() {
       <div id="header-content">
         <div id="logo">
           <NavLink exact to="/">
-            <h1>
+            <h1 className="site-header">
               Press <FontAwesomeIcon icon={faPlay} /> Play
             </h1>
           </NavLink>
@@ -24,20 +24,20 @@ function Navigation() {
         <nav className="nav-header-outer">
           <ul>
             {!user ? (
-              <li>
-                <NavLink className="no-user-nav" to="/signup">
+              <li className="nav-button-outer">
+                <NavLink className="user-nav" to="/signup">
                   Sign Up <FontAwesomeIcon icon={faUserPlus} />
                 </NavLink>
               </li>
             ) : null}
             {!user ? (
-              <li>
-                <LoginFormModal className="no-user-nav" />
+              <li className="nav-button-outer">
+                <LoginFormModal className="user-nav" />
               </li>
             ) : null}
             {user ? (
-              <li>
-                <ProfileButton id="user-nav" />
+              <li className="nav-button-outer">
+                <ProfileButton id="burger-menu" />
               </li>
             ) : null}
           </ul>

@@ -1,5 +1,5 @@
 header {
-  background-color: var(--primary);
+  background-color: #333;
   position: sticky;
   top: 0;
   height: 50px;
@@ -30,7 +30,7 @@ ul {
   text-align: center;
 }
 
-a {
+.user-nav {
   color: white;
   text-decoration: none;
   margin: auto 0;
@@ -39,24 +39,29 @@ a {
   text-align: center;
 }
 
-
+a {
+  text-decoration: none;
+  height: fit-content;
+}
 
 #logo {
   display: flex;
   width: auto;
   height: 100%;
-  align-content: center;
+  align-items: center;
   overflow: hidden;
   white-space: nowrap;
   min-width: 200px;
 }
 
-h1 {
+.site-header {
   font-size: 24pt;
   font-weight: 100;
   max-width: 100%;
   margin: 0;
   padding: 0;
+  color: white;
+  text-decoration: none;
 }
 
 .nav-header-outer li {
@@ -78,6 +83,10 @@ h1 {
   cursor: pointer;
 }
 
+.nav-button-outer:hover {
+  background-color: #000000;
+}
+
 #menu-icon-button {
   background-color: transparent;
   border: none;
@@ -91,7 +100,7 @@ h1 {
   background-color: transparent;
   border: none;
   cursor: pointer;
-  color: #000000;
+  color: #ffffff;
   padding: 0px 15px;
   font-size: 18pt;
 }
