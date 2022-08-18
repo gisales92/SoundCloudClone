@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { logout, userSelector } from "../../store/session";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars} from "@fortawesome/free-solid-svg-icons";
 
 function ProfileButton() {
   const dispatch = useDispatch();
@@ -29,12 +31,7 @@ function ProfileButton() {
           onClick={openMenu}
           id={showMenu ? "active-menu" : "menu-icon-button"}
         >
-          <img
-            id="menu-icon"
-            src="https://upload.wikimedia.org/wikipedia/commons/8/8d/VisualEditor_-_Icon_-_Menu.svg"
-            alt="menu"
-            crossOrigin=""
-          />
+        <FontAwesomeIcon icon={faBars} />
         </button>
       </div>
 

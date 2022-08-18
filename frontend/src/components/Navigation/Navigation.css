@@ -14,7 +14,7 @@ header {
   display: grid;
   grid-template-columns: 0.85fr 0.5fr 1fr;
   justify-content: space-between;
-  max-width: 1250px;
+  width: 100%;
   margin: 0 auto;
   height: 100%;
   padding: 0 25px;
@@ -33,54 +33,45 @@ ul {
 a {
   color: white;
   text-decoration: none;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   margin: auto 0;
-  font-size: 18px;
+  font-size: 12pt;
   font-weight: 100;
   text-align: center;
-  text-shadow: 1px 1px 2px black;
 }
+
+
 
 #logo {
   display: flex;
   width: auto;
-  height: auto;
-  text-align: center;
-  overflow: hidden;
-}
-
-#logo a:first-child {
   height: 100%;
+  align-content: center;
+  overflow: hidden;
+  white-space: nowrap;
+  min-width: 200px;
 }
 
 h1 {
-  font-size: 32px;
+  font-size: 24pt;
   font-weight: 100;
   max-width: 100%;
-  margin: 0 auto 0 10px;
+  margin: 0;
   padding: 0;
 }
 
-#home-logo {
-  max-width: 100%;
-  min-width: 30px;
-  height: 50px;
-  margin: auto 0;
-  padding: 3px 0;
-}
-
-li {
+.nav-header-outer li {
   text-align: center;
   margin: auto 0;
-  width: 60px;
+  width: fit-content;
+  white-space: nowrap;
+  padding: 10px 15px;
 }
 
 #login-button {
   all: unset;
   color: white;
-  font-size: 18px;
+  font-size: 12pt;
   font-weight: 100;
-  text-shadow: 1px 1px 2px black;
 }
 
 #login-button:hover {
@@ -89,26 +80,20 @@ li {
 
 #menu-icon-button {
   background-color: transparent;
-  border-radius: 5px;
+  border: none;
   cursor: pointer;
-  height: 35px;
+  color: #ffffff;
+  padding: 0px 15px;
+  font-size: 18pt;
 }
 
 #active-menu {
-  background-color: var(--primary-dark);
+  background-color: transparent;
+  border: none;
   cursor: pointer;
-  border-radius: 5px;
-  height: 35px;
-}
-
-#menu-icon {
-  padding: 5px;
-  height: 100%;
-  margin: auto 0;
-}
-
-#active-menu {
-  background-color: var(--primary-dark);
+  color: #000000;
+  padding: 0px 15px;
+  font-size: 18pt;
 }
 
 #drop-menu {

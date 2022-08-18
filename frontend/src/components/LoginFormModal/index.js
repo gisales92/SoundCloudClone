@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { userSelector } from '../../store/session';
 import { Modal } from "../../context/Modal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 
 function LoginFormModal () {
   const [showModal, setShowModal] = useState(false);
@@ -14,7 +16,7 @@ function LoginFormModal () {
 
   return (
     <>
-      <button id='login-button' onClick={() => setShowModal(true)}>Log In</button>
+      <button id='login-button' onClick={() => setShowModal(true)}>Log In <FontAwesomeIcon icon={faUserCircle} /></button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <LoginForm />

@@ -1,7 +1,6 @@
 /* TODO Add site wide styles */
 * {
     box-sizing: border-box;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 :root {
@@ -11,6 +10,8 @@
     --secondary: #efebe9;
     --secondary-light: #ffffff;
     --secondary-dark: #bdb9b7;
+
+    font-family: "Roboto", sans-serif;
 }
 
 body {
