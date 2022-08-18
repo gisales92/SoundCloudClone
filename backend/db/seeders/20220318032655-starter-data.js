@@ -10,28 +10,42 @@ module.exports = {
           name: "Demo-Traxx",
           createdAt: new Date(),
           updatedAt: new Date(),
-          previewImage: "https://res.cloudinary.com/pressplay/image/upload/v1652344411/laenuo964duz1gubfupq.png"
+          previewImage: "https://res.cloudinary.com/duzznvxix/image/upload/v1660861476/audience-1853662_960_720_mnewnd.jpg"
         },
         {
           userId: 2,
-          name: "Not Your Mama's Playlist",
+          name: "Oldies But Goodies",
           createdAt: new Date(),
           updatedAt: new Date(),
-          previewImage: "https://res.cloudinary.com/pressplay/image/upload/v1652683232/zjyirq7ksplbipyykrit.jpg"
-        },
-        {
-          userId: 1,
-          name: "Another One",
-          createdAt: new Date(),
-          updatedAt: new Date(),
-          previewImage: "https://res.cloudinary.com/pressplay/image/upload/v1652332871/cld-sample.jpg"
+          previewImage: "https://res.cloudinary.com/duzznvxix/image/upload/v1660861474/casette-1361688_960_720_oma9nu.jpg"
         },
         {
           userId: 3,
-          name: "Songs?",
+          name: "Music that Heals the Soul",
           createdAt: new Date(),
           updatedAt: new Date(),
-          previewImage: "https://res.cloudinary.com/pressplay/image/upload/v1652332844/sample.jpg"
+          previewImage: "https://res.cloudinary.com/duzznvxix/image/upload/v1660861479/musician-5960112_960_720_rv1i4d.jpg"
+        },
+        {
+          userId: 4,
+          name: "Seductive Sounds",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          previewImage: "https://res.cloudinary.com/duzznvxix/image/upload/v1660861463/people-3062246_960_720_t5blov.jpg"
+        },
+        {
+          userId: 5,
+          name: "Tekking's Tunes",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          previewImage: "https://res.cloudinary.com/duzznvxix/image/upload/v1660862838/tekking-wanted_idxmrm.png"
+        },
+        {
+          userId: 6,
+          name: "Heaterz Only",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          previewImage: "https://res.cloudinary.com/duzznvxix/image/upload/v1660861460/dragon-2407946_960_720_ogt1rj.jpg"
         },
       ],
       {}
@@ -42,21 +56,21 @@ module.exports = {
       [
         {
           userId: 1,
-          title: "Sweet tunes, vol. 1",
+          title: "Sweet Tunes, vol. 1",
           description: "Now that's what I call music",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           userId: 2,
-          title: "Moar tunes, vol. 2",
+          title: "Moar Tunes, vol. 2",
           description: "Additional heaters",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           userId: 3,
-          title: "Sampled tunes, vol. 3",
+          title: "Sampled Tunes, vol. 3",
           description: "Only sampling the best of the best",
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -92,7 +106,7 @@ module.exports = {
           userId: 3,
           albumId: 3,
           title: "Sweet Dreams (Maddmon Remix)",
-          description: "As is this needed a remix",
+          description: "As if this needed a remix",
           soundFileURL: "https://res.cloudinary.com/pressplay/video/upload/v1652760065/Sweet_Dreams_Maddmon_Remix_ghxva7.mp3",
           createdAt: new Date(),
           updatedAt: new Date(),
