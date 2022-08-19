@@ -11,7 +11,11 @@ export default function SongListThumb({ song }) {
   const handleClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    setTracks([...tracks, { name: title, artist, previewImage, url }]);
+    if (tracks[0].artist === "Select a track to add to the queue") {
+      setTracks([{ name: title, artist, previewImage, url }]);
+    } else {
+      setTracks([...tracks, { name: title, artist, previewImage, url }]);
+    }
   };
 
   const handleNav = (e) => {
