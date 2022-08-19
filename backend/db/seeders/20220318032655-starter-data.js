@@ -66,6 +66,7 @@ module.exports = {
           description: "Now that's what I call music",
           createdAt: new Date(),
           updatedAt: new Date(),
+          previewImage: "https://res.cloudinary.com/duzznvxix/image/upload/v1660869457/album1_j4oi4s.jpg",
         },
         {
           userId: 3,
@@ -73,6 +74,7 @@ module.exports = {
           description: "Additional heaters",
           createdAt: new Date(),
           updatedAt: new Date(),
+          previewImage: "https://res.cloudinary.com/duzznvxix/image/upload/v1660869457/album2_fnuyfa.jpg",
         },
         {
           userId: 2,
@@ -80,6 +82,7 @@ module.exports = {
           description: "Only sampling the best of the best",
           createdAt: new Date(),
           updatedAt: new Date(),
+          previewImage: "https://res.cloudinary.com/duzznvxix/image/upload/v1660869459/album3_nqiwaz.jpg",
         },
       ],
       {}
