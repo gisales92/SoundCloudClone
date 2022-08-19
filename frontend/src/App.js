@@ -10,14 +10,11 @@ import Navigation from "./components/Navigation";
 import PlaylistDetail from "./components/PlaylistDetail";
 import AudioPanel from "./components/AudioPanel";
 import SongDetail from "./components/SongDetail";
-import { SongContext } from "./context/Song";
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   const user = useSelector(sessionActions.userSelector)
-  const tracks = useContext(SongContext);
-
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -49,7 +46,7 @@ function App() {
             Sorry, we could not find that resource
           </Route>
         </Switch>
-        <AudioPanel tracks={tracks}/>
+        <AudioPanel />
       </>
     )
   );

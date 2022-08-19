@@ -1,13 +1,15 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef, useCallback, useContext } from "react";
+import { SongContext } from "../../context/Song";
 import AudioControls from "./AudioControls";
 import "./AudioPanel.css";
 
-function AudioPanel({ tracks }) {
+function AudioPanel() {
+  const {tracks} = useContext(SongContext);
   const [trackIndex, setTrackIndex] = useState(0);
   const [trackProgress, setTrackProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const { name, artist, previewImage, url } = tracks.tracks[trackIndex];
+  const { name, artist, previewImage, url } = tracks[trackIndex];
 
   const audioRef = useRef(new Audio());
   audioRef.crossOrigin = "";
@@ -19,19 +21,19 @@ function AudioPanel({ tracks }) {
 
   const toPrevTrack = () => {
     if (trackIndex - 1 < 0) {
-      setTrackIndex(tracks.tracks.length - 1);
+      setTrackIndex(tracks.length - 1);
     } else {
       setTrackIndex(trackIndex - 1);
     }
   };
 
   const toNextTrack = useCallback(() => {
-    if (trackIndex < tracks.tracks.length - 1) {
+    if (trackIndex < tracks.length - 1) {
       setTrackIndex(trackIndex + 1);
     } else {
       setTrackIndex(0);
     }
-  }, [trackIndex, tracks.tracks.length])
+  }, [trackIndex, tracks.length])
 
   const startTimer = useCallback(() => {
     // Clear any timers already running
