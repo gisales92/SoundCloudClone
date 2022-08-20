@@ -2,9 +2,10 @@
     width: fit-content;
     margin: auto;
     padding: 20px;
-    color: white;
-    text-shadow: 2px 2px 4px black;
+    color: #000000;
     font-weight: 400;
+    font-size: 24pt;
+    border-bottom: 1px solid #000000;
 }
 
 .playlist-content {
@@ -93,4 +94,10 @@ p {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+#playlist-preview {
+    margin: 0 25px 0 25px;
+    background-color: #ffffff;
+    border-radius: 5px;
 }

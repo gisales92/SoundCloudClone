@@ -27,7 +27,7 @@ function Playlists({ userId }) {
 
   return (
     <div id="playlist-preview">
-      <h2 id="playlist-header">Playlists</h2>
+      <h2 id="playlist-header">{mine ? "Your Playlists" : "Playlists"}</h2>
       <div className="playlist-content">
         {mine ? (
           <div className="create-playlist-container">

@@ -2,7 +2,7 @@
   background-color: var(--secondary-light);
   border-radius: 5px;
   max-width: 1250px;
-  margin: auto;
+  margin: 0 25px 0;
   position: relative;
   z-index: -3;
   }
@@ -17,7 +17,7 @@
     270deg,
     rgba(41, 67, 78, 1) 12%,
     rgba(84, 110, 122, 1) 43%,
-    rgba(189, 185, 183, 1) 100%
+    rgba(0, 0, 0, 1) 100%
   );
   display: block;
   position: relative;
@@ -29,6 +29,8 @@
   position: absolute;
   top: 40px;
   left: 30px;
+  color: #ffffff;
+  font-weight: 100;
 }
 
 .playlist-detail-title {
@@ -40,8 +42,8 @@
   float: left;
   display: block;
   margin-top: 10px;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  color: #ffffff;
+  font-weight: 100;
 }
 
 .playlist-detail-thumb-img {

@@ -1,7 +1,6 @@
 import React from "react";
 import {
   AudioPlayerControlSprite,
-  PlayListProvider,
   AudioPlayer,
 } from "react-audio-player-pro";
 import reactAudioPlayerProStyle from "react-audio-player-pro/dist/style.css";

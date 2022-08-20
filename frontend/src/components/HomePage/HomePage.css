@@ -1,16 +1,13 @@
-:root {
-    background-image: url("../../../public/Nicolas_St_Disc_Jockey.jpg");
-    background-repeat: no-repeat;
-    background-position: center top;
-    background-size: cover;
-    min-width: 550px;
-}
-
 #home-header {
     width: fit-content;
     margin: auto;
     padding: 20px;
-    color: white;
-    text-shadow: 2px 2px 4px black;
+    color: #000000;
+    font-size: 24pt;
     font-weight: 400;
+}
+
+.home {
+    background-color: #ffffff;
+    margin: 0 25px 0 25px;
 }
