@@ -8,8 +8,8 @@ import Playlists from "./components/Playlists";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import PlaylistDetail from "./components/PlaylistDetail";
-import AudioPanel from "./components/AudioPanel";
 import SongDetail from "./components/SongDetail";
+import { NewAudioPlayer } from "./components/NewAudioPanel";
 
 function App() {
   const dispatch = useDispatch();
@@ -46,7 +46,7 @@ function App() {
             Sorry, we could not find that resource
           </Route>
         </Switch>
-        <AudioPanel />
+        <NewAudioPlayer />
       </>
     )
   );

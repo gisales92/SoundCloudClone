@@ -15,7 +15,7 @@
 }
 
 body {
-    margin: 0 0 50px 0;
+    margin: 0 0 85px 0;
     min-width: 550px;
     position: relative;
     z-index: -99;
@@ -24,4 +24,42 @@ body {
 #root {
     position: relative;
     z-index: -100;
+}
+
+.queue-content-outer {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50px 1fr;
+}
+
+.queue-thumb {
+    height: 50px;
+    width: 50px;
+}
+
+.queue-title {
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.audio-player-outer {
+    height: 85px;
+    background-color: #333;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
+    border-top: 1px solid #000000;
+}
+
+.d6f4a6 {
+    position: relative;
+    top: -247px;
+    height: 150px;
+    overflow-y: scroll;
+    border-top: 1px solid #000000;
 }

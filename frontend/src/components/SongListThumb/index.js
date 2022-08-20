@@ -1,20 +1,33 @@
-import { useContext } from "react";
-import { SongContext } from "../../context/Song";
 import { useHistory } from "react-router-dom";
+import { audioTrackList } from "../NewAudioPanel";
 import "./SongListThumb.css";
 
 export default function SongListThumb({ song }) {
   const { artist, title, previewImage, url, id } = song;
-  const { tracks, setTracks } = useContext(SongContext);
   const history = useHistory();
 
   const handleClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    if (tracks[0].artist === "Select a track to add to the queue") {
-      setTracks([{ name: title, artist, previewImage, url }]);
+    const addTrack = {
+      src: url,
+      content: (
+        <div className="queue-content-outer">
+          <img src={previewImage} alt="cover-art" className="queue-thumb" />
+          <div className="queue-title">{title}</div>
+        </div>
+      ),
+      mediaMetadata: {
+        title,
+        artist,
+        artwork: [{ src: previewImage, sizes: "500x500", type: "image/jpeg" }],
+      },
+    };
+
+    if (audioTrackList[0].content === "Add a song to the queue") {
+      audioTrackList[0] = addTrack;
     } else {
-      setTracks([...tracks, { name: title, artist, previewImage, url }]);
+      audioTrackList.push(addTrack);
     }
   };
 
