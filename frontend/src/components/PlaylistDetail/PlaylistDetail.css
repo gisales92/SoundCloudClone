@@ -1,15 +1,16 @@
 .playlist-detail-container {
   background-color: var(--secondary-light);
   border-radius: 5px;
-  max-width: 1250px;
-  margin: 0 25px 0;
+  /* max-width: 1250px; */
+  width: 90%;
+  margin: auto;
   position: relative;
   z-index: -3;
   }
 
 .playlist-detail-header {
   width: 100%;
-  min-width: 850px;
+  min-width: 650px;
   height: 380px;
   padding: 0px 25px;
   background: rgb(41, 67, 78);

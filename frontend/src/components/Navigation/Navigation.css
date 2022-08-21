@@ -14,10 +14,9 @@ header {
   display: grid;
   grid-template-columns: 0.85fr 0.5fr 1fr;
   justify-content: space-between;
-  width: 100%;
+  width: 90%;
   margin: 0 auto;
   height: 100%;
-  padding: 0 25px;
 }
 
 ul {
