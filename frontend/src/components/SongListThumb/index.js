@@ -46,7 +46,10 @@ export default function SongListThumb({ song }) {
         alt="Song cover art thumbnail"
         crossOrigin=""
       />
-      <p className="song-playlist-info">{`${title} by ${artist}`}</p>
+      <div className="song-playlist-info">
+        <p className="song-thumb-user">{artist}</p>
+        <p className="song-thumb-title">{title}</p>
+      </div>
 
       <button type="button" onClick={handleClick} className="add-to-tracklist">
         Add song to Queue
