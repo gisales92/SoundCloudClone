@@ -39,6 +39,10 @@ function App() {
           <Route exact path="/playlists/:playlistId">
             <PlaylistDetail />
           </Route>
+          <Route exact path="/songs">
+            ALL SONGS COMPONENT
+            {/* TODO add all songs route */}
+          </Route>
           <Route exact path="/songs/:songId">
             <SongDetail />
           </Route>
