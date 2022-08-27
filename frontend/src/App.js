@@ -46,6 +46,9 @@ function App() {
           <Route exact path="/songs/:songId">
             <SongDetail />
           </Route>
+          <Route exact path="/profile">
+            {/* {TODO create a profile view} */}
+          </Route>
           <Route path="">
             Sorry, we could not find that resource
           </Route>
