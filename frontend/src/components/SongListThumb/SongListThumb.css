@@ -47,7 +47,8 @@
     height: 50px;
     margin: auto 0 auto auto;
     padding: 0 10px;
-    background-color: var(--secondary);
+    background-color: var(--secondary-light);
+    border: 1px solid var(--secondary-dark);
     border-radius: 5px;
     min-width: fit-content;
 }

@@ -1,5 +1,7 @@
 import { useHistory } from "react-router-dom";
 import { audioTrackList } from "../NewAudioPanel";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlay, faList} from "@fortawesome/free-solid-svg-icons";
 import "./SongListThumb.css";
 
 export default function SongListThumb({ song }) {
@@ -52,7 +54,7 @@ export default function SongListThumb({ song }) {
       </div>
 
       <button type="button" onClick={handleClick} className="add-to-tracklist">
-        Add to Queue
+      <FontAwesomeIcon icon={faList} /> Add to Next up
       </button>
     </div>
   );
