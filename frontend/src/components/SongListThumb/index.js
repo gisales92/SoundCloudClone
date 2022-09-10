@@ -47,12 +47,12 @@ export default function SongListThumb({ song }) {
         crossOrigin=""
       />
       <div className="song-playlist-info">
-        <p className="song-thumb-user">{artist}</p>
+        <p className="song-thumb-user">{artist} -</p>
         <p className="song-thumb-title">{title}</p>
       </div>
 
       <button type="button" onClick={handleClick} className="add-to-tracklist">
-        Add song to Queue
+        Add to Queue
       </button>
     </div>
   );
