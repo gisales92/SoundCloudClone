@@ -1,7 +1,7 @@
 import { useHistory } from "react-router-dom";
 import { audioTrackList } from "../NewAudioPanel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay, faList} from "@fortawesome/free-solid-svg-icons";
+import { faPlay, faList } from "@fortawesome/free-solid-svg-icons";
 import "./SongListThumb.css";
 
 export default function SongListThumb({ song }) {
@@ -33,6 +33,27 @@ export default function SongListThumb({ song }) {
     }
   };
 
+  const handlePlay = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const addTrack = {
+      src: url,
+      content: (
+        <div className="queue-content-outer">
+          <img src={previewImage} alt="cover-art" className="queue-thumb" />
+          <div className="queue-title">{title}</div>
+        </div>
+      ),
+      mediaMetadata: {
+        title,
+        artist,
+        artwork: [{ src: previewImage, sizes: "500x500", type: "image/jpeg" }],
+      },
+    };
+
+    audioTrackList.splice(0, audioTrackList.length, addTrack);
+  };
+
   const handleNav = (e) => {
     history.push(`/songs/${id}`);
   };
@@ -53,8 +74,12 @@ export default function SongListThumb({ song }) {
         <p className="song-thumb-title">{title}</p>
       </div>
 
+      <button type="button" onClick={handlePlay} className="track-play">
+        <FontAwesomeIcon icon={faPlay} />
+      </button>
+
       <button type="button" onClick={handleClick} className="add-to-tracklist">
-      <FontAwesomeIcon icon={faList} /> Add to Next up
+        <FontAwesomeIcon icon={faList} /> Add to Next up
       </button>
     </div>
   );
