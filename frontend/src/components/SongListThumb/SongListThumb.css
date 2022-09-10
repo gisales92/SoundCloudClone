@@ -4,6 +4,7 @@
     height: 60px;
     border-bottom: 1px solid var(--secondary-dark);
     width: 100%;
+    position: relative;
 }
 
 .song-playlist-preview:hover {
@@ -13,8 +14,7 @@
 .song-playlist-cover {
     height: 50px;
     width: 50px;
-    padding: 5px;
-    margin: auto 0 auto 0;
+    margin: auto 5px auto 0;
 }
 
 .song-playlist-info {
@@ -57,4 +57,23 @@
  cursor: pointer;
  background-color: var(--secondary-dark);
  border-radius: 5px;
+}
+
+.track-play {
+    position: absolute;
+    border-radius: 50%;
+    padding: 0;
+    height: 30px;
+    width: 30px;
+    margin: 15px 5px 5px 10px;
+    color: transparent;
+    background-color: transparent;
+    border: none;
+}
+
+.track-play:hover {
+    color: var(--secondary-light);
+    cursor: pointer;
+    background-color: #333;
+    text-align: center;
 }

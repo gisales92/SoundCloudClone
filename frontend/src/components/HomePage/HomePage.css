@@ -11,3 +11,13 @@
     background-color: #ffffff;
     margin: 0 25px 0 25px;
 }
+
+.index-songs-list {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+.sub-heading {
+    margin-left: 15px;
+}
