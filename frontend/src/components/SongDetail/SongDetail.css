@@ -113,6 +113,8 @@
 
   .add-song-form-input {
     display: flex;
+    width: fit-content;
+    margin: auto;
   }
 
   .playlist-add-song-submit {

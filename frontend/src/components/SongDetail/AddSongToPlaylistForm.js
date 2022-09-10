@@ -78,7 +78,7 @@ function AddSongToPlaylistForm({ props }) {
           </div>
         </fieldset>
         <button type="submit" className="playlist-add-song-submit">
-          {`Add "${song.title}" to playlist`}
+          {"Add track to playlist"}
         </button>
       </form>
     </div>
