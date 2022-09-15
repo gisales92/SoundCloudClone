@@ -33,6 +33,9 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          <Route exact path="/playlists">
+            {/* Add all playlists page and add to nav bar */}
+          </Route>
           <Route exact path="/my/playlists">
             {user ? <Playlists userId={user.id}/> : <Redirect to="/" />}
           </Route>
