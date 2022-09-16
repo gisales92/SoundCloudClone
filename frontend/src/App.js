@@ -33,7 +33,7 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route exact path="/playlists">
+          <Route exact path="/albums">
             {/* Add all playlists page and add to nav bar */}
           </Route>
           <Route exact path="/my/playlists">
