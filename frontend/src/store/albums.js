@@ -1,8 +1,8 @@
 import { csrfFetch } from "./csrf";
 
-const ADD_COMMENT = "comments/addComment";
-const DELETE_COMMENT = "comments/deleteComment";
-const EDIT_COMMENT = "comments/editComment";
+export const albumIdSelector = (id) => (state) => state.albums[id];
+
+const SET_ALBUMS = "albums/SET_ALBUMS"
 
 const addComment = (comment) => {
   return {
