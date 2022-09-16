@@ -2,7 +2,11 @@ import { csrfFetch } from "./csrf";
 
 export const albumIdSelector = (id) => (state) => state.albums[id];
 
-const SET_ALBUMS = "albums/SET_ALBUMS"
+const SET_ALBUMS = "albums/SET_ALBUMS";
+const ADD_ALBUM = "albums/ADD_ALBUM";
+const EDIT_ALBUM = "albums/EDIT_ALBUM";
+const DELETE_ALBUM = "albums/DELETE_ALBUM";
+const ADD_SONG = "albums/ADD_SONG";
 
 const addComment = (comment) => {
   return {
