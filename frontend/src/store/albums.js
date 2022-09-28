@@ -11,27 +11,42 @@ const DELETE_ALBUM = "albums/DELETE_ALBUM";
 const ADD_SONG = "albums/ADD_SONG";
 
 // Action creators
-
-const addComment = (comment) => {
+const setAlbums = (albums) => {
   return {
-    type: ADD_COMMENT,
-    comment,
+    type: SET_ALBUMS,
+    albums,
   };
 };
 
-const removeComment = () => {
+const addAlbum = (album) => {
   return {
-    type: DELETE_COMMENT,
+    type: ADD_ALBUM,
+    album,
   };
 };
 
-const editMyComment = (comment) => {
+const editAlbum = (album) => {
   return {
-    type: EDIT_COMMENT,
-    comment,
+    type: EDIT_ALBUM,
+    album,
   };
 };
 
+const deleteAlbum = (albumId) => {
+  return {
+    type: DELETE_ALBUM,
+    albumId,
+  };
+};
+
+const addSong = (song) => {
+  return {
+    type: ADD_SONG,
+    song,
+  };
+};
+
+// Thunks
 export const addCommentToSong =
   ({ songId, body }) =>
   async (dispatch) => {
