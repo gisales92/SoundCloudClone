@@ -1,12 +1,16 @@
 import { csrfFetch } from "./csrf";
 
+// Selectors
 export const albumIdSelector = (id) => (state) => state.albums[id];
 
+// Action types
 const SET_ALBUMS = "albums/SET_ALBUMS";
 const ADD_ALBUM = "albums/ADD_ALBUM";
 const EDIT_ALBUM = "albums/EDIT_ALBUM";
 const DELETE_ALBUM = "albums/DELETE_ALBUM";
 const ADD_SONG = "albums/ADD_SONG";
+
+// Action creators
 
 const addComment = (comment) => {
   return {
