@@ -28,7 +28,14 @@ export default function SongDetail() {
   return (
     <div className="song-detail">
       <div className="song-detail-header">
-        <h2 className="song-detail-title">{songDetails?.title}</h2>
+        <div className="song-detail left">
+          <div className="song-title-container">
+            <span className="song-detail-title">{songDetails?.title}</span>
+          </div>
+          <h3 className="song-detail-sub-title">
+            {songDetails?.Artist.username}
+          </h3>
+        </div>
         <img
           src={
             songDetails?.previewImage
@@ -39,9 +46,6 @@ export default function SongDetail() {
           alt="Playlist thumbnail"
           crossOrigin=""
         />
-        <h3 className="song-detail-sub-title">
-          {songDetails?.Artist.username}
-        </h3>
       </div>
       <div className="song-actions">
         {currentUserId ? <AddCommentModal songId={songDetails?.id} /> : null}

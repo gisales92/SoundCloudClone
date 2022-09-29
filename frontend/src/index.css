@@ -19,7 +19,7 @@ body {
     min-width: 550px;
     position: relative;
     z-index: -99;
-    background-color: var(--secondary-dark);
+    background-color: var(--secondary);
 }
 
 #root {
