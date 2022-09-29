@@ -63,7 +63,7 @@ function CreatePlaylistForm({ closeModal }) {
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <fieldset id="new-playlist-fieldset">
+        <fieldset>
           <div className="form-input">
             <label htmlFor="playlist-name">Playlist Title*</label>
             <input
@@ -76,7 +76,7 @@ function CreatePlaylistForm({ closeModal }) {
             />
           </div>
           <div className="drop-input">
-            <p className="upload-cover-text">
+            <p className="dropzone-label">
               Upload a cover image for your playlist:
             </p>
             <section className="container">

@@ -1,15 +1,6 @@
-#new-playlist-form-container {
-    display: flex;
-    flex-direction: column;
-}
-
 .drop-input {
     display: flex;
     flex-direction: column;
-}
-
-input:focus {
-    background-color: var(--secondary);
 }
 
 .playlist-errors-list {
@@ -32,18 +23,12 @@ input:focus {
     padding: 15px;
 }
 
-.upload-cover-text {
-    margin: 0 auto;
-    width: 25vw;
-    min-width: 563.5px;
+.dropzone p {
+    font-size: 16px;
 }
 
 .file-upload-feedback {
-    width: 563.5px;
+    font-size: 16px;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-#new-playlist-form-submit {
-    margin: 20px auto !important;
 }
