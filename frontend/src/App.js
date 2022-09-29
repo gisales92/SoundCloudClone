@@ -10,6 +10,7 @@ import Navigation from "./components/Navigation";
 import PlaylistDetail from "./components/PlaylistDetail";
 import SongDetail from "./components/SongDetail";
 import { NewAudioPlayer } from "./components/NewAudioPanel";
+import AllAlbums from "./components/Albums";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route exact path="/albums">
+            <AllAlbums />
             {/* Add all playlists page and add to nav bar */}
           </Route>
           <Route exact path="/my/playlists">

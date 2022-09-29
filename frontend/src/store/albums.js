@@ -51,7 +51,7 @@ export const fetchAlbums = () => async (dispatch) => {
   const res = await csrfFetch("/api/albums", {
     method: "GET",
   });
-  const data = res.json();
+  const data = await res.json();
   dispatch(setAlbums(data));
   return data;
 };
@@ -102,20 +102,21 @@ export const removeAlbum = (albumId) => async (dispatch) => {
   return res;
 };
 
-// export const newSong = (song) => async (dispatch) => {
-//   const res
-// }
+export const newSong = (song) => async (dispatch) => {
+  const formData = new FormData();
+};
 
 const albumsReducer = (state = {}, action) => {
+  const newState = { ...state };
   switch (action.type) {
-    case ADD_COMMENT:
-      return { ...state, detail: action.comment };
-    case DELETE_COMMENT:
-      return { ...state, detail: {} };
-    case EDIT_COMMENT:
-      return { ...state, detail: action.comment };
+    case SET_ALBUMS:
+      action.albums.Albums.forEach((album) => {
+        newState[album.id] = album;
+      });
+      break;
     default:
-      return state;
+      break;
   }
+  return newState;
 };
 export default albumsReducer;

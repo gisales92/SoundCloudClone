@@ -175,8 +175,11 @@ router.delete(
 router.post(
   "/:albumId",
   requireAuth,
+  singleMulterUpload("image"),
+  singleMulterUpload("audio"),
   validateSong,
   asyncHandler(async (req, res, next) => {
+    
     const { title, description, url, imageUrl } = req.body;
     const albumId = req.params.albumId;
     const newSong = await Song.create({
