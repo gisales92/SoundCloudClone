@@ -3,11 +3,6 @@
     flex-direction: column;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-}
-
 .comment-header {
     width: fit-content;
     min-width: 255px;

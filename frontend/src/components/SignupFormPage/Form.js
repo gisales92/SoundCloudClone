@@ -121,7 +121,7 @@ function SignupFormPage() {
             />
           </div>
         </fieldset>
-        <button id="sign-up-form-submit"type="submit">Sign Up</button>
+        <button className="form-button single" type="submit">Sign Up</button>
       </form>
     </div>
   );

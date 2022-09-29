@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { userSelector } from "../../store/session";
 import ProfileButton from "./ProfileButton";
 import LoginFormButton from "../LoginFormModal/button";
+import SignUpButton from "../SignupFormPage/button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faUserPlus} from "@fortawesome/free-solid-svg-icons";
 import "./Navigation.css";
@@ -24,11 +25,9 @@ function Navigation() {
         <nav className="nav-header-outer">
           <ul>
             {!user ? (
-              <li className="nav-button-outer">
-                <NavLink className="user-nav" to="/signup">
-                  Sign Up <FontAwesomeIcon icon={faUserPlus} />
-                </NavLink>
-              </li>
+            <li className="nav-button-outer">
+            <SignUpButton className="user-nav" />
+          </li>
             ) : null}
             {!user ? (
               <li className="nav-button-outer">

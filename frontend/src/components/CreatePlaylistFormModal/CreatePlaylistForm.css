@@ -3,11 +3,6 @@
     flex-direction: column;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-}
-
 .drop-input {
     display: flex;
     flex-direction: column;
