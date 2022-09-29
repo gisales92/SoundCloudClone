@@ -47,26 +47,16 @@ const addSong = (song) => {
 };
 
 // Thunks
-export const addCommentToSong =
-  ({ songId, body }) =>
-  async (dispatch) => {
-    const res = await csrfFetch(`/api/songs/${songId}/comments`, {
-      method: "POST",
-      body: JSON.stringify({ body }),
-    });
-    const data = await res.json();
-    dispatch(addComment(data));
-    return res;
-  };
-
-export const deleteComment = (commentId) => async (dispatch) => {
-  const res = await csrfFetch(`/api/comments/${commentId}`, {
-    method: "DELETE",
+export const fetchAlbums = () => async (dispatch) => {
+  const res = await csrfFetch("/api/albums", {
+    method: "GET"
   });
-  await res.json();
-  dispatch(removeComment());
-  return res;
+  const data = res.json();
+  dispatch(setAlbums(data));
+  return data;
 };
+
+export const createAlbum = ({album})
 
 export const editComment =
   ({ id, body }) =>

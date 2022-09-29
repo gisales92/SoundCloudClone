@@ -1,7 +1,6 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 const { check } = require("express-validator");
-
 const {
   setTokenCookie,
   restoreUser,
@@ -13,6 +12,11 @@ const {
   validateSong,
   validateAlbum,
 } = require("../../utils/validation");
+const {
+  singleMulterUpload,
+  singlePublicFileUpload,
+} = require("../../coudinary");
+
 const router = express.Router();
 
 // Get all albums
@@ -83,26 +87,24 @@ router.get(
 router.post(
   "/",
   requireAuth,
+  singleMulterUpload("image"),
   validateAlbum,
   asyncHandler(async (req, res, next) => {
-    const { title, description, imageUrl } = req.body;
-    const newAlbum = await Album.create({
-      userId: req.user.id,
-      title,
-      description,
-      previewImage: imageUrl,
-    });
-    const mappedAlbum = {
-      id: newAlbum.id,
-      userId: newAlbum.userId,
-      title: newAlbum.title,
-      description: newAlbum.description,
-      createdAt: newAlbum.createdAt,
-      updatedAt: newAlbum.updatedAt,
-      previewImage: newAlbum.previewImage,
-    };
-    res.status(201);
-    return res.json(mappedAlbum);
+    const { title, description } = req.body;
+    try {
+      let coverImage;
+      req.file ? (coverImage = await singlePublicFileUpload(req.file)) : null;
+      const newAlbum = await Album.create({
+        userId: req.user.id,
+        title,
+        description,
+        previewImage: coverImage?.url || null,
+      });
+      res.status(201);
+      return res.json(newAlbum);
+    } catch (err) {
+      res.status(500).json(err);
+    }
   })
 );
 
