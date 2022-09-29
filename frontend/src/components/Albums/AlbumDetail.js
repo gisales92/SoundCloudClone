@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouteMatch } from "react-router-dom";
-import { fetchAlbums, albumIdSelector } from "../../store/albums";
+import {
+  fetchAlbums,
+  albumIdSelector,
+  getAlbumArtist,
+  albumArtistSelector,
+} from "../../store/albums";
 import "./Albums.css";
 
 function AlbumDetail() {
@@ -11,7 +16,8 @@ function AlbumDetail() {
     path: "/albums/:albumId",
     exact: true,
   });
-  const album = useSelector(albumIdSelector(match.params.albumId))
+  const album = useSelector(albumIdSelector(match.params.albumId));
+  const artist = useSelector(albumArtistSelector);
 
   useEffect(() => {
     async function getAlbums() {
@@ -23,10 +29,22 @@ function AlbumDetail() {
     }
   }, []);
 
-  return album && (
-    <div className="album-container">
-      <h2 id="albums header">ALBUM COMPONENT {album.title}</h2>
-    </div>
+  useEffect(() => {
+    async function getArtist(id) {
+      await dispatch(getAlbumArtist(id));
+    }
+    if (loaded && album) {
+      getArtist(album.userId);
+    }
+  }, [loaded, album]);
+
+  return (
+    album && (
+      <div className="album-container">
+        <h2 className="album-title">{album.title}</h2>
+        <h3 className="album-artist">{artist.username}</h3>
+      </div>
+    )
   );
 }
 

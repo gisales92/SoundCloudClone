@@ -2,13 +2,14 @@ import { csrfFetch } from "./csrf";
 
 // Selectors
 export const albumIdSelector = (id) => (state) => state.albums[id];
-
+export const albumArtistSelector = (state) => state.albums.artist;
 // Action types
 const SET_ALBUMS = "albums/SET_ALBUMS";
 const ADD_ALBUM = "albums/ADD_ALBUM";
 const EDIT_ALBUM = "albums/EDIT_ALBUM";
 const DELETE_ALBUM = "albums/DELETE_ALBUM";
 const ADD_SONG = "albums/ADD_SONG";
+const GET_ARTIST = "albums/GET_ARTIST";
 
 // Action creators
 const setAlbums = (albums) => {
@@ -43,6 +44,13 @@ const addSong = (song) => {
   return {
     type: ADD_SONG,
     song,
+  };
+};
+
+const getArtist = (artist) => {
+  return {
+    type: GET_ARTIST,
+    artist,
   };
 };
 
@@ -106,6 +114,15 @@ export const newSong = (song) => async (dispatch) => {
   const formData = new FormData();
 };
 
+export const getAlbumArtist = (artistId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/artists/${artistId}`, {
+    method: "GET",
+  });
+  const data = await res.json();
+  if (res.ok) dispatch(getArtist(data));
+  return res;
+};
+
 const albumsReducer = (state = {}, action) => {
   const newState = { ...state };
   switch (action.type) {
@@ -113,6 +130,9 @@ const albumsReducer = (state = {}, action) => {
       action.albums.Albums.forEach((album) => {
         newState[album.id] = album;
       });
+      break;
+    case GET_ARTIST:
+      newState.artist = action.artist;
       break;
     default:
       break;
