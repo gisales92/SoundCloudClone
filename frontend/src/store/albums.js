@@ -49,26 +49,45 @@ const addSong = (song) => {
 // Thunks
 export const fetchAlbums = () => async (dispatch) => {
   const res = await csrfFetch("/api/albums", {
-    method: "GET"
+    method: "GET",
   });
   const data = res.json();
   dispatch(setAlbums(data));
   return data;
 };
 
-export const createAlbum = ({album})
-
-export const editComment =
-  ({ id, body }) =>
+export const createAlbum =
+  ({ album }) =>
   async (dispatch) => {
-    const res = await csrfFetch(`/api/comments/${id}`, {
-      method: "PUT",
-      body: JSON.stringify({ body }),
+    const res = await csrfFetch("/api/albums", {
+      method: "POST",
+      body: JSON.stringify({ album }),
     });
     const data = await res.json();
-    dispatch(editMyComment(data));
-    return res;
+    dispatch(addAlbum(data));
+    return data;
   };
+
+export const updateAlbum =
+  ({ album }) =>
+  async (dispatch) => {
+    const res = await csrfFetch(`/api/albums/${album.id}`, {
+      method: "PUT",
+      body: JSON.stringify({ album }),
+    });
+    const data = await res.json();
+    dispatch(editAlbum(data));
+    return data;
+  };
+
+export const removeAlbum = (albumId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/albums/${albumId}`, {
+    method: "DELETE"
+  });
+  if (res.ok) dispatch(deleteAlbum(albumId));
+  return res;
+}
+
 
 const commentsReducer = (state = {}, action) => {
   switch (action.type) {
