@@ -18,13 +18,11 @@ body {
     margin: 0 0 85px 0;
     min-width: 550px;
     position: relative;
-    z-index: -99;
-    background-color: var(--secondary-dark);
+    background-color: var(--secondary);
 }
 
 #root {
     position: relative;
-    z-index: -100;
 }
 
 .queue-content-outer {

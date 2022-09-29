@@ -4,7 +4,6 @@
     height: 60px;
     border-bottom: 1px solid var(--secondary-dark);
     width: 100%;
-    position: relative;
 }
 
 .song-playlist-preview:hover {

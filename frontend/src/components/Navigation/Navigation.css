@@ -112,7 +112,8 @@ a {
   min-width: 200px;
   position: absolute;
   top: 50px;
-  margin-right: auto;
+  right: 5vw;
+  border: 1px solid var(--secondary-dark);
 }
 
 #logout-button {
@@ -120,7 +121,7 @@ a {
   padding: 10px 15px;
   cursor: pointer;
   width: 10vw;
-  min-width: 200px;
+  min-width: 198px;
   height: 52px;
   text-align: left;
   background-color: var(--secondary-light);
@@ -150,6 +151,6 @@ a {
 
 @media (max-width: 1450px) {
   #drop-menu {
-    right: 1vw;
+    right: 2vw;
   }
  }
