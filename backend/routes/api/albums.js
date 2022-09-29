@@ -112,6 +112,7 @@ router.post(
 router.put(
   "/:albumId",
   requireAuth,
+  singleMulterUpload("image"),
   validateAlbum,
   asyncHandler(async (req, res, next) => {
     const albumId = req.params.albumId;
@@ -119,23 +120,22 @@ router.put(
     const album = await Album.findByPk(albumId);
     if (album) {
       if (album.userId === userId) {
-        const { title, description, imageUrl } = req.body;
-        await album.update({
-          title,
-          description,
-          previewImage: imageUrl,
-        });
-        const updatedAlbum = {
-          id: album.id,
-          userId: album.userId,
-          title: album.title,
-          description: album.description,
-          createdAt: album.createdAt,
-          updatedAt: album.updatedAt,
-          previewImage: album.previewImage,
-        };
-        res.status(200);
-        return res.json(updatedAlbum);
+        try {
+          const { title, description } = req.body;
+          let coverImage;
+          req.file
+            ? (coverImage = await singlePublicFileUpload(req.file))
+            : null;
+          await album.update({
+            title,
+            description,
+            previewImage: coverImage?.url || null,
+          });
+          res.status(201);
+          return res.json(album);
+        } catch (err) {
+          res.status(500).json(err);
+        }
       } else {
         res.status(403);
         res.json({ message: "Forbidden", statusCode: 403 });

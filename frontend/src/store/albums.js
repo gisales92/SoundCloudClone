@@ -89,7 +89,7 @@ export const removeAlbum = (albumId) => async (dispatch) => {
 }
 
 
-const commentsReducer = (state = {}, action) => {
+const albumsReducer = (state = {}, action) => {
   switch (action.type) {
     case ADD_COMMENT:
       return { ...state, detail: action.comment };
@@ -101,4 +101,4 @@ const commentsReducer = (state = {}, action) => {
       return state;
   }
 };
-export default commentsReducer;
+export default albumsReducer;
