@@ -32,7 +32,7 @@ function Playlists({ userId }) {
         {mine ? (
           <div className="create-playlist-container">
             <CreatePlaylistModal />
-            <p>Create new playlist</p>
+            <p className="create-playlist">Create new playlist</p>
           </div>
         ) : null}
         <div className="loaded-playlists">

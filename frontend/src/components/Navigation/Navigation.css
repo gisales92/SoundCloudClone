@@ -4,10 +4,10 @@ header {
   top: 0;
   height: 50px;
   width: 100vw;
-  min-width: 550px;
+  min-width: 650px;
   margin: 0;
   padding: 0;
-
+  z-index: 100;
 }
 
 #header-content {
@@ -127,6 +127,7 @@ a {
   text-align: left;
   background-color: var(--secondary-light);
   border: none;
+  z-index: 2;
 }
 
 #logout-button:hover {

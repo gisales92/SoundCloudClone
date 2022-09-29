@@ -4,8 +4,6 @@
   /* max-width: 1250px; */
   width: 90%;
   margin: auto;
-  position: relative;
-  z-index: -3;
   }
 
 .playlist-detail-header {
@@ -22,7 +20,6 @@
   );
   display: block;
   position: relative;
-  z-index: -2;
 }
 
 .playlist-detail-sub-title {
@@ -55,12 +52,12 @@
   top: 20px;
   background-color: var(--secondary);
   padding: 10px;
-  z-index: -1;
   object-fit: cover;
 }
 
 .playlist-actions {
   border-bottom: 1px solid var(--secondary-dark);
+  width: 100%;
 }
 
 .delete-playlist-button {
@@ -88,16 +85,11 @@
   cursor: pointer;
 }
 
-.playlist-songs {
-  margin: 10px auto 0px auto;
-  max-width: 1250px;
-  padding: 0 25px 10px 25px;
-}
-
 .playlist-songs-list {
  display: flex;
  flex-direction: column;
  width: 100%;
+ padding: 15px;
 }
 
 .song-header {
