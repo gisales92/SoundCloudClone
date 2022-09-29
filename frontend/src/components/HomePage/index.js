@@ -19,10 +19,8 @@ function HomePage() {
       <ul className="index-songs-list">
         {Object.keys(songs)?.map((songId) => {
           if (!isNaN(parseInt(songId))) {
-            console.log(parseInt(songId))
             return <SongListThumb key={songId} song={songs[songId]} />;
           }
-
         })}
       </ul>
     </div>
