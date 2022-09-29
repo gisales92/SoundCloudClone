@@ -35,3 +35,10 @@
 .album-preview:hover {
     cursor: pointer;
 }
+
+.album-container {
+    background-color: #ffffff;
+    width: 90%;
+    margin: auto;
+    padding: 15px;
+}

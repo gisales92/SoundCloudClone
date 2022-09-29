@@ -12,6 +12,7 @@ import "./Albums.css";
 function AlbumDetail() {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
+  const [updated, setUpdated] = useState(false);
   const match = useRouteMatch({
     path: "/albums/:albumId",
     exact: true,
@@ -35,14 +36,15 @@ function AlbumDetail() {
     }
     if (loaded && album) {
       getArtist(album.userId);
+      setUpdated(true);
     }
   }, [loaded, album]);
 
   return (
-    album && (
+    album && updated && (
       <div className="album-container">
         <h2 className="album-title">{album.title}</h2>
-        <h3 className="album-artist">{artist.username}</h3>
+        <h3 className="album-artist">{artist?.username}</h3>
       </div>
     )
   );
