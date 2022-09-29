@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { userSelector } from "../../store/session";
 import ProfileButton from "./ProfileButton";
-import LoginFormModal from "../LoginFormModal";
+import LoginFormButton from "../LoginFormModal/button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faUserPlus} from "@fortawesome/free-solid-svg-icons";
 import "./Navigation.css";
@@ -32,7 +32,7 @@ function Navigation() {
             ) : null}
             {!user ? (
               <li className="nav-button-outer">
-                <LoginFormModal className="user-nav" />
+                <LoginFormButton className="user-nav" />
               </li>
             ) : null}
             {user ? (
