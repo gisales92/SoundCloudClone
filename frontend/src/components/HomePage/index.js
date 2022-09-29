@@ -18,7 +18,11 @@ function HomePage() {
       <h3 className="sub-heading">Discover Songs</h3>
       <ul className="index-songs-list">
         {Object.keys(songs)?.map((songId) => {
-          return <SongListThumb key={songId} song={songs[songId]} />;
+          if (!isNaN(parseInt(songId))) {
+            console.log(parseInt(songId))
+            return <SongListThumb key={songId} song={songs[songId]} />;
+          }
+
         })}
       </ul>
     </div>
