@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import "./LoginForm.css";
 
@@ -33,7 +34,7 @@ function LoginForm() {
   return (
     <form onSubmit={handleSubmit}>
       <fieldset id="login-fieldset">
-        <h2>Log in!</h2>
+        <h2>Log in</h2>
         <ul className="login-errors-list">
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
@@ -90,6 +91,7 @@ function LoginForm() {
           Proceed as Guest
         </button>
       </div>
+      <p className="modal-footer">Don't have an account? <Link className="footer-link" to={"/signup"}>Sign up for one here</Link></p>
     </form>
   );
 }

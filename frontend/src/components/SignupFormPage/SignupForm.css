@@ -20,27 +20,6 @@
     border-radius: 10px;
 }
 
-label {
-    font-size: 18pt;
-    display: flex;
-    text-align: center;
-    margin: auto;
-}
-
-input {
- margin: auto;
- border-radius: 5px;
- font-size: 18px;
- line-height: 24px;
- padding: 7px 8px;
- width: 25vw;
- min-width: 190px;
-}
-
-input:focus {
-    background-color: var(--secondary);
-}
-
 .errors-list {
     display: flex;
     flex-direction: column;

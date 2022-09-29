@@ -1,8 +1,3 @@
-#modal-content {
-    border-radius: 5px;
-    min-width: 580px;
-}
-
 #new-playlist-form-container {
     display: flex;
     flex-direction: column;

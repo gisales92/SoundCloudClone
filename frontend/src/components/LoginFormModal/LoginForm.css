@@ -17,20 +17,6 @@ legend {
     padding: 5px 30px;
 }
 
-.login-input {
-    margin: auto;
-    border-radius: 5px;
-    font-size: 18px;
-    line-height: 24px;
-    padding: 7px 8px;
-    width: 25vw;
-    min-width: 255px;
-   }
-
-input:focus {
-    background-color: var(--secondary);
-}
-
 .login-errors-list {
     display: flex;
     flex-direction: column;
