@@ -19,7 +19,7 @@ body {
     min-width: 550px;
     position: relative;
     z-index: -99;
-    background-color: var(--secondary);
+    background-color: var(--secondary-dark);
 }
 
 #root {
@@ -49,12 +49,20 @@ body {
 .audio-player-outer {
     height: 85px;
     background-color: #333;
+    width: 75%;
+    margin: auto;
+}
+
+.audio-player-container {
+    width: 100%;
     position: fixed;
     bottom: 0px;
     left: 0px;
     right: 0px;
     margin-bottom: 0px;
     border-top: 1px solid #000000;
+    background-color: #ffffff;
+    height: fit-content;
 }
 
 .d6f4a6 {

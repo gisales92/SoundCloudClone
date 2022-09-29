@@ -37,9 +37,9 @@ function ProfileButton() {
 
       {showMenu ? (
         <div id="drop-menu">
-          <NavLink className="user-nav-link" to="/">
+          {/* <NavLink className="user-nav-link" to="/">
             My Profile
-          </NavLink>
+          </NavLink> */}
           <NavLink className="user-nav-link" to="/my/playlists">
             My Playlists
           </NavLink>

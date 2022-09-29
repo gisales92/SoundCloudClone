@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  AudioPlayerControlSprite,
-  AudioPlayer,
-} from "react-audio-player-pro";
+import { AudioPlayerControlSprite, AudioPlayer } from "react-audio-player-pro";
 import reactAudioPlayerProStyle from "react-audio-player-pro/dist/style.css";
 
 export const audioTrackList = [
@@ -28,10 +25,12 @@ export const audioTrackList = [
 
 export function NewAudioPlayer() {
   return (
-    <div className="audio-player-outer">
-      <AudioPlayerControlSprite />
+    <div className="audio-player-container">
+      <div className="audio-player-outer">
+        <AudioPlayerControlSprite />
 
-      <AudioPlayer trackList={audioTrackList} />
+        <AudioPlayer trackList={audioTrackList} />
+      </div>
     </div>
   );
 }
