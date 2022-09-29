@@ -33,7 +33,7 @@ ul {
   color: white;
   text-decoration: none;
   margin: auto 0;
-  font-size: 12pt;
+  font-size: 16px;
   font-weight: 100;
   text-align: center;
 }
@@ -72,10 +72,11 @@ a {
 }
 
 #login-button {
-  all: unset;
   color: white;
-  font-size: 12pt;
+  font-size: 16px;
   font-weight: 100;
+  background-color: transparent;
+  border: none;
 }
 
 #login-button:hover {
@@ -117,7 +118,7 @@ a {
 }
 
 #logout-button {
-  font-size: 18px;
+  font-size: 16px;
   padding: 10px 15px;
   cursor: pointer;
   width: 10vw;
@@ -134,7 +135,7 @@ a {
 }
 
 .user-nav-link {
-  font-size: 18px;
+  font-size: 16px;
   width: 100%;
   min-width: 100px;
   padding: 15px 10px;
