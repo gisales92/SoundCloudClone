@@ -25,11 +25,16 @@ function AllAlbums() {
       <ul className="all-albums-list">
         {Object.keys(albums).map((albumId) => {
           return (
-            <Link to={`/albums/${albumId}`} >
-            <li key={albumId} className="album-preview">
-                <img src={albums[albumId].previewImage} className="album-preview cover-image"/>
-              <h4 className="album-preview-title">{albums[albumId].title}</h4>
-            </li>
+            <Link to={`/albums/${albumId}`}>
+              <li key={albumId} className="album-preview">
+                <img
+                  src={albums[albumId].previewImage}
+                  className="album-preview cover-image"
+                  crossOrigin=""
+                  alt="album cover"
+                />
+                <h4 className="album-preview-title">{albums[albumId].title}</h4>
+              </li>
             </Link>
           );
         })}

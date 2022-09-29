@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Switch, Route, Redirect } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormModal";
-import SignupFormPage from "./components/SignupFormPage";
+import SignUpModal from "./components/SignupFormPage";
 import HomePage from "./components/HomePage";
 import Playlists from "./components/Playlists";
 import * as sessionActions from "./store/session";
@@ -41,7 +41,7 @@ function App() {
             <LoginFormPage />
           </Route>
           <Route path="/signup">
-            <SignupFormPage />
+            <SignUpModal />
           </Route>
           <Route exact path="/albums">
             <AllAlbums />
