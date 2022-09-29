@@ -11,6 +11,8 @@ import PlaylistDetail from "./components/PlaylistDetail";
 import SongDetail from "./components/SongDetail";
 import { NewAudioPlayer } from "./components/NewAudioPanel";
 import AllAlbums from "./components/Albums";
+import {fetchSongs} from "./store/song";
+import AlbumDetail from "./components/Albums/AlbumDetail";
 
 function App() {
   const dispatch = useDispatch();
@@ -19,6 +21,13 @@ function App() {
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
+
+  useEffect(() => {
+    async function getSongs() {
+      await dispatch(fetchSongs());
+    }
+    getSongs();
+  }, []);
 
   return (
     isLoaded && (
@@ -36,17 +45,15 @@ function App() {
           </Route>
           <Route exact path="/albums">
             <AllAlbums />
-            {/* Add all playlists page and add to nav bar */}
+          </Route>
+          <Route exact path="/albums/:albumId">
+            <AlbumDetail />
           </Route>
           <Route exact path="/my/playlists">
             {user ? <Playlists userId={user.id}/> : <Redirect to="/" />}
           </Route>
           <Route exact path="/playlists/:playlistId">
             <PlaylistDetail />
-          </Route>
-          <Route exact path="/songs">
-            ALL SONGS COMPONENT
-            {/* TODO add all songs route */}
           </Route>
           <Route exact path="/songs/:songId">
             <SongDetail />

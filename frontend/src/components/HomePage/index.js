@@ -10,13 +10,6 @@ function HomePage() {
   const dispatch = useDispatch();
   const songs = useSelector((state) => state.songs);
 
-  useEffect(() => {
-    async function getSongs() {
-      await dispatch(fetchSongs());
-    }
-    getSongs();
-  }, []);
-
   return (
     <div className="home">
       <h2 id="home-header">

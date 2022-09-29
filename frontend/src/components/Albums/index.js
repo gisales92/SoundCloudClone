@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { fetchAlbums } from "../../store/albums";
 import "./Albums.css";
 
@@ -24,10 +25,12 @@ function AllAlbums() {
       <ul className="all-albums-list">
         {Object.keys(albums).map((albumId) => {
           return (
+            <Link to={`/albums/${albumId}`} >
             <li key={albumId} className="album-preview">
                 <img src={albums[albumId].previewImage} className="album-preview cover-image"/>
               <h4 className="album-preview-title">{albums[albumId].title}</h4>
             </li>
+            </Link>
           );
         })}
       </ul>
