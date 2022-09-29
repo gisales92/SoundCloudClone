@@ -56,24 +56,38 @@ export const fetchAlbums = () => async (dispatch) => {
   return data;
 };
 
-export const createAlbum =
-  ({ album }) =>
-  async (dispatch) => {
-    const res = await csrfFetch("/api/albums", {
-      method: "POST",
-      body: JSON.stringify({ album }),
-    });
-    const data = await res.json();
-    dispatch(addAlbum(data));
-    return data;
-  };
+export const createAlbum = (album) => async (dispatch) => {
+  const formData = new FormData();
+  const { title, description, image } = album;
+  formData.append("title", title);
+  formData.append("description", description);
+  formData.append("image", image);
+  const res = await csrfFetch("/api/albums", {
+    method: "POST",
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    body: formData,
+  });
+  const data = await res.json();
+  dispatch(addAlbum(data));
+  return data;
+};
 
 export const updateAlbum =
   ({ album }) =>
   async (dispatch) => {
+    const formData = new FormData();
+    const { title, description, image } = album;
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("image", image);
     const res = await csrfFetch(`/api/albums/${album.id}`, {
       method: "PUT",
-      body: JSON.stringify({ album }),
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      body: formData,
     });
     const data = await res.json();
     dispatch(editAlbum(data));
@@ -82,12 +96,15 @@ export const updateAlbum =
 
 export const removeAlbum = (albumId) => async (dispatch) => {
   const res = await csrfFetch(`/api/albums/${albumId}`, {
-    method: "DELETE"
+    method: "DELETE",
   });
   if (res.ok) dispatch(deleteAlbum(albumId));
   return res;
-}
+};
 
+// export const newSong = (song) => async (dispatch) => {
+//   const res
+// }
 
 const albumsReducer = (state = {}, action) => {
   switch (action.type) {
