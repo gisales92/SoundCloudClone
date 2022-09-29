@@ -1,0 +1,27 @@
+.all-albums-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.cover-image {
+    height: 300px;
+    width: 300px;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/9/94/U%2B266B_w.svg");
+    background-clip: border-box;
+    background-color: #ffffff;
+    background-position: center;
+    background-repeat: no-repeat
+ }
+
+.album-preview {
+    display: flex;
+    flex-direction: column;
+}
+
+.all-albums-container {
+    width: 90%;
+    margin: auto;
+}

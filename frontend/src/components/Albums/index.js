@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { fetchAlbums } from "../../store/albums";
+import "./Albums.css";
 
 function AllAlbums() {
   const dispatch = useDispatch();
@@ -21,8 +20,17 @@ function AllAlbums() {
 
   return (
     <div className="all-albums-container">
-      <h2 id="albums header">All Albums Component</h2>
-      <h3 className="sub-heading">Discover Songs</h3>
+      <h2 id="albums header">All Albums</h2>
+      <ul className="all-albums-list">
+        {Object.keys(albums).map((albumId) => {
+          return (
+            <li key={albumId} className="album-preview">
+                <img src={albums[albumId].previewImage} className="album-preview cover-image"/>
+              <h4 className="album-preview-title">{albums[albumId].title}</h4>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }
