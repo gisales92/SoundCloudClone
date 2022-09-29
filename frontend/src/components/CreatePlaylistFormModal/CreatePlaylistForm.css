@@ -1,8 +1,3 @@
-#modal-content {
-    border-radius: 5px;
-    min-width: 580px;
-}
-
 #new-playlist-form-container {
     display: flex;
     flex-direction: column;
@@ -13,55 +8,9 @@ form {
     flex-direction: column;
 }
 
-.new-playlist-header {
-    width: fit-content;
-    min-width: 255px;
-    margin: auto;
-    text-align: center;
-    text-decoration: underline;
-}
-
-
-#new-playlist-fieldset {
-    border: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 5px 30px;
-}
-
-.form-input {
-    margin: auto;
-    border-radius: 5px;
-    font-size: 18px;
-    line-height: 24px;
-    padding: 7px 0;
-    width: 25vw;
-    min-width: 255px;
-   }
-
 .drop-input {
     display: flex;
     flex-direction: column;
-}
-
-input {
-    min-width: 255px;
-}
-
-#new-playlist-form-submit {
-    width: 25vw;
-    min-width: 255px;
-    height: 5vmax;
-    margin: 10px auto;
-    border-radius: 5px;
-    font-size: 2.4vmax;
-    padding: 10px 15px;
-    background-color: var(--primary);
-    color: white;
-    text-shadow: 1px 1px 2px black;
-    cursor: pointer;
-    text-align: center;
 }
 
 input:focus {
@@ -98,4 +47,8 @@ input:focus {
     width: 563.5px;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+#new-playlist-form-submit {
+    margin: 20px auto !important;
 }

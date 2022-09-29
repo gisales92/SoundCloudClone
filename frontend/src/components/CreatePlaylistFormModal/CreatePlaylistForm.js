@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
 import * as playlistActions from "../../store/playlist";
+import "./CreatePlaylistForm.css";
 
 function CreatePlaylistForm({ closeModal }) {
   const dispatch = useDispatch();

@@ -1,8 +1,3 @@
-#modal-content {
-    border-radius: 5px;
-    min-width: 280px;
-}
-
 form {
     display: flex;
     flex-direction: column;
@@ -11,6 +6,7 @@ form {
 legend {
     font-size: 3vh;
     text-align: center;
+    padding: 15px;
 }
 
 #login-fieldset {
@@ -30,18 +26,6 @@ legend {
     width: 25vw;
     min-width: 255px;
    }
-
-.login-modal-button {
-    width: 25vw;
-    min-width: 255px;
-    height: 5vmax;
-    margin: 10px auto;
-    padding: 10px 15px;
-    background-color: var(--primary);
-    color: white;
-    cursor: pointer;
-    text-align: center;
-}
 
 input:focus {
     background-color: var(--secondary);

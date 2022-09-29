@@ -13,28 +13,27 @@ function LoginForm() {
     e.preventDefault();
     setErrors([]);
 
-    return dispatch(sessionActions.login({ email: email.toLowerCase(), password })).catch(
-      async (res) => {
-        setPassword("");
-        const data = await res.json();
-        if (data && data.message) {
-          const newErrors = ["Please correct the following error(s):"];
-          if (data.errors) {
-            newErrors.push(...Object.values(data.errors));
-          } else {
-            newErrors.push(Object.values(data.message));
-          }
-          setErrors(newErrors);
+    return dispatch(
+      sessionActions.login({ email: email.toLowerCase(), password })
+    ).catch(async (res) => {
+      setPassword("");
+      const data = await res.json();
+      if (data && data.message) {
+        const newErrors = ["Please correct the following error(s):"];
+        if (data.errors) {
+          newErrors.push(...Object.values(data.errors));
+        } else {
+          newErrors.push(Object.values(data.message));
         }
+        setErrors(newErrors);
       }
-    );
-
+    });
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <fieldset id="login-fieldset">
-        <legend>Log in!</legend>
+        <h2>Log in!</h2>
         <ul className="login-errors-list">
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
@@ -65,13 +64,32 @@ function LoginForm() {
           />
         </div>
       </fieldset>
-      <button className="login-modal-button" id="login-form-submit" type="submit" name="login">
-        Log In
-      </button>
-      <button id="demo-user" className="login-modal-button" name="demo-user" onClick={(e) => {
-        e.preventDefault();
-        dispatch(sessionActions.login({ email: "demo@user.io", password: "password" }))
-      }}>Proceed as Guest</button>
+      <div className="form-buttons">
+        <button
+          className="login-modal-button"
+          id="login-form-submit"
+          type="submit"
+          name="login"
+        >
+          Log In
+        </button>
+        <button
+          id="demo-user"
+          className="login-modal-button"
+          name="demo-user"
+          onClick={(e) => {
+            e.preventDefault();
+            dispatch(
+              sessionActions.login({
+                email: "demo@user.io",
+                password: "password",
+              })
+            );
+          }}
+        >
+          Proceed as Guest
+        </button>
+      </div>
     </form>
   );
 }
