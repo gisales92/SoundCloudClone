@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import * as commentActions from "../../store/comment";
+import { getSongDetail } from "../../store/song";
 
 export default function AddCommentForm({ props }) {
   const { setShowModal, songId } = props;
@@ -25,7 +26,8 @@ export default function AddCommentForm({ props }) {
         body: commentBody,
       })
     )
-      .then(() => {
+      .then(async () => {
+        await dispatch(getSongDetail(songId))
         setShowModal(false);
         history.push(`/songs/${songId}`)
       })

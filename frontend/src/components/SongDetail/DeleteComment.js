@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import * as commentActions from "../../store/comment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan} from "@fortawesome/free-solid-svg-icons";
+import { getSongDetail } from "../../store/song";
 
 export default function DeleteComment({ comment }) {
   const history = useHistory();
@@ -13,7 +14,8 @@ export default function DeleteComment({ comment }) {
     return dispatch(
         commentActions.deleteComment(comment.id)
     )
-      .then(() => {
+      .then(async () => {
+        await dispatch(getSongDetail(comment.songId))
         window.alert("Comment has been successfully deleted");
         history.push(`/songs/${comment.songId}`);
       })
