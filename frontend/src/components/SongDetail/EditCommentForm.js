@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import * as commentActions from "../../store/comment";
+import { getSongDetail } from "../../store/song";
 
 function EditPlaylistForm({ props }) {
   const { setShowModal, comment } = props;
@@ -25,7 +26,8 @@ function EditPlaylistForm({ props }) {
         body: commentBody,
       })
     )
-      .then(() => {
+      .then(async () => {
+        await dispatch(getSongDetail(comment.songId))
         setShowModal(false);
         history.push(`/songs/${comment.songId}`);
       })
