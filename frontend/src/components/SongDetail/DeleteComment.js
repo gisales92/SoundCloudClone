@@ -1,6 +1,8 @@
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import * as commentActions from "../../store/comment";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan} from "@fortawesome/free-solid-svg-icons";
 
 export default function DeleteComment({ comment }) {
   const history = useHistory();
@@ -23,8 +25,8 @@ export default function DeleteComment({ comment }) {
 
 
   return (
-    <button type="button" className="delete-Comment-button" onClick={handleClick}>
-      Delete
+    <button type="button" className="song-detail-button" onClick={handleClick}>
+      Delete <FontAwesomeIcon icon={faTrashCan} />
     </button>
   );
 }

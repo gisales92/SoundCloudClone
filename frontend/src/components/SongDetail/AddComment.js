@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { userSelector } from "../../store/session";
 import { Modal } from "../../context/Modal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMessage} from "@fortawesome/free-solid-svg-icons";
 import "../AddCommentForm/AddCommentForm.css"
 
 function AddCommentModal({songId}) {
@@ -17,11 +19,11 @@ function AddCommentModal({songId}) {
 
   return (
     <>
-      <button type="button"  className="add-comment-button"
+      <button type="button"  className="song-detail-button"
         onClick={(e) => {
           e.preventDefault();
           setShowModal(true);
-        }}>Add Comment</button>
+        }}>Add Comment <FontAwesomeIcon icon={faMessage} /></button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <AddCommentForm props={{setShowModal, songId}}/>

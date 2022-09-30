@@ -76,3 +76,18 @@
     background-color: #333;
     text-align: center;
 }
+
+.song-detail-button {
+    border: 1px solid var(--secondary-dark);
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 10px 20px;
+    width: fit-content;
+    margin: 15px 0;
+}
+
+.song-detail-button:hover {
+    cursor: pointer;
+    background-color: var(--secondary);
+}

@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { userSelector } from "../../store/session";
 import { Modal } from "../../context/Modal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen} from "@fortawesome/free-solid-svg-icons";
 
 function EditCommentModal({comment}) {
   const [showModal, setShowModal] = useState(false);
@@ -16,11 +18,11 @@ function EditCommentModal({comment}) {
 
   return (
     <>
-      <button type="button"  className="edit-comment-button"
+      <button type="button"  className="song-detail-button"
         onClick={(e) => {
           e.preventDefault();
           setShowModal(true);
-        }}>Edit</button>
+        }}>Edit <FontAwesomeIcon icon={faPen} /></button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <EditCommentForm props={{setShowModal, comment}}/>

@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { userSelector } from "../../store/session";
 import { Modal } from "../../context/Modal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus} from "@fortawesome/free-solid-svg-icons";
 
 function AddSongToPlaylistModal({song}) {
   const [showModal, setShowModal] = useState(false);
@@ -16,11 +18,11 @@ function AddSongToPlaylistModal({song}) {
 
   return (
     <>
-      <button type="button"  className="playlist-add-button"
+      <button type="button"  className="song-detail-button"
         onClick={(e) => {
           e.preventDefault();
           setShowModal(true);
-        }}>Add Song To Playlist</button>
+        }}>Add Song To Playlist <FontAwesomeIcon icon={faPlus} /></button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <AddSongToPlaylistForm props={{setShowModal, song}}/>

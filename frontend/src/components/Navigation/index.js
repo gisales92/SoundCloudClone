@@ -5,7 +5,7 @@ import ProfileButton from "./ProfileButton";
 import LoginFormButton from "../LoginFormModal/button";
 import SignUpButton from "../SignupFormPage/button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay, faUserPlus} from "@fortawesome/free-solid-svg-icons";
+import { faPlay} from "@fortawesome/free-solid-svg-icons";
 import "./Navigation.css";
 
 function Navigation() {

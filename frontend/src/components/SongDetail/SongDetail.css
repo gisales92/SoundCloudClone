@@ -79,10 +79,6 @@
     line-height: 60px;
   }
 
-  .song-comment:hover {
-    background-color: var(--secondary);
-  }
-
   .comment-actions {
     margin: auto 0px auto auto;
   }
@@ -93,21 +89,9 @@
   }
 
   .song-actions {
-   margin-top: 10px;
-  }
-
-  .playlist-add-button,
-  .add-comment-button {
-    padding: 10px 15px;
-    border-radius: 5px;
-    margin-left: 15px;
-    background-color: var(--secondary);
-  }
-
-  .playlist-add-button:hover,
-  .add-comment-button:hover {
-    cursor: pointer;
-    background-color: var(--secondary-dark);
+   margin: 10px 0 0 25px;
+   display: flex;
+   gap: 20px;
   }
 
   .playlist-add-song-header {
