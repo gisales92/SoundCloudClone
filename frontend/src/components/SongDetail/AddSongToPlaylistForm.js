@@ -5,7 +5,6 @@ import * as playlistActions from "../../store/playlist";
 
 function AddSongToPlaylistForm({ props }) {
   const { setShowModal, song } = props;
-  console.log("Song prop: ", song)
   const dispatch = useDispatch();
   const [updated, setUpdated] = useState(false);
   const sessionUser = useSelector((state) => state.session.user);
@@ -21,7 +20,7 @@ function AddSongToPlaylistForm({ props }) {
   }, [updated, dispatch, sessionUser]);
 
   const loadedPlaylists = useSelector(
-    (state) => state.playlists?.loadedPlaylists?.Playlists
+    (state) => state.playlists?.userPlaylists
   );
 
   if (!sessionUser) {
@@ -56,9 +55,9 @@ function AddSongToPlaylistForm({ props }) {
   };
 
 
-  return (
+  return loadedPlaylists && (
     <div className="playlist-add-song-form-container">
-      <h2 className="playlist-add-song-header">{`Add "${song.title}" to one of your playlists:`}</h2>
+      <h2 className="playlist-add-song-header">Add <span className="song-title-preview">{`${song.title}`}</span> to a playlist:</h2>
       <form onSubmit={handleSubmit}>
         <ul className="playlist-add-song-errors-list">
           {errors.map((error, idx) => (
@@ -66,12 +65,13 @@ function AddSongToPlaylistForm({ props }) {
           ))}
         </ul>
         <fieldset id="playlist-add-song-fieldset">
-          <div className="add-song-form-input">
-            <label htmlFor="playlist-add-song-name">Select one of your playlists:</label>
+          <div className="form-input" id="select-playlist-input">
+            <label htmlFor="playlist-add-song-name">Select playlist:</label>
             <select className="playlist-add-song-name" value={selectedPlaylist} onChange={e => {
                 e.preventDefault();
                 setSelectedPlaylist(e.target.value)}}>
-                {loadedPlaylists?.map((playlistObj) => {
+                  <option value={null}>-- Select one --</option>
+                {Object.values(loadedPlaylists)?.map((playlistObj) => {
                     return (<option key={playlistObj.id} value={playlistObj.id}>{playlistObj.name}</option>)
                 })}
             </select>

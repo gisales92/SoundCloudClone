@@ -1,124 +1,104 @@
 .song-detail {
-    background-color: var(--secondary-light);
-    border-radius: 5px;
-    width: 90%;
-    max-width: 1250px;
-    margin: auto;
-    }
+  background-color: var(--secondary-light);
+  border-radius: 5px;
+  width: 90%;
+  max-width: 1250px;
+  margin: auto;
+}
 
-  .song-detail.left {
-    display: flex;
-    flex-direction: column;
-    justify-self: flex-end;
-    margin: 20px 10px 20px 20px;
-    height: fit-content;
-    max-height: 100%;
-    background-color: transparent;
-    gap: 15px;
-  }
+.song-detail.left {
+  display: flex;
+  flex-direction: column;
+  justify-self: flex-end;
+  margin: 20px 10px 20px 20px;
+  height: fit-content;
+  max-height: 100%;
+  background-color: transparent;
+  gap: 15px;
+}
 
-  .song-detail-header {
-    width: 100%;
-    margin: auto;
-    height: 380px;
-    background: rgb(41, 67, 78);
-    background: linear-gradient(
-      270deg,
-      rgba(41, 67, 78, 1) 12%,
-      rgba(84, 110, 122, 1) 43%,
-      rgba(189, 185, 183, 1) 100%
-    );
-    display: flex;
-  }
+.song-detail-header {
+  width: 100%;
+  margin: auto;
+  height: 380px;
+  background: rgb(41, 67, 78);
+  background: linear-gradient(
+    270deg,
+    rgba(41, 67, 78, 1) 12%,
+    rgba(84, 110, 122, 1) 43%,
+    rgba(189, 185, 183, 1) 100%
+  );
+  display: flex;
+}
 
-  .song-detail-sub-title {
-    width: fit-content;
-    background-color: rgba(0, 0, 0, .8);
-    color: #ffffff;
-    margin: 0;
-    font-size: 14px;
-    font-weight: 100;
-    padding: 5px;
-  }
+.song-detail-sub-title {
+  width: fit-content;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 100;
+  padding: 5px;
+}
 
-  .song-detail-title {
-    line-height: 37px;
-    font-size: 24px;
-    font-weight: 100;
-    padding: 5px 0;
-    padding-right: 5px;
-    box-sizing: border-box;
-    width: fit-content;
-    margin-top: 10px;
-    background-color: rgba(0, 0, 0, .8);
-    color: #ffffff;
-  }
+.song-detail-title {
+  line-height: 37px;
+  font-size: 24px;
+  font-weight: 100;
+  padding: 5px 0;
+  padding-right: 5px;
+  box-sizing: border-box;
+  width: fit-content;
+  margin-top: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+}
 
-  .song-detail-thumb-img {
-    height: 340px;
-    width: 340px;
-    background-color: var(--secondary);
-    padding: 10px;
-    margin: 20px 20px 20px 0;
-  }
+.song-detail-thumb-img {
+  height: 340px;
+  width: 340px;
+  background-color: var(--secondary);
+  padding: 10px;
+  margin: 20px 20px 20px 0;
+}
 
-  .song-comments-list {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 0 25px 10px 25px;
-  }
+.song-comments-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 25px 10px 25px;
+}
 
-  .song-comment {
-    display: flex;
-    flex-direction: row;
-    height: fit-content;
-    border-bottom: 1px solid var(--secondary-dark);
-    width: 100%;
-    margin: 0;
-    line-height: 60px;
-  }
+.song-comment {
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+  border-bottom: 1px solid var(--secondary-dark);
+  width: 100%;
+  margin: 0;
+  line-height: 60px;
+}
 
-  .comment-actions {
-    margin: auto 0px auto auto;
-  }
+.comment-actions {
+  margin: auto 0px auto auto;
+}
 
-  .comment-actions button {
-    padding: 5px 15px;
-    margin-left: 15px;
-  }
+.comment-actions button {
+  padding: 5px 15px;
+  margin-left: 15px;
+}
 
-  .song-actions {
-   margin: 10px 0 0 25px;
-   display: flex;
-   gap: 20px;
-  }
+.song-actions {
+  margin: 10px 0 0 25px;
+  display: flex;
+  gap: 20px;
+}
 
-  .playlist-add-song-header {
-    width: fit-content;
-  }
+#select-playlist-input {
+  display: flex;
+  justify-content: space-between;
+}
 
-  #playlist-add-song-fieldset {
-    border: 0;
-  }
-
-  .add-song-form-input {
-    display: flex;
-    width: fit-content;
-    margin: auto;
-  }
-
-  .playlist-add-song-submit {
-    width: fit-content;
-    min-width: 255px;
-    height: 5vmax;
-    margin: 10px auto;
-    border-radius: 5px;
-    font-size: 2.4vmax;
-    padding: 10px 15px;
-    background-color: var(--primary);
-    color: white;
-    text-shadow: 1px 1px 2px black;
-    cursor: pointer;
-    text-align: center;
-  }
+.song-title-preview {
+  color: #333;
+}
