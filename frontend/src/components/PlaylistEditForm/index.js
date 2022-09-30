@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
 import * as playlistActions from "../../store/playlist";
+import "../CreatePlaylistFormModal/CreatePlaylistForm.css";
 
 function EditPlaylistForm({ props }) {
   const dispatch = useDispatch();
@@ -78,7 +79,7 @@ function EditPlaylistForm({ props }) {
             />
           </div>
           <div className="drop-input">
-            <p className="upload-cover-text">
+            <p className="dropzone-label">
               Upload a cover image for your playlist:
             </p>
             <section className="container">

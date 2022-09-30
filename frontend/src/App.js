@@ -11,13 +11,13 @@ import PlaylistDetail from "./components/PlaylistDetail";
 import SongDetail from "./components/SongDetail";
 import { NewAudioPlayer } from "./components/NewAudioPanel";
 import AllAlbums from "./components/Albums";
-import {fetchSongs} from "./store/song";
+import { fetchSongs } from "./store/song";
 import AlbumDetail from "./components/Albums/AlbumDetail";
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  const user = useSelector(sessionActions.userSelector)
+  const user = useSelector(sessionActions.userSelector);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -50,7 +50,7 @@ function App() {
             <AlbumDetail />
           </Route>
           <Route exact path="/my/playlists">
-            {user ? <Playlists userId={user.id}/> : <Redirect to="/" />}
+            {user ? <Playlists userId={user.id} /> : <Redirect to="/" />}
           </Route>
           <Route exact path="/playlists/:playlistId">
             <PlaylistDetail />
@@ -61,9 +61,7 @@ function App() {
           <Route exact path="/profile">
             {/* {TODO create a profile view} */}
           </Route>
-          <Route path="">
-            Sorry, we could not find that resource
-          </Route>
+          <Route path="">Sorry, we could not find that resource</Route>
         </Switch>
         <NewAudioPlayer />
       </>

@@ -1,20 +1,20 @@
 import { csrfFetch } from "./csrf";
 
 const GET_PLAYLIST_DETAIL = "playlists/getPlaylistDetail";
-const GET_PLAYLISTS = "playlists/getPlaylists";
+const USER_PLAYLISTS = "playlists/USER_PLAYLISTS";
 const EDIT_PLAYLIST = "playlists/editPlaylist";
 const DELETE_PLAYLIST = "playlists/deletePlaylist";
 const ADD_SONG_TO_PLAYLIST = "playlists/addSongToPlaylist"
-const SET_IMAGE = "playlists/SET_IMAGE";
+const NEW_PLAYLIST = "playlists/NEW_PLAYLIST";
 
-const setImage = (image) => ({
-  type: SET_IMAGE,
-  image,
+const newPlaylist = (playlist) => ({
+  type: NEW_PLAYLIST,
+  playlist,
 });
 
 export const getPlaylists = (playlists) => {
   return {
-    type: GET_PLAYLISTS,
+    type: USER_PLAYLISTS,
     playlists,
   };
 };
@@ -59,7 +59,7 @@ export const createPlaylist = (playlist) => async (dispatch) => {
     body: formData,
   });
   const data = await response.json();
-  dispatch(setImage(data.previewImage));
+  dispatch(newPlaylist(data));
   return response;
 };
 
@@ -68,7 +68,6 @@ export const getPlaylistsByUser = (userId) => async (dispatch) => {
 };
 
 export const getMyPlaylists = () => async (dispatch) => {
-  console.log("Action is running");
   const res = await csrfFetch("/api/my/playlists", {
     method: "GET",
   });
@@ -99,7 +98,7 @@ export const editMyPlaylist = (playlist) => async (dispatch) => {
   const formData = new FormData();
   const { name, image, id } = playlist;
   formData.append("name", name);
-  formData.append("image", image);
+  if (image !== null) formData.append("image", image);
   const response = await csrfFetch(`/api/playlists/${id}`, {
     method: "PUT",
     headers: {
@@ -126,10 +125,16 @@ export const addSong =
 
 const playlistsReducer = (state = {}, action) => {
   switch (action.type) {
-    case SET_IMAGE:
-      return { ...state, addImage: action.image };
-    case GET_PLAYLISTS:
-      return { ...state, loadedPlaylists: action.playlists };
+    case NEW_PLAYLIST:
+      const newKey = action.playlist.id;
+      return { ...state, userPlaylists: {...state.userPlaylists, [newKey]: action.playlist}};
+    case USER_PLAYLISTS:
+      const newState = {...state}
+      newState.userPlaylists = {};
+      action.playlists.Playlists.forEach((playlist) => {
+        newState.userPlaylists[playlist.id] = playlist;
+      });
+      return newState
     case GET_PLAYLIST_DETAIL:
       return { ...state, detail: action.playlist };
     case DELETE_PLAYLIST:
@@ -146,7 +151,7 @@ const playlistsReducer = (state = {}, action) => {
         Songs: state.detail.Songs
       } };
     case ADD_SONG_TO_PLAYLIST:
-      return {...state, loadedPlaylists: {[action.joinInfo.playlistId]: action.joinInfo.songId}}
+      return {...state, userPlaylists: {[action.joinInfo.playlistId]: action.joinInfo.songId}}
     default:
       return state;
   }

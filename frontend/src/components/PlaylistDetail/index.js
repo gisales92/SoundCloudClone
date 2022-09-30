@@ -31,7 +31,7 @@ function PlaylistDetail() {
     mine = true;
   }
 
-  return (
+  return playlistDetails && (
     <div className="playlist-detail-container">
       <div className="playlist-detail-header">
         <h2 className="playlist-detail-title">{playlistDetails?.name}</h2>
@@ -58,7 +58,7 @@ function PlaylistDetail() {
       <h4 className="song-header">Songs</h4>
       <div className="playlist-songs">
         <ul className="playlist-songs-list">
-          {playlistDetails?.Songs.map((song) => {
+          {playlistDetails?.Songs?.map((song) => {
             return <SongListThumb key={song.id} song={song} />;
           })}
         </ul>

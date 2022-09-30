@@ -13,6 +13,7 @@ function PlaylistTumbnails({ playlist }) {
           }
           className="playlist-thumb-img"
           crossOrigin=""
+          alt="playlist cover"
         />
         <p className="playlist-title">{name}</p>
       </Link>

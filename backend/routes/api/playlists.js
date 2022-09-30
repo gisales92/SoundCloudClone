@@ -147,10 +147,16 @@ router.put(
         try {
           let image;
           req.file ? (image = await singlePublicFileUpload(req.file)) : null;
-          await playlist.update({
-            name,
-            previewImage: image?.url || null,
-          });
+          if (image) {
+            await playlist.update({
+              name,
+              previewImage: image.url,
+            });
+          } else {
+            await playlist.update({
+              name,
+            });
+          }
 
           const updatedPlaylist = {
             id: await playlist.id,

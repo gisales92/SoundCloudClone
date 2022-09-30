@@ -6,24 +6,19 @@ export default function DeletePlaylist({ playlistId }) {
   const history = useHistory();
   const dispatch = useDispatch();
 
+  const handleClick = async (e) => {
+    await dispatch(PlaylistActions.deleteMyPlaylist(playlistId));
 
-  const handleClick = (e) => {
-    return dispatch(
-        PlaylistActions.deleteMyPlaylist(playlistId)
-    )
-      .then(() => {
-        window.alert("Playlist has been successfully deleted");
-        history.push("/my/playlists");
-      })
-      .catch(async (res) => {
-        window.alert("There's been an error");
-        }
-      );
+    window.alert("Playlist has been successfully deleted");
+    history.push("/my/playlists");
   };
 
-
   return (
-    <button type="button" className="delete-playlist-button" onClick={handleClick}>
+    <button
+      type="button"
+      className="delete-playlist-button"
+      onClick={handleClick}
+    >
       Delete
     </button>
   );

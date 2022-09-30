@@ -1,7 +1,8 @@
 .playlist-detail-container {
   background-color: var(--secondary-light);
   border-radius: 5px;
-  /* max-width: 1250px; */
+  min-width: 650px;
+  max-width: 1250px;
   width: 90%;
   margin: auto;
   }
@@ -58,6 +59,7 @@
 .playlist-actions {
   border-bottom: 1px solid var(--secondary-dark);
   width: 100%;
+  min-width: 650px;
 }
 
 .delete-playlist-button {
@@ -89,6 +91,7 @@
  display: flex;
  flex-direction: column;
  width: 100%;
+ min-width: 650px;
  padding: 15px;
 }
 

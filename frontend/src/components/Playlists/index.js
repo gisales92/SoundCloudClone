@@ -1,47 +1,39 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { userSelector } from "../../store/session";
 import CreatePlaylistModal from "../CreatePlaylistFormModal";
-import PlaylistTumbnails from "./playlistThumbnails";
+import PlaylistGrid from "./playlistGrid";
 import * as playlistActions from "../../store/playlist";
 import "./PlaylistPreview.css";
 
-function Playlists({ userId }) {
+function Playlists() {
   const dispatch = useDispatch();
-  const [updated, setUpdated] = useState(false);
-  let mine = false;
-  const currentUser = useSelector(userSelector);
-  if (currentUser?.id === userId) {
-    mine = true;
-  }
-  const loadedPlaylists = useSelector(
-    (state) => state.playlists?.loadedPlaylists?.Playlists
-  );
-
+  const [loaded, setLoaded] = useState(false);
   useEffect(() => {
-    if (mine) {
-      dispatch(playlistActions.getMyPlaylists());
-      setUpdated(true)
+    async function getPlaylists() {
+      await dispatch(playlistActions.getMyPlaylists());
     }
-  }, [updated, mine, dispatch]);
+    if (!loaded) {
+      getPlaylists();
+      setLoaded(true);
+    }
+  }, []);
 
   return (
-    <div id="playlist-preview">
-      <h2 id="playlist-header">{mine ? "Your Playlists" : "Playlists"}</h2>
-      <div className="playlist-content">
-        {mine ? (
+    loaded && (
+      <div id="playlist-preview">
+        <h2 id="playlist-header">Your Playlists</h2>
+        <div className="playlist-content">
           <div className="create-playlist-container">
             <CreatePlaylistModal />
             <p className="create-playlist">Create new playlist</p>
           </div>
-        ) : null}
-        <div className="loaded-playlists">
-          <ul className="playlist-grid">{loadedPlaylists?.map((playlistObj) => {
-            return <PlaylistTumbnails key={playlistObj.id} playlist={playlistObj} />
-          })}</ul>
+
+          <div className="loaded-playlists">
+            <PlaylistGrid />
+          </div>
         </div>
       </div>
-    </div>
+    )
   );
 }
 
