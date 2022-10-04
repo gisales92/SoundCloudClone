@@ -24,7 +24,7 @@ export default function SongListThumb({ song }) {
         artist,
         artwork: [{ src: previewImage, sizes: "500x500", type: "image/jpeg" }],
       },
-
+      crossOrigin: ""
     };
 
     if (audioTrackList[0].content === "Add a song to the queue") {
