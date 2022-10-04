@@ -13,6 +13,7 @@ import { NewAudioPlayer } from "./components/NewAudioPanel";
 import AllAlbums from "./components/Albums";
 import { fetchSongs } from "./store/song";
 import AlbumDetail from "./components/Albums/AlbumDetail";
+import Footer from "./components/About";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +37,7 @@ function App() {
         <Switch>
           <Route exact path="/">
             <HomePage />
+            <Footer />
           </Route>
           <Route path="/login">
             <LoginFormPage />

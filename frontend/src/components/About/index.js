@@ -6,6 +6,7 @@ import {
   faBook,
 } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
+import "./footer.css"
 
 const Footer = () => {
   const scrollToTop = () => {
