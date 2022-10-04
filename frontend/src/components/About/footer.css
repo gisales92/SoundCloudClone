@@ -30,12 +30,6 @@ footer {
     margin: 0;
 }
 
-.footer-logo {
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(193deg) brightness(105%) contrast(104%);
-    width: 13rem;
-    margin-bottom: 0.3rem;
-}
-
 .to-top-button {
     font-weight: 600;
 }
