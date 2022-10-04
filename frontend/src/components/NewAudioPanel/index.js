@@ -1,5 +1,5 @@
 import React from "react";
-import { AudioPlayerControlSprite, AudioPlayer } from "react-audio-player-pro";
+import { AudioPlayerControlSprite, AudioPlayer, DefaultAudioPlayerStateType } from "react-audio-player-pro";
 import reactAudioPlayerProStyle from "react-audio-player-pro/dist/style.css";
 
 export const audioTrackList = [
@@ -23,13 +23,33 @@ export const audioTrackList = [
   },
 ];
 
+
 export function NewAudioPlayer() {
   return (
     <div className="audio-player-container">
       <div className="audio-player-outer">
         <AudioPlayerControlSprite />
 
-        <AudioPlayer trackList={audioTrackList} />
+        <AudioPlayer
+        trackList={audioTrackList}
+         // default player state, optional
+         defaultState={{
+          // boolean - is player muted, optional, default: false
+          isMuted: false,
+
+          // number - active song index, optional, default: 0
+          activeIndex: 0,
+
+          // boolean - is shuffle on, optional, default: false
+          isShuffleOn: false,
+
+          // boolean - is track list open, optional, default: true
+          isTrackListOpen: false,
+
+          // string: 'none' | 'all' | 'one' - repeating state, optional, default: 'none'
+          repeatingState: 'none',
+      }}
+        />
       </div>
     </div>
   );
