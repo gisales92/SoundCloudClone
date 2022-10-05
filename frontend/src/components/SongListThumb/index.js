@@ -31,6 +31,7 @@ export default function SongListThumb({ song }) {
     } else {
       audioTrackList.push(addTrack);
     }
+  
   };
 
   const handlePlay = (e) => {

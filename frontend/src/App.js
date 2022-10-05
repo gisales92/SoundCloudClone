@@ -31,11 +31,13 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const audioEls = document.querySelectorAll("audio");
-    audioEls.forEach(el => {
-      el.setAttribute("crossorigin", "")
-    })
-  })
+    document.addEventListener("pointermove", () => {
+      const audioEls = document.querySelectorAll("audio");
+      audioEls.forEach((el) => {
+        el.setAttribute("crossorigin", "");
+      });
+    });
+  });
 
   return (
     isLoaded && (

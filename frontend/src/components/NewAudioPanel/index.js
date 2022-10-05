@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   AudioPlayerControlSprite,
   AudioPlayer,
@@ -28,7 +28,7 @@ export const audioTrackList = [
 ];
 
 export function NewAudioPlayer() {
-  
+
   return (
     <div className="audio-player-container">
       <div className="audio-player-outer">
