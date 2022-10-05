@@ -15,7 +15,12 @@ export default function SongListThumb({ song }) {
       src: url,
       content: (
         <div className="queue-content-outer">
-          <img src={previewImage} alt="cover-art" className="queue-thumb" crossOrigin=""/>
+          <img
+            src={previewImage}
+            alt="cover-art"
+            className="queue-thumb"
+            crossOrigin=""
+          />
           <div className="queue-title">{title}</div>
         </div>
       ),
@@ -24,7 +29,6 @@ export default function SongListThumb({ song }) {
         artist,
         artwork: [{ src: previewImage, sizes: "500x500", type: "image/jpeg" }],
       },
-      crossOrigin: ""
     };
 
     if (audioTrackList[0].content === "Add a song to the queue") {
