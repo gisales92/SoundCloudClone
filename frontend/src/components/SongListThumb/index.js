@@ -31,7 +31,7 @@ export default function SongListThumb({ song }) {
     } else {
       audioTrackList.push(addTrack);
     }
-  
+
   };
 
   const handlePlay = (e) => {
@@ -41,7 +41,7 @@ export default function SongListThumb({ song }) {
       src: url,
       content: (
         <div className="queue-content-outer">
-          <img src={previewImage} alt="cover-art" className="queue-thumb" />
+          <img src={previewImage} alt="cover-art" className="queue-thumb" crossOrigin=""/>
           <div className="queue-title">{title}</div>
         </div>
       ),
@@ -50,6 +50,7 @@ export default function SongListThumb({ song }) {
         artist,
         artwork: [{ src: previewImage, sizes: "500x500", type: "image/jpeg" }],
       },
+      preload: "none"
     };
 
     audioTrackList.splice(0, audioTrackList.length, addTrack);
