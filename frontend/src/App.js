@@ -30,12 +30,12 @@ function App() {
     getSongs();
   }, []);
 
-  document.addEventListener("readystatechange", (e) => {
+  useEffect(() => {
     const audioEls = document.querySelectorAll("audio");
-    audioEls.forEach((el) => {
-      el.setAttribute("crossorigin", "");
-    });
-  });
+    audioEls.forEach(el => {
+      el.setAttribute("crossorigin", "")
+    })
+  })
 
   return (
     isLoaded && (
