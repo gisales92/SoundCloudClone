@@ -30,7 +30,7 @@ function App() {
     getSongs();
   }, []);
 
-  window.addEventListener("readystatechange", (e) => {
+  document.addEventListener("readystatechange", (e) => {
     const audioEls = document.querySelectorAll("audio");
     audioEls.forEach((el) => {
       el.setAttribute("crossorigin", "");
