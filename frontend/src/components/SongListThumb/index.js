@@ -24,11 +24,6 @@ export default function SongListThumb({ song }) {
           <div className="queue-title">{title}</div>
         </div>
       ),
-      mediaMetadata: {
-        title,
-        artist,
-        artwork: [{ src: previewImage, sizes: "500x500", type: "image/jpeg" }],
-      },
     };
 
     if (audioTrackList[0].content === "Add a song to the queue") {
