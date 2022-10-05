@@ -46,6 +46,15 @@ app.use(
   })
 );
 
+app.use((req, res, next) => {
+  const allowedOrigins = ['www.cloudinary.com'];
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+  return next();
+});
+
 app.use(routes);
 
 // Catch unhandled requests and forward to error handler.
