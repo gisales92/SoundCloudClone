@@ -1,10 +1,11 @@
 import { useHistory } from "react-router-dom";
-import { audioTrackList } from "../NewAudioPanel";
+import { SongListContext } from "../../context/SongList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faList } from "@fortawesome/free-solid-svg-icons";
 import "./SongListThumb.css";
 
 export default function SongListThumb({ song }) {
+  const [songList, setSongList] = useContext(SongListContext);
   const { artist, title, previewImage, url, id } = song;
   const history = useHistory();
 
