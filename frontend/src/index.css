@@ -53,13 +53,15 @@ body {
     margin-bottom: 0px;
     border-top: 1px solid #000000;
     background-color: #333;
-    height: 80px;
+    height: 85px;
 }
 
-.d6f4a6 {
-    position: relative;
-    top: -247px;
-    height: 150px;
-    overflow-y: scroll;
-    border-top: 1px solid #000000;
+.music-player-panel.translate {
+    height: 85px !important;
+}
+
+.music-player-controller {
+    height: 75px !important;
+    width: 75px !important;
+    margin-top: 5px;
 }

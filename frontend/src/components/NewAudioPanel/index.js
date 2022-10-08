@@ -1,8 +1,7 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import ReactJkMusicPlayer from "react-jinke-music-player";
 import { SongListContext } from "../../context/SongList";
 import "react-jinke-music-player/assets/index.css";
-import "./audio.css"
 
 
 export function NewAudioPlayer() {
@@ -13,7 +12,7 @@ export function NewAudioPlayer() {
         <ReactJkMusicPlayer
           theme="dark"
           showDownload={false}
-          defaultPosition={{ bottom: 0 }}
+          defaultPosition={{ bottom: 5, left: 5}}
           audioLists={songList}
           mode="full"
         />
