@@ -5,7 +5,6 @@ import "react-jinke-music-player/assets/index.css";
 
 export function NewAudioPlayer() {
   const [songList, setSongList] = useContext(SongListContext);
-  console.log(songList);
   return (
     <div className="audio-player-container">
       <div className="audio-player-outer">
