@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { SongListContext } from "../../context/SongList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,48 +14,28 @@ export default function SongListThumb({ song }) {
     e.preventDefault();
     e.stopPropagation();
     const addTrack = {
-      src: url,
-      content: (
-        <div className="queue-content-outer">
-          <img
-            src={previewImage}
-            alt="cover-art"
-            className="queue-thumb"
-            crossOrigin=""
-          />
-          <div className="queue-title">{title}</div>
-        </div>
-      ),
+      name: title,
+      musicSrc: url,
+      cover: previewImage,
     };
 
-    if (audioTrackList[0].content === "Add a song to the queue") {
-      audioTrackList[0] = addTrack;
+    if (songList.length < 1) {
+      setSongList([addTrack]);
     } else {
-      audioTrackList.push(addTrack);
+      setSongList([ ...songList, addTrack ]);
     }
-
   };
 
   const handlePlay = (e) => {
     e.preventDefault();
     e.stopPropagation();
     const addTrack = {
-      src: url,
-      content: (
-        <div className="queue-content-outer">
-          <img src={previewImage} alt="cover-art" className="queue-thumb" crossOrigin=""/>
-          <div className="queue-title">{title}</div>
-        </div>
-      ),
-      mediaMetadata: {
-        title,
-        artist,
-        artwork: [{ src: previewImage, sizes: "500x500", type: "image/jpeg" }],
-      },
-      preload: "none"
+      name: title,
+      musicSrc: url,
+      cover: previewImage,
     };
 
-    audioTrackList.splice(0, audioTrackList.length, addTrack);
+    setSongList([ addTrack, ...songList ]);
   };
 
   const handleNav = (e) => {

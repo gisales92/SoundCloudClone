@@ -5,10 +5,16 @@ import "react-jinke-music-player/assets/index.css";
 
 export function NewAudioPlayer() {
   const [songList, setSongList] = useContext(SongListContext);
+  console.log(songList);
   return (
     <div className="audio-player-container">
       <div className="audio-player-outer">
-        <ReactJkMusicPlayer theme="dark" showDownload={false} defaultPosition={{bottom: 0}} />
+        <ReactJkMusicPlayer
+          theme="dark"
+          showDownload={false}
+          defaultPosition={{ bottom: 0 }}
+          audioLists={songList}
+        />
       </div>
     </div>
   );
