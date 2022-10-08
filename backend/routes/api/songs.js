@@ -48,12 +48,12 @@ router.get(
               },
               {
                 [Op.and]: [
-                  {createdAt: {[Op.gt]: prevDay}},
-                  {createdAt: {[Op.lt]: nextDay}},
-                ]
+                  { createdAt: { [Op.gt]: prevDay } },
+                  { createdAt: { [Op.lt]: nextDay } },
+                ],
               },
-                ]
-              },
+            ],
+          },
           attributes: [
             "id",
             "userId",
@@ -69,9 +69,13 @@ router.get(
           limit: size,
         });
 
-        return res.json({ Songs: songs, page: Number(page), size: Number(size) });
+        return res.json({
+          Songs: songs,
+          page: Number(page),
+          size: Number(size),
+        });
       } else {
-        createdAt = new Date(createdAt.substring(0,10));
+        createdAt = new Date(createdAt.substring(0, 10));
       }
 
       const dayStart = createdAt.getTime();
@@ -87,12 +91,12 @@ router.get(
             },
             {
               [Op.and]: [
-                {createdAt: {[Op.gt]: dayStart}},
-                {createdAt: {[Op.lt]: dayEnd}},
-              ]
+                { createdAt: { [Op.gt]: dayStart } },
+                { createdAt: { [Op.lt]: dayEnd } },
+              ],
             },
-              ]
-            },
+          ],
+        },
         attributes: [
           "id",
           "userId",
@@ -132,7 +136,7 @@ router.get(
   "/:songId",
   asyncHandler(async (req, res, next) => {
     const song = await Song.findByPk(req.params.songId, {
-      include: [User, Album, {model: Comment, include: [User]}],
+      include: [User, Album, { model: Comment, include: [User] }],
     });
     if (song) {
       const mappedSong = {
@@ -155,9 +159,7 @@ router.get(
           title: song.Album.title,
           previewImage: song.Album.previewImage,
         },
-        Comments: [
-          ...song.Comments
-        ]
+        Comments: [...song.Comments],
       };
       res.json(mappedSong);
     } else {
@@ -283,6 +285,16 @@ router.post(
       const err = new Error("Song couldn't be found");
       err.status = 404;
       next(err);
+    }
+  })
+);
+
+// Serve cover art for the Audio player to avoid cors issue
+router.get(
+  "/:songId/cover",
+  asyncHandler(async (req, res, next) => {
+    const song = await Song.findByPk(req.params.songId);
+    if (song) {
     }
   })
 );
