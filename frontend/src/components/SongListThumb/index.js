@@ -16,13 +16,13 @@ export default function SongListThumb({ song }) {
     const addTrack = {
       name: title,
       musicSrc: url,
-      cover: previewImage,
+      cover: `/api/songs/${id}/cover`,
     };
 
     if (songList.length < 1) {
       setSongList([addTrack]);
     } else {
-      setSongList([ ...songList, addTrack ]);
+      setSongList([...songList, addTrack]);
     }
   };
 
@@ -32,10 +32,10 @@ export default function SongListThumb({ song }) {
     const addTrack = {
       name: title,
       musicSrc: url,
-      cover: previewImage,
+      cover: `/api/songs/${id}/cover`,
     };
 
-    setSongList([ addTrack, ...songList ]);
+    setSongList([addTrack, ...songList]);
   };
 
   const handleNav = (e) => {

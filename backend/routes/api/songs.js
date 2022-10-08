@@ -2,6 +2,7 @@ const express = require("express");
 const asyncHandler = require("express-async-handler");
 const { Op } = require("sequelize");
 const { query } = require("express-validator");
+const https = require("https");
 
 const { requireAuth } = require("../../utils/auth");
 const { Song, User, Album, Comment } = require("../../db/models");
@@ -295,6 +296,21 @@ router.get(
   asyncHandler(async (req, res, next) => {
     const song = await Song.findByPk(req.params.songId);
     if (song) {
+      const request = https.get(song.previewImage, (response) => {
+        const contentType = response.headers["content-type"];
+
+        res.setHeader("Content-Type", contentType);
+
+        response.pipe(res);
+      });
+
+      request.on("error", (e) => {
+        console.error(e);
+      });
+    } else {
+      const err = new Error("Song couldn't be found");
+      err.status = 404;
+      next(err);
     }
   })
 );
