@@ -44,13 +44,6 @@ body {
     white-space: nowrap;
 }
 
-.audio-player-outer {
-    height: 85px;
-    background-color: #333;
-    width: 75%;
-    margin: auto;
-}
-
 .audio-player-container {
     width: 100%;
     position: fixed;
@@ -59,8 +52,8 @@ body {
     right: 0px;
     margin-bottom: 0px;
     border-top: 1px solid #000000;
-    background-color: #ffffff;
-    height: fit-content;
+    background-color: #333;
+    height: 80px;
 }
 
 .d6f4a6 {
