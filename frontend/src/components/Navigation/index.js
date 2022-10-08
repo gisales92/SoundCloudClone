@@ -23,7 +23,7 @@ function Navigation() {
         </div>
         <div className="header-spacer"></div>
         <nav className="nav-header-outer">
-          <ul>
+          <ul className="nav-list">
             {!user ? (
             <li className="nav-button-outer">
             <SignUpButton className="user-nav" />

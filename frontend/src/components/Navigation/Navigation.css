@@ -19,7 +19,7 @@ header {
   height: 100%;
 }
 
-ul {
+.nav-list {
   display: flex;
   justify-content: flex-end;
   list-style-type: none;
