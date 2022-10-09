@@ -36,7 +36,7 @@ footer {
 
 .to-top-button:hover {
     cursor: pointer;
-    color: white;
+    color: var(--accent);
 }
 
 .footer-list {
@@ -72,4 +72,8 @@ footer {
     gap: 0.29rem;
     align-items: center;
     color: white;
+}
+
+.footer-links a:hover {
+    color: var(--accent)
 }
