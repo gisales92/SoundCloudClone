@@ -18,6 +18,7 @@ export function NewAudioPlayer() {
             setSongList([...list]);
             return;
           }}
+          drag={false}
         />
       </div>
     </div>
