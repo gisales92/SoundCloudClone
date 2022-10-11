@@ -9,7 +9,7 @@ const PageNotFound = () => {
       <div className="page-not-found card-background">
         <h2>Whatchu Want?</h2>
         <img src="https://static.wikia.nocookie.net/borderlands/images/3/3e/Crazy.Earl.png" alt="crazy earl" crossOrigin="" className="earl"/>
-        <p>Whatever it is, it's not here...</p>
+        <p>Whatever you're looking for, it's not here...</p>
         <button className="home-button" onClick={redirectToHome}>
           Get Lost!
         </button>
