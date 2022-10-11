@@ -45,7 +45,7 @@ export default function AddCommentForm({ props }) {
   return <div className="comment-form-container">
       <h2 className="comment-header">Create a new comment</h2>
       <form onSubmit={handleSubmit} >
-        <ul className="comment-errors-list">
+        <ul className="errors-list">
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}

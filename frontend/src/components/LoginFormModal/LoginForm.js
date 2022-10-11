@@ -35,7 +35,7 @@ function LoginForm() {
     <form onSubmit={handleSubmit}>
       <fieldset id="login-fieldset">
         <h2>Log in</h2>
-        <ul className="login-errors-list">
+        <ul className="errors-list">
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}

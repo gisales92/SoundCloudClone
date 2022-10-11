@@ -61,7 +61,7 @@ function EditPlaylistForm({ props }) {
     <div id="new-playlist-form-container">
       <h2 className="new-playlist-header">Edit {currentPlaylist.name}</h2>
       <form onSubmit={handleSubmit} encType="multipart/form-data">
-        <ul className="playlist-errors-list">
+        <ul className="errors-list">
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}

@@ -29,7 +29,6 @@ function AddSongToPlaylistForm({ props }) {
   }
 
   const handleSubmit = (e) => {
-      console.log("Selected Playlist on submit: ", selectedPlaylist)
     e.preventDefault();
     setErrors([]);
     return dispatch(
@@ -59,7 +58,7 @@ function AddSongToPlaylistForm({ props }) {
     <div className="playlist-add-song-form-container">
       <h2 className="playlist-add-song-header">Add <span className="song-title-preview">{`${song.title}`}</span> to a playlist:</h2>
       <form onSubmit={handleSubmit}>
-        <ul className="playlist-add-song-errors-list">
+        <ul className="errors-list">
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
@@ -67,10 +66,10 @@ function AddSongToPlaylistForm({ props }) {
         <fieldset id="playlist-add-song-fieldset">
           <div className="form-input" id="select-playlist-input">
             <label htmlFor="playlist-add-song-name">Select playlist:</label>
-            <select className="playlist-add-song-name" value={selectedPlaylist} onChange={e => {
+            <select className="playlist-add-song-name" value={selectedPlaylist} required onChange={e => {
                 e.preventDefault();
                 setSelectedPlaylist(e.target.value)}}>
-                  <option value={null}>-- Select one --</option>
+                  <option value={""}>-- Select one --</option>
                 {Object.values(loadedPlaylists)?.map((playlistObj) => {
                     return (<option key={playlistObj.id} value={playlistObj.id}>{playlistObj.name}</option>)
                 })}

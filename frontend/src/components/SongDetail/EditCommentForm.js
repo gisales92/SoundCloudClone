@@ -47,7 +47,7 @@ function EditPlaylistForm({ props }) {
     <div className="comment-form-container">
       <h2 className="comment-header">Edit your comment</h2>
       <form onSubmit={handleSubmit}>
-        <ul className="comment-errors-list">
+        <ul className="errors-list">
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
@@ -65,7 +65,7 @@ function EditPlaylistForm({ props }) {
           </div>
         </fieldset>
         <button type="submit" className="comment-submit">
-          Submit Comment
+          Update Comment
         </button>
       </form>
     </div>

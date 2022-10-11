@@ -58,7 +58,7 @@ function CreatePlaylistForm({ closeModal }) {
     <div id="new-playlist-form-container">
       <h2 className="new-playlist-header">Create a new playlist</h2>
       <form onSubmit={handleSubmit} encType="multipart/form-data">
-        <ul className="playlist-errors-list">
+        <ul className="errors-list">
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
