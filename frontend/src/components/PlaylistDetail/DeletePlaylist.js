@@ -1,6 +1,8 @@
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import * as PlaylistActions from "../../store/playlist";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark} from "@fortawesome/free-solid-svg-icons";
 
 export default function DeletePlaylist({ playlistId }) {
   const history = useHistory();
@@ -19,7 +21,7 @@ export default function DeletePlaylist({ playlistId }) {
       className="delete-playlist-button"
       onClick={handleClick}
     >
-      Delete
+     <FontAwesomeIcon icon={faXmark} /> Delete Playlist
     </button>
   );
 }

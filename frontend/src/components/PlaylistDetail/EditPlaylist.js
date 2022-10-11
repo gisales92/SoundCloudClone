@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { userSelector } from "../../store/session";
 import { Modal } from "../../context/Modal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen} from "@fortawesome/free-solid-svg-icons";
 
 function EditPlaylistModal({playlistId}) {
   const [showModal, setShowModal] = useState(false);
@@ -20,7 +22,7 @@ function EditPlaylistModal({playlistId}) {
         onClick={(e) => {
           e.preventDefault();
           setShowModal(true);
-        }}>Edit</button>
+        }}><FontAwesomeIcon icon={faPen} /> Edit Playlist</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <EditPlaylistForm props={{setShowModal, playlistId}}/>
