@@ -14,6 +14,7 @@ import AllAlbums from "./components/Albums";
 import { fetchSongs } from "./store/song";
 import AlbumDetail from "./components/Albums/AlbumDetail";
 import Footer from "./components/About";
+import PageNotFound from "./components/NotFound";
 
 function App() {
   const dispatch = useDispatch();
@@ -72,7 +73,9 @@ function App() {
           <Route exact path="/profile">
             {/* {TODO create a profile view} */}
           </Route>
-          <Route path="">Sorry, we could not find that resource</Route>
+          <Route path="">
+            <PageNotFound />
+          </Route>
         </Switch>
         <NewAudioPlayer />
       </>

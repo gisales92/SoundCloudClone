@@ -4,9 +4,9 @@
 }
 
 :root {
-  --primary: #546e7a;
-  --primary-light: #819ca9;
-  --primary-dark: rgba(0, 0, 0, 0.9);
+  --accent-2: #546e7a;
+  --primary-light: #333;
+  --primary-dark: rgba(0, 0, 0, 1);
   --secondary: #efebe9;
   --secondary-light: #ffffff;
   --secondary-dark: #bdb9b7;
@@ -74,4 +74,37 @@ body {
 .audio-lists-panel-header-delete-btn,
 .audio-lists-panel-header-line {
   visibility: hidden;
+}
+
+.page-not-found.card-background {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: auto;
+  align-content: center;
+  justify-content: center;
+  background-color: var(--secondary-light);
+  text-align: center;
+}
+
+.earl {
+  height: 312px;
+  width: 400px;
+  margin: auto;
+  border-radius: 5px;
+}
+
+.home-button {
+  border: 1px solid var(--secondary-dark);
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 10px 20px;
+  width: fit-content;
+  margin: 0 auto 20px auto;
+}
+
+.home-button:hover {
+  cursor: pointer;
+  background-color: var(--secondary);
 }
