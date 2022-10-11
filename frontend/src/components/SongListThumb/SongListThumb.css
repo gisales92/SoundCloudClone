@@ -49,25 +49,14 @@
     background-color: var(--secondary-light);
     border: 1px solid var(--secondary-dark);
     border-radius: 5px;
-    min-width: fit-content;
+    min-width: 130px;
+    white-space: nowrap;
 }
 
-.add-to-tracklist:hover {
+.add-to-tracklist.active:hover {
  cursor: pointer;
  background-color: var(--secondary-dark);
  border-radius: 5px;
-}
-
-.track-play {
-    position: absolute;
-    border-radius: 50%;
-    padding: 0;
-    height: 30px;
-    width: 30px;
-    margin: 15px 5px 5px 10px;
-    color: transparent;
-    background-color: transparent;
-    border: none;
 }
 
 .track-play:hover {

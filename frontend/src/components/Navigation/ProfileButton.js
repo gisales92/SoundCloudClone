@@ -43,7 +43,7 @@ function ProfileButton() {
           <NavLink className="user-nav-link" to="/my/playlists">
             My Playlists
           </NavLink>
-          <button id="logout-button" onClick={() => dispatch(logout())}>
+          <button className="user-nav-link" id="logout-button" onClick={() => dispatch(logout())}>
             Log out
           </button>
         </div>

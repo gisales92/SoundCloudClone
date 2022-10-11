@@ -2,13 +2,19 @@ import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { SongListContext } from "../../context/SongList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay, faList } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faList } from "@fortawesome/free-solid-svg-icons";
 import "./SongListThumb.css";
 
 export default function SongListThumb({ song }) {
   const [songList, setSongList] = useContext(SongListContext);
   const { artist, title, previewImage, url, id } = song;
   const history = useHistory();
+  const added = () => {
+    for (let i = 0; i < songList.length; i++) {
+      if (songList[i].id === id) return true;
+    }
+    return false;
+  };
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -17,30 +23,16 @@ export default function SongListThumb({ song }) {
       name: title,
       musicSrc: url,
       cover: `/api/songs/${id}/cover`,
+      id,
     };
 
-    if (songList.length < 1) {
-      setSongList([addTrack]);
-    } else {
-      setSongList([...songList, addTrack]);
-    }
-  };
-
-  const handlePlay = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    const addTrack = {
-      name: title,
-      musicSrc: url,
-      cover: `/api/songs/${id}/cover`,
-    };
-
-    setSongList([addTrack, ...songList]);
+    setSongList([...songList, addTrack]);
   };
 
   const handleNav = (e) => {
     history.push(`/songs/${id}`);
   };
+
   return (
     <div className="song-playlist-preview" onClick={handleNav}>
       <img
@@ -58,13 +50,25 @@ export default function SongListThumb({ song }) {
         <p className="song-thumb-title">{title}</p>
       </div>
 
-      <button type="button" onClick={handlePlay} className="track-play">
-        <FontAwesomeIcon icon={faPlay} />
-      </button>
-
-      <button type="button" onClick={handleClick} className="add-to-tracklist">
-        <FontAwesomeIcon icon={faList} /> Add to Next up
-      </button>
+      {added() ? (
+        <button
+          type="button"
+          className="add-to-tracklist"
+          onClick={(e) => {
+            e.preventDefault();
+          }}
+        >
+          <FontAwesomeIcon icon={faCheck} /> Added
+        </button>
+      ) : (
+        <button
+          type="button"
+          onClick={handleClick}
+          className="add-to-tracklist active"
+        >
+          <FontAwesomeIcon icon={faList} /> Add to Next up{" "}
+        </button>
+      )}
     </div>
   );
 }

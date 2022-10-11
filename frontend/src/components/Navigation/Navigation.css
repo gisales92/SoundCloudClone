@@ -38,6 +38,10 @@ header {
   text-align: center;
 }
 
+.user-nav:hover {
+  color: var(--accent);
+}
+
 a {
   text-decoration: none;
   height: fit-content;
@@ -81,10 +85,12 @@ a {
 
 #login-button:hover {
   cursor: pointer;
+  color: var(--accent);
 }
 
 .nav-button-outer:hover {
   background-color: #000000;
+  color: var(--accent);
 }
 
 #menu-icon-button {
