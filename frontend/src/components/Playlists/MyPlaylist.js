@@ -5,7 +5,7 @@ import PlaylistGrid from "./playlistGrid";
 import * as playlistActions from "../../store/playlist";
 import "./PlaylistPreview.css";
 
-function Playlists() {
+function MyPlaylists() {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
@@ -37,4 +37,4 @@ function Playlists() {
   );
 }
 
-export default Playlists;
+export default MyPlaylists;

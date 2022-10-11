@@ -4,7 +4,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormModal";
 import SignUpModal from "./components/SignupFormPage";
 import HomePage from "./components/HomePage";
-import Playlists from "./components/Playlists";
+import Playlists from "./components/Playlists/MyPlaylist";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import PlaylistDetail from "./components/PlaylistDetail";

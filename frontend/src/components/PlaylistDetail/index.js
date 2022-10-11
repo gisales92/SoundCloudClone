@@ -1,11 +1,12 @@
 import { useParams, useHistory } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as playlistActions from "../../store/playlist";
 import { userSelector } from "../../store/session";
 import EditPlaylistModal from "./EditPlaylist";
 import DeletePlaylist from "./DeletePlaylist";
 import SongListThumb from "../SongListThumb";
+import { SongListContext } from "../../context/SongList";
 import "./PlaylistDetail.css";
 
 function PlaylistDetail() {
@@ -15,6 +16,9 @@ function PlaylistDetail() {
   const currentUser = useSelector(userSelector);
   const dispatch = useDispatch();
   const playlistDetails = useSelector((state) => state.playlists?.detail);
+  const [songList, setSongList] = useContext(SongListContext);
+
+  // Redirect bad playlist requests to homepage
   useEffect(() => {
     async function getPlaylists() {
       await dispatch(playlistActions.getPlaylistDetail(playlistId)).catch(
@@ -27,6 +31,7 @@ function PlaylistDetail() {
     getPlaylists();
   }, [playlistId, dispatch, history]);
 
+  // Check to see if this is the current user's playlist to enable edit/delete
   if (currentUser && currentUser?.id === playlistDetails?.userId) {
     mine = true;
   }
