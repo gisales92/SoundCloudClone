@@ -1,5 +1,5 @@
 header {
-  background-color: #333;
+  background-color: var(--primary-dark);
   position: sticky;
   top: 0;
   height: 50px;
@@ -67,6 +67,10 @@ a {
   text-decoration: none;
 }
 
+.site-header:hover {
+  color: var(--accent);
+}
+
 .nav-header-outer li {
   text-align: center;
   margin: auto 0;
@@ -102,14 +106,20 @@ a {
   font-size: 18pt;
 }
 
+#menu-icon-button:hover {
+  color: var(--accent);
+}
+
 #active-menu {
   background-color: transparent;
   border: none;
   cursor: pointer;
-  color: #ffffff;
+  color: var(--accent);
   padding: 0px 15px;
   font-size: 18pt;
 }
+
+
 
 #drop-menu {
   display: flex;

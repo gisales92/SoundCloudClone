@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { userSelector } from "../../store/session";
 import { Modal } from "../../context/Modal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 function CreatePlaylistModal() {
   const [showModal, setShowModal] = useState(false);
@@ -23,12 +25,7 @@ function CreatePlaylistModal() {
           setShowModal(true);
         }}
       >
-        <img
-          className="add-icon"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/OOjs_UI_icon_add-invert.svg/640px-OOjs_UI_icon_add-invert.svg.png"
-          alt="Add Playlist"
-          crossOrigin=""
-        />
+      <FontAwesomeIcon className="add-icon" icon={faPlus} />
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>

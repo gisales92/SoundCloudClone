@@ -6,7 +6,7 @@
 :root {
   --primary: #546e7a;
   --primary-light: #819ca9;
-  --primary-dark: #29434e;
+  --primary-dark: rgba(0, 0, 0, 0.9);
   --secondary: #efebe9;
   --secondary-light: #ffffff;
   --secondary-dark: #bdb9b7;
