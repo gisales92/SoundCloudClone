@@ -97,22 +97,22 @@ router.post(
         const { songId } = req.body;
         const song = await Song.findByPk(songId);
         if (song) {
-          const newPlaylistSong = await Playlist_Song.create({
-            playlistId: playlist.id,
-            songId,
+          const prevAdded = await Playlist_Song.findOne({
+            where: { playlistId: playlist.id, songId: song.id },
           });
-          const addedEntry = await Playlist_Song.findAll({
-            attributes: ["id"],
-            order: [["id", "DESC"]],
-            limit: 1,
-          });
-          const returnObj = {
-            id: addedEntry[0].id,
-            playlistId: newPlaylistSong.playlistId,
-            songId: newPlaylistSong.songId,
-          };
-          res.status(200);
-          return res.json(returnObj);
+          if (prevAdded) {
+            console.log("ADDED");
+            res.status(200);
+            return res.json(prevAdded);
+          } else {
+            const newPlaylistSong = await Playlist_Song.create({
+              playlistId: playlist.id,
+              songId,
+            });
+
+            res.status(200);
+            return res.json(newPlaylistSong);
+          }
         } else {
           const err = new Error("Song couldn't be found");
           err.status = 404;
@@ -211,7 +211,7 @@ router.delete(
 
 // remove song from a playlist
 router.put(
-  "/:playlistId",
+  "/:playlistId/songs",
   requireAuth,
   asyncHandler(async (req, res, next) => {
     const userId = req.user.id;
