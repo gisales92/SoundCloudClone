@@ -1,5 +1,7 @@
 import { csrfFetch } from "./csrf";
 
+export const playlistDetailSelector = (state) => state.playlists.detail;
+
 const GET_PLAYLIST_DETAIL = "playlists/getPlaylistDetail";
 const USER_PLAYLISTS = "playlists/USER_PLAYLISTS";
 const EDIT_PLAYLIST = "playlists/editPlaylist";
