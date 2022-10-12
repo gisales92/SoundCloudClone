@@ -7,6 +7,8 @@ import EditPlaylistModal from "./EditPlaylist";
 import DeletePlaylist from "./DeletePlaylist";
 import SongListThumb from "../SongListThumb";
 import { SongListContext } from "../../context/SongList";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRectangleList} from "@fortawesome/free-solid-svg-icons";
 import "./PlaylistDetail.css";
 
 function PlaylistDetail() {
@@ -38,22 +40,17 @@ function PlaylistDetail() {
 
   // Handle adding all songs of a playlist into the audio queue
   const addAll = () => {
-    const playlistSongs = {};
-    playlistDetails.Songs?.forEach((song) => {
-      playlistSongs[song.id] = song;
-    });
     const newSongList = [];
-    // Keep all songs that aren't in the playlist in the queue
+    // Keep all songs that are already in the queue
     for (let i = 0; i < songList.length; i++) {
       const song = songList[i];
-      if (!playlistSongs[song.id]) {
-        newSongList.push({
-          name: song.name,
-          musicSrc: song.musicSrc,
-          cover: `/api/songs/${song.id}/cover`,
-          id: song.id,
-        });
-      }
+
+      newSongList.push({
+        name: song.name,
+        musicSrc: song.musicSrc,
+        cover: `/api/songs/${song.id}/cover`,
+        id: song.id,
+      });
     }
     // Add playlist songs to the end of the queue
     playlistDetails.Songs?.forEach((song) => {
@@ -87,6 +84,7 @@ function PlaylistDetail() {
           </h3>
         </div>
         <div className="playlist-actions">
+          <button className="add-playlist-button" onClick={addAll}><FontAwesomeIcon icon={faRectangleList} /> Add Playlist to Next up</button>
           {mine ? (
             <>
               <EditPlaylistModal playlistId={playlistDetails?.id} />
