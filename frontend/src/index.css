@@ -53,7 +53,7 @@ body {
   right: 0px;
   margin-bottom: 0px;
   border-top: 1px solid #000000;
-  background-color: #333;
+  background-color: var(--primary-dark);
   height: 85px;
 }
 

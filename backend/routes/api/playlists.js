@@ -209,4 +209,49 @@ router.delete(
   })
 );
 
+// remove song from a playlist
+router.put(
+  "/:playlistId",
+  requireAuth,
+  asyncHandler(async (req, res, next) => {
+    const userId = req.user.id;
+    const playlist = await Playlist.findByPk(req.params.playlistId);
+    if (playlist) {
+      if (playlist.userId === userId) {
+        const { songId } = req.body;
+        const song = await Song.findByPk(songId);
+        if (song) {
+          const newPlaylistSong = await Playlist_Song.create({
+            playlistId: playlist.id,
+            songId,
+          });
+          const addedEntry = await Playlist_Song.findAll({
+            attributes: ["id"],
+            order: [["id", "DESC"]],
+            limit: 1,
+          });
+          const returnObj = {
+            id: addedEntry[0].id,
+            playlistId: newPlaylistSong.playlistId,
+            songId: newPlaylistSong.songId,
+          };
+          res.status(200);
+          return res.json(returnObj);
+        } else {
+          const err = new Error("Song couldn't be found");
+          err.status = 404;
+          return next(err);
+        }
+      } else {
+        res.status(403);
+        return res.json({ message: "Forbidden", statusCode: 403 });
+      }
+    } else {
+      const err = new Error("Playlist couldn't be found");
+      err.status = 404;
+      return next(err);
+    }
+  })
+);
+
 module.exports = router;
