@@ -36,39 +36,74 @@ function PlaylistDetail() {
     mine = true;
   }
 
-  return playlistDetails && (
-    <div className="playlist-detail-container">
-      <div className="playlist-detail-header">
-        <h2 className="playlist-detail-title">{playlistDetails?.name}</h2>
-        <img
-          src={
-            playlistDetails?.previewImage
-              ? playlistDetails.previewImage
-              : "https://upload.wikimedia.org/wikipedia/commons/e/e4/Play-rounded-button-outline.svg"
-          }
-          className="playlist-detail-thumb-img"
-          alt="Playlist thumbnail"
-          crossOrigin=""
-        />
-        <h3 className="playlist-detail-sub-title">{playlistDetails?.artist}</h3>
+  // Handle adding all songs of a playlist into the audio queue
+  const addAll = () => {
+    const playlistSongs = {};
+    playlistDetails.Songs?.forEach((song) => {
+      playlistSongs[song.id] = song;
+    });
+    const newSongList = [];
+    // Keep all songs that aren't in the playlist in the queue
+    for (let i = 0; i < songList.length; i++) {
+      const song = songList[i];
+      if (!playlistSongs[song.id]) {
+        newSongList.push({
+          name: song.name,
+          musicSrc: song.musicSrc,
+          cover: `/api/songs/${song.id}/cover`,
+          id: song.id,
+        });
+      }
+    }
+    // Add playlist songs to the end of the queue
+    playlistDetails.Songs?.forEach((song) => {
+      newSongList.push({
+        name: song.title,
+        musicSrc: song.url,
+        cover: `/api/songs/${song.id}/cover`,
+        id: song.id,
+      });
+    });
+    setSongList(newSongList);
+  };
+
+  return (
+    playlistDetails && (
+      <div className="playlist-detail-container">
+        <div className="playlist-detail-header">
+          <h2 className="playlist-detail-title">{playlistDetails?.name}</h2>
+          <img
+            src={
+              playlistDetails?.previewImage
+                ? playlistDetails.previewImage
+                : "https://upload.wikimedia.org/wikipedia/commons/e/e4/Play-rounded-button-outline.svg"
+            }
+            className="playlist-detail-thumb-img"
+            alt="Playlist thumbnail"
+            crossOrigin=""
+          />
+          <h3 className="playlist-detail-sub-title">
+            {playlistDetails?.artist}
+          </h3>
+        </div>
+        <div className="playlist-actions">
+          {mine ? (
+            <>
+              <EditPlaylistModal playlistId={playlistDetails?.id} />
+              <DeletePlaylist playlistId={playlistDetails?.id} />
+            </>
+          ) : null}
+        </div>
+        <h4 className="song-header">Songs</h4>
+        <div className="playlist-songs">
+          <ul className="playlist-songs-list">
+            {playlistDetails?.Songs?.map((song) => {
+              return <SongListThumb key={song.id} song={song} />;
+            })}
+          </ul>
+        </div>
       </div>
-      <div className="playlist-actions">
-        {mine ? (
-          <>
-            <EditPlaylistModal playlistId={playlistDetails?.id} />
-            <DeletePlaylist playlistId={playlistDetails?.id} />
-          </>
-        ) : null}
-      </div>
-      <h4 className="song-header">Songs</h4>
-      <div className="playlist-songs">
-        <ul className="playlist-songs-list">
-          {playlistDetails?.Songs?.map((song) => {
-            return <SongListThumb key={song.id} song={song} />;
-          })}
-        </ul>
-      </div>
-    </div>
+    )
   );
 }
 
