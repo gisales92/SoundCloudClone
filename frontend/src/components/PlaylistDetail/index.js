@@ -5,7 +5,7 @@ import * as playlistActions from "../../store/playlist";
 import { userSelector } from "../../store/session";
 import EditPlaylistModal from "./EditPlaylist";
 import DeletePlaylist from "./DeletePlaylist";
-import SongListThumb from "../SongListThumb";
+import PlaylistItem from "./PlaylistItem";
 import { SongListContext } from "../../context/SongList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRectangleList} from "@fortawesome/free-solid-svg-icons";
@@ -96,7 +96,7 @@ function PlaylistDetail() {
         <div className="playlist-songs">
           <ul className="playlist-songs-list">
             {playlistDetails?.Songs?.map((song) => {
-              return <SongListThumb key={song.id} song={song} />;
+              return <PlaylistItem key={song.id} song={song} />;
             })}
           </ul>
         </div>

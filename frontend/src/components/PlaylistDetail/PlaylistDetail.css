@@ -30,13 +30,15 @@
   left: 30px;
   color: #ffffff;
   font-weight: 100;
+  font-size: 18px;
 }
 
 .playlist-detail-title {
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   line-height: 40px;
-  font-size: 40px;
-  width: fit-content;
+  font-size: 30px;
   max-width: 460px;
   float: left;
   display: block;
