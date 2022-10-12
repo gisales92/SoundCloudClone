@@ -136,7 +136,7 @@ export const addSong =
 export const removeSong = (songId, playlistId) => async (dispatch) => {
   const res = await csrfFetch(`/api/playlists/${playlistId}/songs`, {
     method: "PUT",
-    body: JSON.stringify(songId),
+    body: JSON.stringify({songId}),
   });
   if (res.status === 200) {
     dispatch(removeSongFromPlaylist({ songId, playlistId }));
