@@ -1,11 +1,14 @@
 import { useContext } from "react";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { SongListContext } from "../../context/SongList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faList } from "@fortawesome/free-solid-svg-icons";
+import { removeSong } from "../../store/playlist";
 import "../SongListThumb/SongListThumb.css";
 
 export default function PlaylistItem({ song }) {
+  const dispatch = useDispatch();
   const [songList, setSongList] = useContext(SongListContext);
   const { artist, title, previewImage, url, id } = song;
   const history = useHistory();
@@ -16,6 +19,7 @@ export default function PlaylistItem({ song }) {
     return false;
   };
 
+  // Handle add song to audio queue
   const handleClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -71,4 +75,4 @@ export default function PlaylistItem({ song }) {
       )}
     </div>
   );
-};
+}
