@@ -1,10 +1,11 @@
 import { useContext } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { SongListContext } from "../../context/SongList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faList } from "@fortawesome/free-solid-svg-icons";
 import { removeSong } from "../../store/playlist";
+import { playlistDetailSelector } from "../../store/playlist";
 import "../SongListThumb/SongListThumb.css";
 
 export default function PlaylistItem({ song }) {
@@ -12,6 +13,8 @@ export default function PlaylistItem({ song }) {
   const [songList, setSongList] = useContext(SongListContext);
   const { artist, title, previewImage, url, id } = song;
   const history = useHistory();
+  const playlist = useSelector(playlistDetailSelector);
+
   const added = () => {
     for (let i = 0; i < songList.length; i++) {
       if (songList[i].id === id) return true;
@@ -33,9 +36,18 @@ export default function PlaylistItem({ song }) {
     setSongList([...songList, addTrack]);
   };
 
+  // navigate to the song detail page
   const handleNav = (e) => {
     history.push(`/songs/${id}`);
   };
+
+  // Handle remove song from the playlist
+  const handleRemoval = async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const playlistId = playlist.id;
+    await dispatch(removeSong(id, playlistId))
+  }
 
   return (
     <div className="song-playlist-preview" onClick={handleNav}>
@@ -54,12 +66,15 @@ export default function PlaylistItem({ song }) {
         <p className="song-thumb-title">{title}</p>
       </div>
 
+      <button type="button" onClick={handleRemoval} className="add-to-tracklist">Remove from Playlist</button>
+
       {added() ? (
         <button
           type="button"
           className="add-to-tracklist"
           onClick={(e) => {
             e.preventDefault();
+            e.stopPropagation();
           }}
         >
           <FontAwesomeIcon icon={faCheck} /> Added
