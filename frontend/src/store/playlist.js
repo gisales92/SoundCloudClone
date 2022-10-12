@@ -4,7 +4,8 @@ const GET_PLAYLIST_DETAIL = "playlists/getPlaylistDetail";
 const USER_PLAYLISTS = "playlists/USER_PLAYLISTS";
 const EDIT_PLAYLIST = "playlists/editPlaylist";
 const DELETE_PLAYLIST = "playlists/deletePlaylist";
-const ADD_SONG_TO_PLAYLIST = "playlists/addSongToPlaylist"
+const ADD_SONG_TO_PLAYLIST = "playlists/addSongToPlaylist";
+const REMOVE_SONG_FROM_PLAYLIST = "playlists/REMOVE_SONG_FROM_PLAYLIST";
 const NEW_PLAYLIST = "playlists/NEW_PLAYLIST";
 
 const newPlaylist = (playlist) => ({
@@ -39,12 +40,19 @@ const editPlaylist = (playlist) => {
   };
 };
 
-const addSongToPlaylist = joinInfo => {
+const addSongToPlaylist = (joinInfo) => {
   return {
     type: ADD_SONG_TO_PLAYLIST,
-    joinInfo
-  }
-}
+    joinInfo,
+  };
+};
+
+const removeSongFromPlaylist = (data) => {
+  return {
+    type: REMOVE_SONG_FROM_PLAYLIST,
+    data,
+  };
+};
 
 export const createPlaylist = (playlist) => async (dispatch) => {
   const formData = new FormData();
@@ -123,35 +131,63 @@ export const addSong =
     return res;
   };
 
+export const removeSong = (songId, playlistId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/playlists/${playlistId}/songs`, {
+    method: "PUT",
+    body: JSON.stringify(songId),
+  });
+  if (res.status === 200) {
+    dispatch(removeSongFromPlaylist({ songId, playlistId }));
+  }
+  return;
+};
+
 const playlistsReducer = (state = {}, action) => {
   switch (action.type) {
     case NEW_PLAYLIST:
       const newKey = action.playlist.id;
-      return { ...state, userPlaylists: {...state.userPlaylists, [newKey]: action.playlist}};
+      return {
+        ...state,
+        userPlaylists: { ...state.userPlaylists, [newKey]: action.playlist },
+      };
     case USER_PLAYLISTS:
-      const newState = {...state}
+      const newState = { ...state };
       newState.userPlaylists = {};
       action.playlists.Playlists.forEach((playlist) => {
         newState.userPlaylists[playlist.id] = playlist;
       });
-      return newState
+      return newState;
     case GET_PLAYLIST_DETAIL:
       return { ...state, detail: action.playlist };
     case DELETE_PLAYLIST:
       return { ...state, detail: {} };
     case EDIT_PLAYLIST:
-      return {...state, detail: {
-        id: state.detail.id,
-        userId: state.detail.userId,
-        artist: state.detail.artist,
-        name: action.playlist.name,
-        createdAt: state.detail.createdAt,
-        updatedAt: action.playlist.updatedAt,
-        previewImage: action.playlist.previewImage,
-        Songs: state.detail.Songs
-      } };
+      return {
+        ...state,
+        detail: {
+          id: state.detail.id,
+          userId: state.detail.userId,
+          artist: state.detail.artist,
+          name: action.playlist.name,
+          createdAt: state.detail.createdAt,
+          updatedAt: action.playlist.updatedAt,
+          previewImage: action.playlist.previewImage,
+          Songs: state.detail.Songs,
+        },
+      };
     case ADD_SONG_TO_PLAYLIST:
-      return {...state, userPlaylists: {[action.joinInfo.playlistId]: action.joinInfo.songId}}
+      return {
+        ...state,
+        userPlaylists: { [action.joinInfo.playlistId]: action.joinInfo.songId },
+      };
+    case REMOVE_SONG_FROM_PLAYLIST:
+      const updatedState = { ...state, detail: { ...state.detail } };
+      updatedState.detail.Songs.forEach((song, index) => {
+        if (song.id === action.data.songId) {
+          updatedState.detail.Songs.splice(index, 1);
+        }
+      });
+      return updatedState;
     default:
       return state;
   }
