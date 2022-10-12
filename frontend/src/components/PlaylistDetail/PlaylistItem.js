@@ -66,7 +66,7 @@ export default function PlaylistItem({ song }) {
         <p className="song-thumb-title">{title}</p>
       </div>
 
-      <button type="button" onClick={handleRemoval} className="add-to-tracklist">Remove from Playlist</button>
+      <button type="button" onClick={handleRemoval} className="remove-tracklist">Remove from Playlist</button>
 
       {added() ? (
         <button

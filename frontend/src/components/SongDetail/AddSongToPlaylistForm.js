@@ -64,14 +64,14 @@ function AddSongToPlaylistForm({ props }) {
           ))}
         </ul>
         <fieldset id="playlist-add-song-fieldset">
-          <div className="form-input" id="select-playlist-input">
-            <label htmlFor="playlist-add-song-name">Select playlist:</label>
+          <div className="playlist-input" id="select-playlist-input">
+            <label className="playlist-label" htmlFor="playlist-add-song-name">Select playlist:</label>
             <select className="playlist-add-song-name" value={selectedPlaylist} required onChange={e => {
                 e.preventDefault();
                 setSelectedPlaylist(e.target.value)}}>
                   <option value={""}>-- Select one --</option>
                 {Object.values(loadedPlaylists)?.map((playlistObj) => {
-                    return (<option key={playlistObj.id} value={playlistObj.id}>{playlistObj.name}</option>)
+                    return (<option className="playlist-options" key={playlistObj.id} value={playlistObj.id}>{playlistObj.name}</option>)
                 })}
             </select>
           </div>

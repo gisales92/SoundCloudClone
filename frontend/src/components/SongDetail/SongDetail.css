@@ -108,3 +108,22 @@
 .song-title-preview {
   color: #333;
 }
+
+.playlist-add-song-name {
+  max-width: 175px;
+}
+
+.playlist-label {
+  white-space: nowrap;
+  margin-right: 15px;
+}
+
+.playlist-input {
+  border-radius: 5px;
+  font-size: 16px;
+  line-height: 30px;
+  padding: 7px 0;
+  box-sizing: border-box;
+  min-width: fit-content;
+  margin: auto;
+}

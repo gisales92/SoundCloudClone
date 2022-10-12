@@ -9,7 +9,7 @@ import PlaylistItem from "./PlaylistItem";
 import SongListThumb from "../SongListThumb";
 import { SongListContext } from "../../context/SongList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRectangleList} from "@fortawesome/free-solid-svg-icons";
+import { faRectangleList } from "@fortawesome/free-solid-svg-icons";
 import "./PlaylistDetail.css";
 
 function PlaylistDetail() {
@@ -69,7 +69,12 @@ function PlaylistDetail() {
     playlistDetails && (
       <div className="playlist-detail-container">
         <div className="playlist-detail-header">
-          <h2 className="playlist-detail-title">{playlistDetails?.name}</h2>
+          <div className="playlist-detail-left">
+            <h2 className="playlist-detail-title">{playlistDetails?.name}</h2>
+            <h3 className="playlist-detail-sub-title">
+              {playlistDetails?.artist}
+            </h3>
+          </div>
           <img
             src={
               playlistDetails?.previewImage
@@ -80,12 +85,11 @@ function PlaylistDetail() {
             alt="Playlist thumbnail"
             crossOrigin=""
           />
-          <h3 className="playlist-detail-sub-title">
-            {playlistDetails?.artist}
-          </h3>
         </div>
         <div className="playlist-actions">
-          <button className="add-playlist-button" onClick={addAll}><FontAwesomeIcon icon={faRectangleList} /> Add Playlist to Next up</button>
+          <button className="add-playlist-button" onClick={addAll}>
+            <FontAwesomeIcon icon={faRectangleList} /> Add Playlist to Next up
+          </button>
           {mine ? (
             <>
               <EditPlaylistModal playlistId={playlistDetails?.id} />
@@ -96,11 +100,13 @@ function PlaylistDetail() {
         <h4 className="song-header">Songs</h4>
         <div className="playlist-songs">
           <ul className="playlist-songs-list">
-            { mine? playlistDetails?.Songs?.map((song) => {
-              return <PlaylistItem key={song.id} song={song} />;
-            }) : playlistDetails?.Songs?.map((song) => {
-              return <SongListThumb key={song.id} song={song} />;
-            })}
+            {mine
+              ? playlistDetails?.Songs?.map((song) => {
+                  return <PlaylistItem key={song.id} song={song} />;
+                })
+              : playlistDetails?.Songs?.map((song) => {
+                  return <SongListThumb key={song.id} song={song} />;
+                })}
           </ul>
         </div>
       </div>
