@@ -53,7 +53,19 @@
     white-space: nowrap;
 }
 
-.add-to-tracklist.active:hover {
+.remove-tracklist {
+    height: 50px;
+    margin: auto 15px auto auto;
+    padding: 0 10px;
+    background-color: var(--secondary-light);
+    border: 1px solid var(--secondary-dark);
+    border-radius: 5px;
+    min-width: 150px;
+    white-space: nowrap;
+}
+
+.add-to-tracklist.active:hover,
+.remove-tracklist:hover {
  cursor: pointer;
  background-color: var(--secondary-dark);
  border-radius: 5px;
