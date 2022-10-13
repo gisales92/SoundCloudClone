@@ -21,7 +21,7 @@
   margin: 0;
   display: flex;
   justify-content: flex-end;
-  min-width: 300px;
+  min-width: 306px;
 }
 
 .song-playlist-preview:hover {

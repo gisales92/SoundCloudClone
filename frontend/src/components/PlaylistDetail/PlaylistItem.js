@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { SongListContext } from "../../context/SongList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faList } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faList, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { removeSong } from "../../store/playlist";
 import { playlistDetailSelector } from "../../store/playlist";
 import "../SongListThumb/SongListThumb.css";
@@ -73,7 +73,7 @@ export default function PlaylistItem({ song }) {
           onClick={handleRemoval}
           className="remove-tracklist"
         >
-          Remove from Playlist
+          <FontAwesomeIcon icon={faXmark} /> Remove from Playlist
         </button>
 
         {added() ? (
