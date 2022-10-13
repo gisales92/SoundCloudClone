@@ -47,7 +47,7 @@ export default function SongDetail() {
           crossOrigin=""
         />
       </div>
-      <div className="song-actions">
+      <div className="song-detail-actions">
         {currentUserId ? <AddCommentModal songId={songDetails?.id} /> : null}
         {currentUserId ? <AddSongToPlaylistModal song={songDetails} /> : null}
       </div>

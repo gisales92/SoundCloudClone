@@ -1,110 +1,113 @@
 .song-playlist-preview {
-    display: flex;
-    flex-direction: row;
-    height: 60px;
-    border-bottom: 1px solid var(--secondary-dark);
-    width: 100%;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  height: 60px;
+  border-bottom: 1px solid var(--secondary-dark);
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .song-thumb-left {
-    display: flex;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  display: flex;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  height: fit-content;
+  align-items: center;
 }
 
 .song-actions {
-    margin: 0;
-    display: flex;
-    justify-content: flex-end;
-    min-width: 300px;
-  }
+  margin: 0;
+  display: flex;
+  justify-content: flex-end;
+  min-width: 300px;
+}
 
 .song-playlist-preview:hover {
-    background-color: var(--secondary);
+  background-color: var(--secondary);
 }
 
 .song-playlist-cover {
-    height: 50px;
-    width: 50px;
-    margin: auto 5px auto 0;
+  height: 50px;
+  width: 50px;
+  margin: auto 5px auto 0;
 }
 
 .song-playlist-info {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    }
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 
 .song-thumb-user {
-    margin: 10px 0 0 0;
-    color: var(--primary-light);
-    font-size: 16px;
-    font-weight: 200;
-    margin-right: 5px;
+  margin: 0;
+  color: var(--primary-light);
+  font-size: 16px;
+  font-weight: 200;
+  margin-right: 5px;
 }
 
 .song-thumb-title {
-    margin: 0;
-    font-size: 18px;
-    font-weight: 200;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    width: 100%;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 200;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
 }
 
 .add-to-tracklist {
-    height: 50px;
-    margin: auto 0 auto auto;
-    padding: 0 10px;
-    background-color: var(--secondary-light);
-    border: 1px solid var(--secondary-dark);
-    border-radius: 5px;
-    min-width: 130px;
-    white-space: nowrap;
+  height: 50px;
+  margin: auto 0;
+  padding: 0 10px;
+  background-color: var(--secondary-light);
+  border: 1px solid var(--secondary-dark);
+  border-radius: 5px;
+  min-width: 130px;
+  white-space: nowrap;
 }
 
 .remove-tracklist {
-    height: 50px;
-    margin: auto 15px auto auto;
-    padding: 0 10px;
-    background-color: var(--secondary-light);
-    border: 1px solid var(--secondary-dark);
-    border-radius: 5px;
-    min-width: 150px;
-    white-space: nowrap;
+  height: 50px;
+  margin: auto 12.5px auto 0;
+  padding: 0 10px;
+  background-color: var(--secondary-light);
+  border: 1px solid var(--secondary-dark);
+  border-radius: 5px;
+  min-width: 150px;
+  white-space: nowrap;
 }
 
 .add-to-tracklist.active:hover,
 .remove-tracklist:hover {
- cursor: pointer;
- background-color: var(--secondary-dark);
- border-radius: 5px;
+  cursor: pointer;
+  background-color: var(--secondary-dark);
+  border-radius: 5px;
 }
 
 .track-play:hover {
-    color: var(--secondary-light);
-    cursor: pointer;
-    background-color: #333;
-    text-align: center;
+  color: var(--secondary-light);
+  cursor: pointer;
+  background-color: #333;
+  text-align: center;
 }
 
 .song-detail-button {
-    border: 1px solid var(--secondary-dark);
-    border-radius: 5px;
-    background-color: #ffffff;
-    color: #000000;
-    padding: 10px 20px;
-    width: fit-content;
-    margin: 15px 0;
+  border: 1px solid var(--secondary-dark);
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 10px 20px;
+  width: fit-content;
+  margin: 15px 0;
 }
 
 .song-detail-button:hover {
-    cursor: pointer;
-    background-color: var(--secondary);
+  cursor: pointer;
+  background-color: var(--secondary);
 }
