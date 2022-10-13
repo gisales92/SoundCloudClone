@@ -4,7 +4,22 @@
     height: 60px;
     border-bottom: 1px solid var(--secondary-dark);
     width: 100%;
+    justify-content: space-between;
 }
+
+.song-thumb-left {
+    display: flex;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.song-actions {
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+    min-width: 300px;
+  }
 
 .song-playlist-preview:hover {
     background-color: var(--secondary);
@@ -21,14 +36,14 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-}
+    flex-direction: column;
+    align-items: flex-start;
+    }
 
 .song-thumb-user {
-    margin: 0;
+    margin: 10px 0 0 0;
     color: var(--primary-light);
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 200;
     margin-right: 5px;
 }
@@ -40,6 +55,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    width: 100%;
 }
 
 .add-to-tracklist {

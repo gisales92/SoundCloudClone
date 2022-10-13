@@ -46,48 +46,57 @@ export default function PlaylistItem({ song }) {
     e.preventDefault();
     e.stopPropagation();
     const playlistId = playlist.id;
-    await dispatch(removeSong(id, playlistId))
-  }
+    await dispatch(removeSong(id, playlistId));
+  };
 
   return (
     <div className="song-playlist-preview" onClick={handleNav}>
-      <img
-        className="song-playlist-cover"
-        src={
-          previewImage
-            ? previewImage
-            : "https://upload.wikimedia.org/wikipedia/commons/e/e4/Play-rounded-button-outline.svg"
-        }
-        alt="Song cover art thumbnail"
-        crossOrigin=""
-      />
-      <div className="song-playlist-info">
-        <p className="song-thumb-user">{artist} -</p>
-        <p className="song-thumb-title">{title}</p>
+      <div className="song-thumb-left">
+        <img
+          className="song-playlist-cover"
+          src={
+            previewImage
+              ? previewImage
+              : "https://upload.wikimedia.org/wikipedia/commons/e/e4/Play-rounded-button-outline.svg"
+          }
+          alt="Song cover art thumbnail"
+          crossOrigin=""
+        />
+        <div className="song-playlist-info">
+          <p className="song-thumb-user">{artist}</p>
+          <p className="song-thumb-title">{title}</p>
+        </div>
       </div>
-
-      <button type="button" onClick={handleRemoval} className="remove-tracklist">Remove from Playlist</button>
-
-      {added() ? (
+      <div className="song-actions">
         <button
           type="button"
-          className="add-to-tracklist"
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-          }}
+          onClick={handleRemoval}
+          className="remove-tracklist"
         >
-          <FontAwesomeIcon icon={faCheck} /> Added
+          Remove from Playlist
         </button>
-      ) : (
-        <button
-          type="button"
-          onClick={handleClick}
-          className="add-to-tracklist active"
-        >
-          <FontAwesomeIcon icon={faList} /> Add to Next up{" "}
-        </button>
-      )}
+
+        {added() ? (
+          <button
+            type="button"
+            className="add-to-tracklist"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+            }}
+          >
+            <FontAwesomeIcon icon={faCheck} /> Added
+          </button>
+        ) : (
+          <button
+            type="button"
+            onClick={handleClick}
+            className="add-to-tracklist active"
+          >
+            <FontAwesomeIcon icon={faList} /> Add to Next up{" "}
+          </button>
+        )}
+      </div>
     </div>
   );
 }
