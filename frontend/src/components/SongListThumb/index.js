@@ -35,21 +35,22 @@ export default function SongListThumb({ song }) {
 
   return (
     <div className="song-playlist-preview" onClick={handleNav}>
-      <img
-        className="song-playlist-cover"
-        src={
-          previewImage
-            ? previewImage
-            : "https://upload.wikimedia.org/wikipedia/commons/e/e4/Play-rounded-button-outline.svg"
-        }
-        alt="Song cover art thumbnail"
-        crossOrigin=""
-      />
-      <div className="song-playlist-info">
-        <p className="song-thumb-user">{artist}</p>
-        <p className="song-thumb-title">{title}</p>
+      <div className="song-thumb-left">
+        <img
+          className="song-playlist-cover"
+          src={
+            previewImage
+              ? previewImage
+              : "https://upload.wikimedia.org/wikipedia/commons/e/e4/Play-rounded-button-outline.svg"
+          }
+          alt="Song cover art thumbnail"
+          crossOrigin=""
+        />
+        <div className="song-playlist-info">
+          <p className="song-thumb-user">{artist}</p>
+          <p className="song-thumb-title">{title}</p>
+        </div>
       </div>
-
       {added() ? (
         <button
           type="button"
