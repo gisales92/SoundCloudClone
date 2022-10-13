@@ -7,6 +7,8 @@ import DeleteComment from "./DeleteComment";
 import EditCommentModal from "./EditComment";
 import AddSongToPlaylistModal from "./AddSongToPlaylistModal";
 import { SongListContext } from "../../context/SongList";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faList } from "@fortawesome/free-solid-svg-icons";
 import "./SongDetail.css";
 
 export default function SongDetail() {
@@ -26,6 +28,27 @@ export default function SongDetail() {
     }
     getSongs();
   }, [dispatch, history, songId]);
+
+  const added = () => {
+    for (let i = 0; i < songList.length; i++) {
+      if (songList[i].id === songDetails.id) return true;
+    }
+    return false;
+  };
+
+  // Add song to audio queue
+  const handleClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const addTrack = {
+      name: songDetails.title,
+      musicSrc: songDetails.url,
+      cover: `/api/songs/${songDetails.id}/cover`,
+      id: songDetails.id,
+    };
+
+    setSongList([...songList, addTrack]);
+  };
 
   return (
     <div className="song-detail">
@@ -50,6 +73,25 @@ export default function SongDetail() {
         />
       </div>
       <div className="song-detail-actions">
+        {added() ? (
+          <button
+            type="button"
+            className="song-detail-button"
+            onClick={(e) => {
+              e.preventDefault();
+            }}
+          >
+            <FontAwesomeIcon icon={faCheck} /> Added
+          </button>
+        ) : (
+          <button
+            type="button"
+            onClick={handleClick}
+            className="song-detail-button"
+          >
+            <FontAwesomeIcon icon={faList} /> Add to Next up{" "}
+          </button>
+        )}
         {currentUserId ? <AddCommentModal songId={songDetails?.id} /> : null}
         {currentUserId ? <AddSongToPlaylistModal song={songDetails} /> : null}
       </div>

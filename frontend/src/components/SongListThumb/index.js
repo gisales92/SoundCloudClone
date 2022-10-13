@@ -16,6 +16,7 @@ export default function SongListThumb({ song }) {
     return false;
   };
 
+  // Add song to audio queue
   const handleClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
