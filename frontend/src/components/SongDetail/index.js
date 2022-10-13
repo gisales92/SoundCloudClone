@@ -1,11 +1,12 @@
 import { useParams, useHistory } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AddCommentModal from "./AddComment";
 import * as songActions from "../../store/song";
 import DeleteComment from "./DeleteComment";
 import EditCommentModal from "./EditComment";
 import AddSongToPlaylistModal from "./AddSongToPlaylistModal";
+import { SongListContext } from "../../context/SongList";
 import "./SongDetail.css";
 
 export default function SongDetail() {
@@ -14,6 +15,7 @@ export default function SongDetail() {
   const history = useHistory();
   const songDetails = useSelector((state) => state.songs?.detail);
   const currentUserId = useSelector((state) => state.session?.user?.id);
+  const [songList, setSongList] = useContext(SongListContext);
 
   useEffect(() => {
     async function getSongs() {
