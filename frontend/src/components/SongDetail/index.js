@@ -102,7 +102,7 @@ export default function SongDetail() {
             return (
               <div key={comment.id}>
                 <div className="song-comment">
-                  <div className="comment-left"></div>
+                  <div className="comment-left">{comment.User.previewImage ? <img className="comment-user-photo" src={`${comment.User.previewImage}`} alt="profile-thumbnail" /> : null }</div>
                   <div className="comment-center">
                     <p className="comment-user">{`${comment.User.username}`}</p>
                     <p className="comment-text">{`${comment.body}`}</p>
