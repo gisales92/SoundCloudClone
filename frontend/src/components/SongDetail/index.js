@@ -41,7 +41,10 @@ export default function SongDetail() {
     const now = new Date();
     //elapsed time in millisecs
     const elapsed = now - new Date(timestamp);
-  }
+    const secs = elapsed / 1000;
+    const minutes = secs / 60;
+    if (minutes < 60) return Math.floor(minutes);
+  };
 
   // Add song to audio queue
   const handleClick = (e) => {
@@ -116,7 +119,9 @@ export default function SongDetail() {
                         src={`${comment.User.previewImage}`}
                         alt="profile-thumbnail"
                       />
-                    ) : <FontAwesomeIcon icon={faUser} />}
+                    ) : (
+                      <FontAwesomeIcon icon={faUser} />
+                    )}
                   </div>
                   <div className="comment-center">
                     <p className="comment-user">{`${comment.User.username}`}</p>
