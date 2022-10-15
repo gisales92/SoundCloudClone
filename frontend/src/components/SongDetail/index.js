@@ -36,6 +36,10 @@ export default function SongDetail() {
     return false;
   };
 
+  const commentTimestamps = (timestamp) => {
+    const now = new Date();
+  }
+
   // Add song to audio queue
   const handleClick = (e) => {
     e.preventDefault();
