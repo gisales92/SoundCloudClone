@@ -8,7 +8,7 @@ import EditCommentModal from "./EditComment";
 import AddSongToPlaylistModal from "./AddSongToPlaylistModal";
 import { SongListContext } from "../../context/SongList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faList } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faList, faUser } from "@fortawesome/free-solid-svg-icons";
 import "./SongDetail.css";
 
 export default function SongDetail() {
@@ -102,18 +102,27 @@ export default function SongDetail() {
             return (
               <div key={comment.id}>
                 <div className="song-comment">
-                  <div className="comment-left">{comment.User.previewImage ? <img className="comment-user-photo" src={`${comment.User.previewImage}`} alt="profile-thumbnail" /> : null }</div>
+                  <div className="comment-left">
+                    {comment.User.previewImage ? (
+                      <img
+                        className="comment-user-photo"
+                        src={`${comment.User.previewImage}`}
+                        alt="profile-thumbnail"
+                      />
+                    ) : <FontAwesomeIcon icon={faUser} />}
+                  </div>
                   <div className="comment-center">
                     <p className="comment-user">{`${comment.User.username}`}</p>
                     <p className="comment-text">{`${comment.body}`}</p>
                   </div>
-
-                  {currentUserId === comment.userId ? (
-                    <div className="comment-actions">
-                      <EditCommentModal comment={comment} />
-                      <DeleteComment comment={comment} />
-                    </div>
-                  ) : null}
+                  <div className="comment-right">
+                    {currentUserId === comment.userId ? (
+                      <div className="comment-actions">
+                        <EditCommentModal comment={comment} />
+                        <DeleteComment comment={comment} />
+                      </div>
+                    ) : null}
+                  </div>
                 </div>
               </div>
             );
