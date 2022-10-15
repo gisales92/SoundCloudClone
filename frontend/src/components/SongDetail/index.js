@@ -43,7 +43,12 @@ export default function SongDetail() {
     const elapsed = now - new Date(timestamp);
     const secs = elapsed / 1000;
     const minutes = secs / 60;
-    if (minutes < 60) return Math.floor(minutes);
+    if (minutes < 60) return `${Math.floor(minutes)} minutes`;
+    const hours = minutes / 60;
+    if (hours < 24) return `${Math.floor(hours)} hours`;
+    const days = hours / 24;
+    if (days < 31) return `${Math.floor(days)} days`;
+    const splitTime = timestamp.split("-");
   };
 
   // Add song to audio queue
