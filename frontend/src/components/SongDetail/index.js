@@ -36,8 +36,11 @@ export default function SongDetail() {
     return false;
   };
 
+  // function that returns the proper timestamp string for comments
   const commentTimestamps = (timestamp) => {
     const now = new Date();
+    //elapsed time in millisecs
+    const elapsed = now - new Date(timestamp);
   }
 
   // Add song to audio queue
