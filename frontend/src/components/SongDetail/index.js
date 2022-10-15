@@ -102,7 +102,12 @@ export default function SongDetail() {
             return (
               <div key={comment.id}>
                 <div className="song-comment">
-                  {`${comment.body} -- ${comment.User.username}`}
+                  <div className="comment-left"></div>
+                  <div className="comment-center">
+                    <p className="comment-user">{`${comment.User.username}`}</p>
+                    <p className="comment-text">{`${comment.body}`}</p>
+                  </div>
+
                   {currentUserId === comment.userId ? (
                     <div className="comment-actions">
                       <EditCommentModal comment={comment} />
