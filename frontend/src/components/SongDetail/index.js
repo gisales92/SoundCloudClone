@@ -46,9 +46,13 @@ export default function SongDetail() {
     if (minutes < 60) return `${Math.floor(minutes)} minutes`;
     const hours = minutes / 60;
     if (hours < 24) return `${Math.floor(hours)} hours`;
-    const days = hours / 24;
-    if (days < 31) return `${Math.floor(days)} days`;
-    const splitTime = timestamp.split("-");
+    const splitTime = timestamp.split(/-|T/);
+    const years = now.getFullYear() - parseInt(splitTime[0]);
+    const months = now.getMonth() + 1 - parseInt(splitTime[1]);
+    const days = now.getDate() - parseInt(splitTime[2]);
+    if (!years && !months) return `${Math.floor(days)} days`;
+    else if (!years) return `${Math.floor(months)} months`;
+    else return `${Math.floor(years)} years`;
   };
 
   // Add song to audio queue
