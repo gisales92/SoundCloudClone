@@ -88,6 +88,8 @@
 
 .comment-actions {
   margin: auto 0px auto auto;
+  display: flex;
+  flex-direction: row;
 }
 
 .comment-actions button {
@@ -141,4 +143,21 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.comment-user {
+  color: #333;
+  font-size: 12px;
+  margin: 0;
+  line-height: normal;
+}
+
+.comment-center {
+  margin-left: 10px;
+}
+
+.comment-text {
+  line-height: normal;
+  margin: 0;
+  font-size: 14px;
 }
