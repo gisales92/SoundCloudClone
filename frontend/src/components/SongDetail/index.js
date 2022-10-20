@@ -57,15 +57,13 @@ export default function SongDetail() {
     const months = now.getMonth() + 1 - parseInt(splitTime[1]);
     const days = now.getDate() - parseInt(splitTime[2]);
     if (!years && !months) {
-      if (days === 1) return "1 day"
+      if (days === 1) return "1 day";
       return `${days} days`;
-    }
-    else if (!years) {
-      if (months === 1) return "1 month"
+    } else if (!years) {
+      if (months === 1) return "1 month";
       return `${months} months`;
-    }
-    else {
-      if (years === 1) return "1 year"
+    } else {
+      if (years === 1) return "1 year";
       return `${years} years`;
     }
   };
@@ -146,13 +144,16 @@ export default function SongDetail() {
                     ) : (
                       <FontAwesomeIcon icon={faUser} />
                     )}
-                  </div>
-                  <div className="comment-center">
-                    <p className="comment-user">{`${comment.User.username}`}</p>
-                    <p className="comment-text">{`${comment.body}`}</p>
+
+                    <div className="comment-center">
+                      <p className="comment-user">{`${comment.User.username}`}</p>
+                      <p className="comment-text">{`${comment.body}`}</p>
+                    </div>
                   </div>
                   <div className="comment-right">
-                    <p className="comment-timestamp">{`${commentTimestamps(comment.updatedAt)} ago`}</p>
+                    <p className="comment-timestamp">{`${commentTimestamps(
+                      comment.updatedAt
+                    )} ago`}</p>
                     {currentUserId === comment.userId ? (
                       <div className="comment-actions">
                         <EditCommentModal comment={comment} />

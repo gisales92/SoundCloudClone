@@ -78,6 +78,8 @@
   width: 100%;
   margin: 0;
   line-height: 60px;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .song-comments {
@@ -126,4 +128,17 @@
   box-sizing: border-box;
   min-width: fit-content;
   margin: auto;
+}
+
+.comment-user-photo {
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.comment-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
