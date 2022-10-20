@@ -127,7 +127,7 @@ export default function SongDetail() {
         {currentUserId ? <AddCommentModal songId={songDetails?.id} /> : null}
         {currentUserId ? <AddSongToPlaylistModal song={songDetails} /> : null}
       </div>
-      <h4 className="song-header">Comments</h4>
+      <h4 className="song-comments-header">Comments</h4>
       <div className="song-comments">
         <ul className="song-comments-list">
           {songDetails?.Comments.map((comment) => {

@@ -74,7 +74,6 @@
   display: flex;
   flex-direction: row;
   height: fit-content;
-  /* border-bottom: 1px solid var(--secondary-dark); */
   width: 100%;
   margin: 0;
   align-items: center;
@@ -183,4 +182,10 @@
 .song-detail-button:hover {
   cursor: pointer;
   background-color: var(--secondary);
+}
+
+.song-comments-header {
+  border-bottom: 1px solid var(--secondary-dark);
+  margin: 15px 25px 0;
+  padding-bottom: 15px;
 }
