@@ -43,16 +43,31 @@ export default function SongDetail() {
     const elapsed = now - new Date(timestamp);
     const secs = elapsed / 1000;
     const minutes = secs / 60;
-    if (minutes < 60) return `${Math.floor(minutes)} minutes`;
+    if (minutes < 60) {
+      if (Math.floor(minutes) === 1) return "1 minute";
+      return `${Math.floor(minutes)} minutes`;
+    }
     const hours = minutes / 60;
-    if (hours < 24) return `${Math.floor(hours)} hours`;
+    if (hours < 24) {
+      if (Math.floor(hours) === 1) return "1 hour";
+      return `${Math.floor(hours)} hours`;
+    }
     const splitTime = timestamp.split(/-|T/);
     const years = now.getFullYear() - parseInt(splitTime[0]);
     const months = now.getMonth() + 1 - parseInt(splitTime[1]);
     const days = now.getDate() - parseInt(splitTime[2]);
-    if (!years && !months) return `${Math.floor(days)} days`;
-    else if (!years) return `${Math.floor(months)} months`;
-    else return `${Math.floor(years)} years`;
+    if (!years && !months) {
+      if (days === 1) return "1 day"
+      return `${days} days`;
+    }
+    else if (!years) {
+      if (months === 1) return "1 month"
+      return `${months} months`;
+    }
+    else {
+      if (years === 1) return "1 year"
+      return `${years} years`;
+    }
   };
 
   // Add song to audio queue
