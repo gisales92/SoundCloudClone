@@ -152,6 +152,7 @@ export default function SongDetail() {
                     <p className="comment-text">{`${comment.body}`}</p>
                   </div>
                   <div className="comment-right">
+                    <p className="comment-timestamp">{`${commentTimestamps(comment.updatedAt)} ago`}</p>
                     {currentUserId === comment.userId ? (
                       <div className="comment-actions">
                         <EditCommentModal comment={comment} />
