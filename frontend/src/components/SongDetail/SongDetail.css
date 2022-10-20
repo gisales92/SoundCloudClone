@@ -74,12 +74,12 @@
   display: flex;
   flex-direction: row;
   height: fit-content;
-  border-bottom: 1px solid var(--secondary-dark);
+  /* border-bottom: 1px solid var(--secondary-dark); */
   width: 100%;
   margin: 0;
-  line-height: 60px;
   align-items: center;
   justify-content: space-between;
+  padding: 10px 0;
 }
 
 .song-comments {
@@ -90,11 +90,7 @@
   margin: auto 0px auto auto;
   display: flex;
   flex-direction: row;
-}
-
-.comment-actions button {
-  padding: 5px 15px;
-  margin-left: 15px;
+  gap: 10px;
 }
 
 .song-detail-actions {
@@ -146,7 +142,7 @@
 }
 
 .comment-user {
-  color: #333;
+  color: var(--primary-light);
   font-size: 12px;
   margin: 0;
   line-height: normal;
@@ -160,4 +156,31 @@
   line-height: normal;
   margin: 0;
   font-size: 14px;
+}
+
+.comment-timestamp {
+  line-height: normal;
+  text-align: right;
+  color: #333;
+  font-size: 12px;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+
+.song-detail-button {
+  border: 1px solid var(--secondary-dark);
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 10px 20px;
+  width: fit-content;
+  margin: 0;
+  padding: 5px 15px;
+  white-space: nowrap;
+ }
+
+.song-detail-button:hover {
+  cursor: pointer;
+  background-color: var(--secondary);
 }
