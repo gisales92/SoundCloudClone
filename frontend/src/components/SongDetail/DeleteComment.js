@@ -27,8 +27,8 @@ export default function DeleteComment({ comment }) {
 
 
   return (
-    <button type="button" className="song-detail-button" onClick={handleClick}>
-      Delete <FontAwesomeIcon icon={faTrashCan} />
+    <button type="button" className="song-detail-button" title="Delete Comment"onClick={handleClick}>
+      <FontAwesomeIcon icon={faTrashCan} />
     </button>
   );
 }

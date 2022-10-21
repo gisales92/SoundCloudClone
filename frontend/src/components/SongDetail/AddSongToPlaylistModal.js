@@ -22,7 +22,7 @@ function AddSongToPlaylistModal({song}) {
         onClick={(e) => {
           e.preventDefault();
           setShowModal(true);
-        }}>Add Song To Playlist <FontAwesomeIcon icon={faPlus} /></button>
+        }}><FontAwesomeIcon icon={faPlus} /> Add Song To Playlist</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <AddSongToPlaylistForm props={{setShowModal, song}}/>

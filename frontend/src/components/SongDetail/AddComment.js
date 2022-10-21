@@ -23,7 +23,7 @@ function AddCommentModal({songId}) {
         onClick={(e) => {
           e.preventDefault();
           setShowModal(true);
-        }}>Add Comment <FontAwesomeIcon icon={faMessage} /></button>
+        }}><FontAwesomeIcon icon={faMessage} /> Add Comment</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <AddCommentForm props={{setShowModal, songId}}/>

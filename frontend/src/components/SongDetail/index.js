@@ -8,7 +8,7 @@ import EditCommentModal from "./EditComment";
 import AddSongToPlaylistModal from "./AddSongToPlaylistModal";
 import { SongListContext } from "../../context/SongList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faList, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faList, faUser, faComments } from "@fortawesome/free-solid-svg-icons";
 import "./SongDetail.css";
 
 export default function SongDetail() {
@@ -127,7 +127,7 @@ export default function SongDetail() {
         {currentUserId ? <AddCommentModal songId={songDetails?.id} /> : null}
         {currentUserId ? <AddSongToPlaylistModal song={songDetails} /> : null}
       </div>
-      <h4 className="song-comments-header">Comments</h4>
+      <h4 className="song-comments-header"><FontAwesomeIcon icon={faComments} /> Comments</h4>
       <div className="song-comments">
         <ul className="song-comments-list">
           {songDetails?.Comments.map((comment) => {

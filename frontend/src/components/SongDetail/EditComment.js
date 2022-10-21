@@ -18,11 +18,11 @@ function EditCommentModal({comment}) {
 
   return (
     <>
-      <button type="button"  className="song-detail-button"
+      <button type="button"  className="song-detail-button" title="Edit Comment"
         onClick={(e) => {
           e.preventDefault();
           setShowModal(true);
-        }}>Edit <FontAwesomeIcon icon={faPen} /></button>
+        }}><FontAwesomeIcon icon={faPen} /></button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <EditCommentForm props={{setShowModal, comment}}/>

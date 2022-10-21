@@ -2,6 +2,7 @@
   background-color: var(--secondary-light);
   border-radius: 5px;
   width: 90%;
+  min-width: 550px;
   max-width: 1250px;
   margin: auto;
 }
@@ -15,11 +16,12 @@
   max-height: 100%;
   background-color: transparent;
   gap: 15px;
+  width: fit-content;
+  min-width:0;
 }
 
 .song-detail-header {
   width: 100%;
-  min-width: 550px;
   margin: auto;
   height: 380px;
   background: rgb(41, 67, 78);
@@ -30,6 +32,8 @@
     rgba(189, 185, 183, 1) 100%
   );
   display: flex;
+  justify-content: space-between;
+  overflow: hidden;
 }
 
 .song-detail-sub-title {
@@ -188,4 +192,8 @@
   border-bottom: 1px solid var(--secondary-dark);
   margin: 15px 25px 0;
   padding-bottom: 15px;
+}
+
+.comment-right {
+  margin-left: 7.5px;
 }
