@@ -2,7 +2,11 @@ const express = require("express");
 const asyncHandler = require("express-async-handler");
 const { check } = require("express-validator");
 
-const { setTokenCookie, restoreUser, requireAuth } = require("../../utils/auth");
+const {
+  setTokenCookie,
+  restoreUser,
+  requireAuth,
+} = require("../../utils/auth");
 const { User } = require("../../db/models");
 const { handleValidationErrors } = require("../../utils/validation");
 const router = express.Router();
@@ -40,14 +44,9 @@ router.post(
     }
 
     const token = await setTokenCookie(res, user);
+    user.token = token;
 
-    return res.json({
-      id: user.id,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-      token: token,
-    });
+    return res.json(user);
   })
 );
 
@@ -55,13 +54,8 @@ router.post(
 router.get("/", requireAuth, (req, res, next) => {
   const { user } = req;
   if (user) {
-    return res.json({
-      id: user.id,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-      token: req.cookies.token,
-    });
+    user.token = req.cookies.token;
+    return res.json(user);
   } else {
     next();
     // res.status(401);
