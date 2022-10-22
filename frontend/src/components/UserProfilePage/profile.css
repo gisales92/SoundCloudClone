@@ -3,6 +3,7 @@
     width: 200px;
     object-fit: cover;
     border-radius: 50%;
+    margin-right: 30px;
 }
 
 .profile-page {
@@ -15,4 +16,18 @@
 .profile-header {
     display: flex;
     flex-direction: row;
+    padding: 30px;
+    background-image: url("../../../public/Nicolas_St_Disc_Jockey.jpg");
+    background-size: cover;
+}
+
+.profile.user-name {
+    font-weight: 100;
+    line-height: 40px;
+    font-size: 24px;
+    color: var(--secondary-light);
+    height: fit-content;
+    background-color: var(--primary-dark);
+    padding: 5px;
+    margin: 0;
 }

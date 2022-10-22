@@ -36,7 +36,7 @@ const UserProfilePage = (props) => {
     <div className="profile-page">
       <div className="profile-header">
         <img src={user.previewImage} alt="profile" className="user-profile-pic"/>
-        <h2>{user.username}</h2>
+        <h2 className="profile user-name">{user.username}</h2>
       </div>
       <ul className="profile-navigation">
         <li key="favorites">
