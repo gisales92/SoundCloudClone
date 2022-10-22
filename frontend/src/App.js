@@ -72,7 +72,7 @@ function App() {
             <SongDetail />
           </Route>
           <Route exact path="/profile">
-            <UserProfilePage />
+            {user ? <UserProfilePage /> : <Redirect to="/" />}
           </Route>
           <Route path="">
             <PageNotFound />
