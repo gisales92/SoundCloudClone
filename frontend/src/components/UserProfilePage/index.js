@@ -8,6 +8,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { userSelector } from "../../store/session";
+import "./profile.css"
 
 
 const UserProfilePage = (props) => {
@@ -34,6 +35,7 @@ const UserProfilePage = (props) => {
   return (
     <div className="profile-page">
       <div className="profile-header">
+        <img src={user.previewImage} alt="profile" className="user-profile-pic"/>
         <h2>{user.username}</h2>
       </div>
       <ul className="profile-navigation">
