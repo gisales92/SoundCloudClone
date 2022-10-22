@@ -27,7 +27,23 @@
     font-size: 24px;
     color: var(--secondary-light);
     height: fit-content;
+    width: fit-content;
     background-color: var(--primary-dark);
     padding: 5px;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.profile.header-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.profile.header-sub {
+    background-color: var(--primary-dark);
+    color: var(--secondary-dark);
+    width: fit-content;
+    padding: 10px 5px;
     margin: 0;
 }
