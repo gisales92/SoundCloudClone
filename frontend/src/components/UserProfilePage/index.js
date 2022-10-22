@@ -8,12 +8,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { userSelector } from "../../store/session";
-import { fetchFavorites } from "../../store/favorites";
-import { fetchReservations } from "../../store/reservations";
-import { fetchUserReviews } from "../../store/reviews";
-import ProfileFavorites from "./ProfileFavorites";
-import ProfileReservations from "./ProfileReservations";
-import ProfileReviews from "./ProfileReviews";
+
 
 const UserProfilePage = (props) => {
   const dispatch = useDispatch();
@@ -25,9 +20,9 @@ const UserProfilePage = (props) => {
   useEffect(() => {
     if (!loaded)
       (async () => {
-        await dispatch(fetchFavorites());
-        await dispatch(fetchReservations());
-        await dispatch(fetchUserReviews());
+        // await dispatch(fetchFavorites());
+        // await dispatch(fetchReservations());
+        // await dispatch(fetchUserReviews());
         setLoaded(true);
       })();
   }, [dispatch, loaded]);
@@ -39,38 +34,38 @@ const UserProfilePage = (props) => {
   return (
     <div className="profile-page">
       <div className="profile-header">
-        <h1>{user.first_name + " " + user.last_name}</h1>
+        <h2>{user.username}</h2>
       </div>
       <ul className="profile-navigation">
         <li key="favorites">
           <NavLink
-            to="/profile/favorites"
+            to="/profile/tracks"
             className="main-color-hover"
             isActive={() =>
-              ["/profile", "/profile/favorites"].includes(pathname)
+              ["/profile", "/profile/tracks"].includes(pathname)
             }
           >
-            Favorites
+            Tracks
           </NavLink>
         </li>
-        <li key="reservations">
-          <NavLink to="/profile/reservations" className="main-color-hover">Reservations</NavLink>
+        <li key="playlists">
+          <NavLink to="/profile/playlists" className="main-color-hover">Playlists</NavLink>
         </li>
         <li key="reviews">
-          <NavLink to="/profile/reviews" className="main-color-hover">Reviews</NavLink>
+          <NavLink to="/profile/comments" className="main-color-hover">Comments</NavLink>
         </li>
       </ul>
       <Switch>
-        <Route path="/profile/reservations">
-          <ProfileReservations loaded={loaded} />
+        <Route path="/profile/playlists">
+          {/* <ProfileReservations loaded={loaded} /> */}
         </Route>
 
-        <Route path="/profile/reviews">
-          <ProfileReviews loaded={loaded} />
+        <Route path="/profile/comments">
+          {/* <ProfileReviews loaded={loaded} /> */}
         </Route>
 
         <Route path="/profile">
-          <ProfileFavorites loaded={loaded} />
+          {/* <ProfileFavorites loaded={loaded} /> */}
         </Route>
       </Switch>
     </div>
