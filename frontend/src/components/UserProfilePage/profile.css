@@ -4,6 +4,7 @@
     object-fit: cover;
     border-radius: 50%;
     margin-right: 30px;
+    background-color: var(--secondary);
 }
 
 .profile-page {

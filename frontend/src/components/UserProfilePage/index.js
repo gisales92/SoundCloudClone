@@ -43,7 +43,7 @@ const UserProfilePage = (props) => {
         <div className="profile header-info">
           <h2 className="profile user-name">{user.username}</h2>
           <p className="profile header-sub">{`${user.firstName} ${user.lastName}`}</p>
-          <p className="profile header-sub">{`${user.city ? user.city : null}, ${user.country ? user.country : null}`}</p>
+          { user.city && user.country ? <p className="profile header-sub">{`${user.city}, ${user.country}`}</p> : null}
         </div>
       </div>
       <ul className="profile-navigation">
