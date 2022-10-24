@@ -49,19 +49,19 @@ const UserProfilePage = (props) => {
         <li key="favorites">
           <NavLink
             to="/profile/tracks"
-            className="main-color-hover"
+            className="profile-tab"
             isActive={() => ["/profile", "/profile/tracks"].includes(pathname)}
           >
             Tracks
           </NavLink>
         </li>
         <li key="playlists">
-          <NavLink to="/profile/playlists" className="main-color-hover">
+          <NavLink to="/profile/playlists" className="profile-tab">
             Playlists
           </NavLink>
         </li>
         <li key="reviews">
-          <NavLink to="/profile/comments" className="main-color-hover">
+          <NavLink to="/profile/comments" className="profile-tab">
             Comments
           </NavLink>
         </li>
