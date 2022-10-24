@@ -46,7 +46,7 @@ const UserProfilePage = (props) => {
         </div>
       </div>
       <ul className="profile-navigation">
-        <li key="favorites">
+        <li key="tracks">
           <NavLink
             to="/profile/tracks"
             className="profile-tab"
@@ -67,15 +67,17 @@ const UserProfilePage = (props) => {
         </li>
       </ul>
       <Switch>
-        <Route path="/profile/playlists">
-          {/* <ProfileReservations loaded={loaded} /> */}
+        <Route exact path="/profile/playlists">
+          USER PLAYLISTS
         </Route>
 
-        <Route path="/profile/comments">
+        <Route exact path="/profile/comments">
+            USER COMMENTS
           {/* <ProfileReviews loaded={loaded} /> */}
         </Route>
 
         <Route path="/profile">
+            USER TRACKS
           {/* <ProfileFavorites loaded={loaded} /> */}
         </Route>
       </Switch>

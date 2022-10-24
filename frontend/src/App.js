@@ -71,10 +71,10 @@ function App() {
           <Route exact path="/songs/:songId">
             <SongDetail />
           </Route>
-          <Route exact path="/profile">
+          <Route path="/profile">
             {user ? <UserProfilePage /> : <Redirect to="/" />}
           </Route>
-          <Route path="">
+          <Route path="*">
             <PageNotFound />
           </Route>
         </Switch>
