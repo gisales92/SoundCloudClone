@@ -57,6 +57,11 @@ const UserProfilePage = (props) => {
             Tracks
           </NavLink>
         </li>
+        <li key="Albums">
+          <NavLink to="/profile/Albums" className="profile-tab">
+            Albums
+          </NavLink>
+        </li>
         <li key="playlists">
           <NavLink to="/profile/playlists" className="profile-tab">
             Playlists
@@ -69,6 +74,9 @@ const UserProfilePage = (props) => {
         </li>
       </ul>
       <Switch>
+      <Route exact path="/profile/albums">
+          USER Albums
+        </Route>
         <Route exact path="/profile/playlists">
           USER PLAYLISTS
         </Route>

@@ -213,8 +213,7 @@ router.put(
   "/:playlistId/songs",
   requireAuth,
   asyncHandler(async (req, res, next) => {
-    // console.log("HERRO")
-    // return res.json({message: "HI"})
+   
     const userId = req.user.id;
     const playlist = await Playlist.findByPk(req.params.playlistId);
     if (playlist) {
