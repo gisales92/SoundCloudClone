@@ -8,6 +8,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { userSelector } from "../../store/session";
+import UserTracks from "./tracks";
 import "./profile.css";
 
 const UserProfilePage = (props) => {
@@ -78,8 +79,7 @@ const UserProfilePage = (props) => {
         </Route>
 
         <Route path="/profile">
-            USER TRACKS
-          {/* <ProfileFavorites loaded={loaded} /> */}
+          <UserTracks userId={user.id} />
         </Route>
       </Switch>
     </div>
