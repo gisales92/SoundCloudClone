@@ -35,14 +35,15 @@ const UserProfilePage = (props) => {
     <div className="profile-page">
       <div className="profile-header">
         <img
-          src={user.previewImage}
+          src={user.previewImage ? user.previewImage : "https://upload.wikimedia.org/wikipedia/commons/9/98/OOjs_UI_icon_userAvatar.svg"}
           alt="profile"
           className="user-profile-pic"
+          crossOrigin=""
         />
         <div className="profile header-info">
           <h2 className="profile user-name">{user.username}</h2>
           <p className="profile header-sub">{`${user.firstName} ${user.lastName}`}</p>
-          <p className="profile header-sub">{`${user.city}, ${user.country}`}</p>
+          <p className="profile header-sub">{`${user.city ? user.city : null}, ${user.country ? user.country : null}`}</p>
         </div>
       </div>
       <ul className="profile-navigation">
