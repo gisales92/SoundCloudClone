@@ -58,7 +58,7 @@ const UserProfilePage = (props) => {
           </NavLink>
         </li>
         <li key="Albums">
-          <NavLink to="/profile/Albums" className="profile-tab">
+          <NavLink to="/profile/albums" className="profile-tab">
             Albums
           </NavLink>
         </li>
