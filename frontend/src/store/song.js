@@ -7,8 +7,8 @@ const SET_SONGS = "songs/setSongs";
 export const songsByArtistId = (userId) => (state) => {
   const songs = [];
   Object.keys(state.songs).forEach((songId) => {
-    
-    if (state.songs[songId].userId == userId) {
+
+    if (state.songs[songId].userId === userId) {
       songs.push(state.songs[songId]);
     }
   });
