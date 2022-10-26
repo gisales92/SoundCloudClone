@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { songsByArtistId } from "../../store/song";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMusic } from "@fortawesome/free-solid-svg-icons";
@@ -7,7 +6,6 @@ import SongListThumb from "../SongListThumb";
 
 
 function UserTracks(userId) {
-  const dispatch = useDispatch();
   const songs = useSelector(songsByArtistId(userId));
 
   return (

@@ -2,7 +2,7 @@ import { csrfFetch } from "./csrf";
 
 // Selectors
 export const albumIdSelector = (id) => (state) => state.albums[id];
-export const albumArtistSelector = (state) => state.albums.artist;
+export const albumArtistSelector = (state) => state.albums.artistInfo;
 // Action types
 const SET_ALBUMS = "albums/SET_ALBUMS";
 const ADD_ALBUM = "albums/ADD_ALBUM";
@@ -123,8 +123,10 @@ export const getAlbumArtist = (artistId) => async (dispatch) => {
   return res;
 };
 
-const albumsReducer = (state = {}, action) => {
+const albumsReducer = (state = { artistInfo: {}, artist: {}}, action) => {
   const newState = { ...state };
+  newState.artistInfo = {...state.artistInfo};
+  newState.artist = {...state.artist};
   switch (action.type) {
     case SET_ALBUMS:
       action.albums.Albums.forEach((album) => {
@@ -132,7 +134,7 @@ const albumsReducer = (state = {}, action) => {
       });
       break;
     case GET_ARTIST:
-      newState.artist = action.artist;
+      newState.artistInfo = action.artist;
       break;
     default:
       break;

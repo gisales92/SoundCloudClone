@@ -35,6 +35,7 @@ export const getSongDetail = (songId) => async (dispatch) => {
     method: "GET",
   });
   const data = await res.json();
+  console.log("DATA: ", data)
   dispatch(songDetail(data));
   return res;
 };
@@ -48,18 +49,22 @@ export const fetchSongs = () => async (dispatch) => {
   return res;
 };
 
-const songsReducer = (state = {}, action) => {
+const songsReducer = (state = {detail: {}, artist: {}}, action) => {
+  const newState = { ...state };
+  newState.detail = {...state.detail};
+  newState.artist = {...state.artist};
   switch (action.type) {
     case GET_SONG_DETAIL:
-      return { ...state, detail: action.song };
+      newState.detail = action.song;
+      break;
     case SET_SONGS:
-      const newState = { ...state };
       action.songs.Songs.forEach((song) => {
         newState[song.id] = song;
       });
-      return newState;
+      break;
     default:
-      return state;
+      break;
   }
+  return newState;
 };
 export default songsReducer;

@@ -57,16 +57,23 @@ export const editComment =
     return res;
   };
 
-const commentsReducer = (state = {}, action) => {
+const commentsReducer = (state = { detail: {}, artist: {} }, action) => {
+  const newState = { ...state };
+  newState.detail = { ...state.detail };
+  newState.artist = { ...state.artist };
   switch (action.type) {
     case ADD_COMMENT:
-      return { ...state, detail: action.comment };
+      newState.detail = action.comment;
+      break;
     case DELETE_COMMENT:
-      return { ...state, detail: {} };
+      newState.detail = {};
+      break;
     case EDIT_COMMENT:
-      return { ...state, detail: action.comment };
+      newState.detail = action.comment;
+      break;
     default:
-      return state;
+      break;
   }
+  return newState;
 };
 export default commentsReducer;

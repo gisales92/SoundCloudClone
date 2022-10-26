@@ -90,7 +90,7 @@ export default function SongDetail() {
             <span className="song-detail-title">{songDetails?.title}</span>
           </div>
           <h3 className="song-detail-sub-title">
-            {songDetails?.Artist.username}
+            {songDetails?.Artist?.username}
           </h3>
         </div>
         <img
@@ -130,7 +130,7 @@ export default function SongDetail() {
       <h4 className="song-comments-header"><FontAwesomeIcon icon={faComments} /> Comments</h4>
       <div className="song-comments">
         <ul className="song-comments-list">
-          {songDetails?.Comments.map((comment) => {
+          {songDetails?.Comments?.map((comment) => {
             return (
               <div key={comment.id}>
                 <div className="song-comment">
