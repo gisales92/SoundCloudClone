@@ -10,6 +10,7 @@ import {
 import { userSelector } from "../../store/session";
 import { setArtistAlbums } from "../../store/albums";
 import UserTracks from "./tracks";
+import UserAlbums from "./albums";
 import "./profile.css";
 
 const UserProfilePage = (props) => {
@@ -76,7 +77,7 @@ const UserProfilePage = (props) => {
       </ul>
       <Switch>
       <Route exact path="/profile/albums">
-          USER Albums
+          <UserAlbums />
         </Route>
         <Route exact path="/profile/playlists">
           USER PLAYLISTS
