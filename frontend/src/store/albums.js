@@ -3,6 +3,8 @@ import { csrfFetch } from "./csrf";
 // Selectors
 export const albumIdSelector = (id) => (state) => state.albums[id];
 export const albumArtistSelector = (state) => state.albums.artistInfo;
+export const albumsByArtistsSelector = (state) => state.albums.artist;
+
 // Action types
 const SET_ALBUMS = "albums/SET_ALBUMS";
 const ADD_ALBUM = "albums/ADD_ALBUM";
@@ -10,6 +12,7 @@ const EDIT_ALBUM = "albums/EDIT_ALBUM";
 const DELETE_ALBUM = "albums/DELETE_ALBUM";
 const ADD_SONG = "albums/ADD_SONG";
 const GET_ARTIST = "albums/GET_ARTIST";
+const GET_ARTIST_ALBUMS = "albums/GET_ARTIST_ALBUMS";
 
 // Action creators
 const setAlbums = (albums) => {
@@ -51,6 +54,13 @@ const getArtist = (artist) => {
   return {
     type: GET_ARTIST,
     artist,
+  };
+};
+
+const getArtistAlbums = (albums) => {
+  return {
+    type: GET_ARTIST_ALBUMS,
+    albums,
   };
 };
 
@@ -123,10 +133,19 @@ export const getAlbumArtist = (artistId) => async (dispatch) => {
   return res;
 };
 
-const albumsReducer = (state = { artistInfo: {}, artist: {}}, action) => {
+export const setArtistAlbums = (artistId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/artists/${artistId}/albums`, {
+    method: "GET",
+  });
+  const data = await res.json();
+  if (res.ok) dispatch(getArtistAlbums(data));
+  return res;
+};
+
+const albumsReducer = (state = { artistInfo: {}, artist: {} }, action) => {
   const newState = { ...state };
-  newState.artistInfo = {...state.artistInfo};
-  newState.artist = {...state.artist};
+  newState.artistInfo = { ...state.artistInfo };
+  newState.artist = { ...state.artist };
   switch (action.type) {
     case SET_ALBUMS:
       action.albums.Albums.forEach((album) => {
@@ -135,6 +154,11 @@ const albumsReducer = (state = { artistInfo: {}, artist: {}}, action) => {
       break;
     case GET_ARTIST:
       newState.artistInfo = action.artist;
+      break;
+    case GET_ARTIST_ALBUMS:
+      action.albums.forEach((album) => {
+        newState.artist[album.id] = album;
+      });
       break;
     default:
       break;

@@ -8,6 +8,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { userSelector } from "../../store/session";
+import { setArtistAlbums } from "../../store/albums";
 import UserTracks from "./tracks";
 import "./profile.css";
 
@@ -21,7 +22,7 @@ const UserProfilePage = (props) => {
   useEffect(() => {
     if (!loaded)
       (async () => {
-        // await dispatch(fetchFavorites());
+        await dispatch(setArtistAlbums(user.id));
         // await dispatch(fetchReservations());
         // await dispatch(fetchUserReviews());
         setLoaded(true);

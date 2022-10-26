@@ -80,7 +80,7 @@ asyncHandler(async (req, res, next) => {
             })
         )
         res.status(200);
-        return res.json({Albums: albums});
+        return res.json(albums);
     } else {
         const err = new Error("Artist couldn't be found");
         err.status = 404;
