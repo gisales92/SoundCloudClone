@@ -43,7 +43,9 @@ function AlbumDetail() {
             </div>
             <div className="a-header lower-left">
               <p className="album-song-count">{album.Songs.length}</p>
-              <p className="album-count-label">{album.Songs.length === 1 ? "Track" : "Tracks"}</p>
+              <p className="album-count-label">
+                {album.Songs.length === 1 ? "Track" : "Tracks"}
+              </p>
             </div>
           </div>
           <div className="album-header-right">
@@ -60,6 +62,24 @@ function AlbumDetail() {
                 icon={faRecordVinyl}
               />
             )}
+          </div>
+        </div>
+        <div className="album-body">
+          <div className="album-body-left">
+            <img
+              src={
+                artist.previewImage
+                  ? artist.previewImage
+                  : "https://upload.wikimedia.org/wikipedia/commons/9/98/OOjs_UI_icon_userAvatar.svg"
+              }
+              alt="profile"
+              className="album-artist-pic"
+              crossOrigin=""
+            />
+            <p className="album-artist-name">{artist?.username}</p>
+          </div>
+          <div className="album-body-right">
+            <p className="album-description">{album.description}</p>
           </div>
         </div>
       </div>
