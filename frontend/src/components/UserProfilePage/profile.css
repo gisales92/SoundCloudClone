@@ -144,3 +144,15 @@
     white-space: nowrap;
     text-overflow: ellipsis;
   }
+
+  .album-center {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+ .album-description.profile {
+    margin: 0;
+    font-size: 14px;
+    color: var(--primary-light);
+ }

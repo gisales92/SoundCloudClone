@@ -29,9 +29,14 @@ function UserAlbums() {
                         icon={faRecordVinyl}
                       />
                     )}
-                    <p className="album-title profile">
-                      {albums[albumId].title}
-                    </p>
+                    <div className="album-center">
+                      <p className="album-title profile">
+                        {albums[albumId].title}
+                      </p>
+                      <p className="album-description profile">
+                        {albums[albumId].description}
+                      </p>
+                    </div>
                   </div>
                   <p className="album-time profile">{`${timestamper(
                     albums[albumId].createdAt
