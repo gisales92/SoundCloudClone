@@ -13,6 +13,7 @@ const DELETE_ALBUM = "albums/DELETE_ALBUM";
 const ADD_SONG = "albums/ADD_SONG";
 const GET_ARTIST = "albums/GET_ARTIST";
 const GET_ARTIST_ALBUMS = "albums/GET_ARTIST_ALBUMS";
+const GET_ALBUM = "albums/GET_ALBUM";
 
 // Action creators
 const setAlbums = (albums) => {
@@ -61,6 +62,13 @@ const getArtistAlbums = (albums) => {
   return {
     type: GET_ARTIST_ALBUMS,
     albums,
+  };
+};
+
+const getAlbum = (album) => {
+  return {
+    type: GET_ALBUM,
+    album,
   };
 };
 
@@ -142,6 +150,15 @@ export const setArtistAlbums = (artistId) => async (dispatch) => {
   return res;
 };
 
+export const getAlbumDetails = (albumId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/albums/${albumId}`, {
+    method: "GET",
+  });
+  const data = await res.json();
+  if (res.ok) dispatch(getAlbum(data));
+  return res;
+}
+
 const albumsReducer = (state = { artistInfo: {}, artist: {} }, action) => {
   const newState = { ...state };
   newState.artistInfo = { ...state.artistInfo };
@@ -160,6 +177,8 @@ const albumsReducer = (state = { artistInfo: {}, artist: {} }, action) => {
         newState.artist[album.id] = album;
       });
       break;
+    case GET_ALBUM:
+      newState.detail = action.album;
     default:
       break;
   }
