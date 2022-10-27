@@ -7,6 +7,8 @@ import {
   getAlbumArtist,
   albumArtistSelector,
 } from "../../store/albums";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRecordVinyl } from "@fortawesome/free-solid-svg-icons";
 import "./Albums.css";
 
 function AlbumDetail() {
@@ -41,10 +43,30 @@ function AlbumDetail() {
   }, [loaded, album]);
 
   return (
-    album && updated && (
+    album &&
+    updated && (
       <div className="album-container">
-        <h2 className="album-title">{album.title}</h2>
-        <h3 className="album-artist">{artist?.username}</h3>
+        <div className="album-header">
+          <div className="album-header-left">
+            <h2 className="album-title-detail">{album.title}</h2>
+            <h3 className="album-artist-detail">{artist?.username}</h3>
+          </div>
+          <div className="album-header-right">
+            {album.previewImage ? (
+              <img
+                src={album.previewImage}
+                crossOrigin=""
+                alt="album cover"
+                className="album-cover-detail"
+              />
+            ) : (
+              <FontAwesomeIcon
+                className="album-cover-detail icon"
+                icon={faRecordVinyl}
+              />
+            )}
+          </div>
+        </div>
       </div>
     )
   );
