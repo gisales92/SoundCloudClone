@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { albumsByArtistsSelector } from "../../store/albums";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMusic, faRecordVinyl } from "@fortawesome/free-solid-svg-icons";
+import { faRecordVinyl } from "@fortawesome/free-solid-svg-icons";
 import { timestamper } from "../SongDetail";
 
 function UserAlbums() {
@@ -47,6 +47,7 @@ function UserAlbums() {
           </ul>
         ) : (
           <div className="no-data-outer">
+            <FontAwesomeIcon className="no-data icon" icon={faRecordVinyl} />
             <p className="profile no-data">Seems a little quiet over here</p>
           </div>
         )}
