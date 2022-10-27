@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { albumsByArtistsSelector } from "../../store/albums";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMusic } from "@fortawesome/free-solid-svg-icons";
+import {timestamper} from "../SongDetail"
 
 function UserAlbums() {
   const albums = useSelector(albumsByArtistsSelector);
@@ -13,7 +14,10 @@ function UserAlbums() {
           <ul className="index-albums-list">
             {Object.keys(albums)?.map((albumId) => {
               return (
-                <div className="user-album-item">{albums[albumId].title}</div>
+                <div className="user-album-outer">
+                    <p className="album-title profile">{albums[albumId].title}</p>
+                    <p className="album-time profile">{`${timestamper(albums[albumId].createdAt)} ago`}</p>
+                </div>
               );
             })}
           </ul>

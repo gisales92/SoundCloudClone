@@ -11,6 +11,38 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faList, faUser, faComments } from "@fortawesome/free-solid-svg-icons";
 import "./SongDetail.css";
 
+// function that returns the proper timestamp string for comments
+export const timestamper = (timestamp) => {
+  const now = new Date();
+  //elapsed time in millisecs
+  const elapsed = now - new Date(timestamp);
+  const secs = elapsed / 1000;
+  const minutes = secs / 60;
+  if (minutes < 60) {
+    if (Math.floor(minutes) === 1) return "1 minute";
+    return `${Math.floor(minutes)} minutes`;
+  }
+  const hours = minutes / 60;
+  if (hours < 24) {
+    if (Math.floor(hours) === 1) return "1 hour";
+    return `${Math.floor(hours)} hours`;
+  }
+  const splitTime = timestamp.split(/-|T/);
+  const years = now.getFullYear() - parseInt(splitTime[0]);
+  const months = now.getMonth() + 1 - parseInt(splitTime[1]);
+  const days = now.getDate() - parseInt(splitTime[2]);
+  if (!years && !months) {
+    if (days === 1) return "1 day";
+    return `${days} days`;
+  } else if (!years) {
+    if (months === 1) return "1 month";
+    return `${months} months`;
+  } else {
+    if (years === 1) return "1 year";
+    return `${years} years`;
+  }
+};
+
 export default function SongDetail() {
   const { songId } = useParams();
   const dispatch = useDispatch();
@@ -36,37 +68,6 @@ export default function SongDetail() {
     return false;
   };
 
-  // function that returns the proper timestamp string for comments
-  const commentTimestamps = (timestamp) => {
-    const now = new Date();
-    //elapsed time in millisecs
-    const elapsed = now - new Date(timestamp);
-    const secs = elapsed / 1000;
-    const minutes = secs / 60;
-    if (minutes < 60) {
-      if (Math.floor(minutes) === 1) return "1 minute";
-      return `${Math.floor(minutes)} minutes`;
-    }
-    const hours = minutes / 60;
-    if (hours < 24) {
-      if (Math.floor(hours) === 1) return "1 hour";
-      return `${Math.floor(hours)} hours`;
-    }
-    const splitTime = timestamp.split(/-|T/);
-    const years = now.getFullYear() - parseInt(splitTime[0]);
-    const months = now.getMonth() + 1 - parseInt(splitTime[1]);
-    const days = now.getDate() - parseInt(splitTime[2]);
-    if (!years && !months) {
-      if (days === 1) return "1 day";
-      return `${days} days`;
-    } else if (!years) {
-      if (months === 1) return "1 month";
-      return `${months} months`;
-    } else {
-      if (years === 1) return "1 year";
-      return `${years} years`;
-    }
-  };
 
   // Add song to audio queue
   const handleClick = (e) => {
@@ -151,7 +152,7 @@ export default function SongDetail() {
                     </div>
                   </div>
                   <div className="comment-right">
-                    <p className="comment-timestamp">{`${commentTimestamps(
+                    <p className="comment-timestamp">{`${timestamper(
                       comment.updatedAt
                     )} ago`}</p>
                     {currentUserId === comment.userId ? (
