@@ -93,3 +93,54 @@
     margin-top: 20px;
     padding-bottom: 20px;
 }
+
+.user-albums-list {
+    padding: 10px 0;
+    margin: 0 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-album-outer {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 0;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--secondary-dark);
+}
+
+.album-time {
+    line-height: normal;
+    text-align: right;
+    color: var(--primary-light);
+    font-size: 12px;
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+
+  .user-album-left {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .album-cover {
+    height: 160px;
+    width: 160px;
+    object-fit: cover;
+  }
+
+  .album-cover.icon {
+    height: 118px;
+    width: 118px;
+    border: 1px solid var(--secondary-dark);
+    color: var(--secondary-dark);
+    padding: 20px;
+  }
+
+  .album-title.profile {
+    margin: 0;
+    font-size: 16px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }

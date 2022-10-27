@@ -9,24 +9,30 @@ function UserAlbums() {
 
   return (
     albums && (
-      <div className="user-tracks-outer">
+      <div className="user-albums-outer">
         {Object.keys(albums).length ? (
-          <ul className="index-albums-list">
+          <ul className="user-albums-list">
             {Object.keys(albums)?.map((albumId) => {
-              console.log();
               return (
                 <div key={albumId} className="user-album-outer">
-                  {albums[albumId].previewImage ? (
-                    <img
-                      src={albums[albumId].previewImage}
-                      crossOrigin=""
-                      alt="album cover"
-                      className="album-cover"
-                    />
-                  ) : (
-                    <FontAwesomeIcon className="album-cover icon" icon={faRecordVinyl} />
-                  )}
-                  <p className="album-title profile">{albums[albumId].title}</p>
+                  <div className="user-album-left">
+                    {albums[albumId].previewImage ? (
+                      <img
+                        src={albums[albumId].previewImage}
+                        crossOrigin=""
+                        alt="album cover"
+                        className="album-cover"
+                      />
+                    ) : (
+                      <FontAwesomeIcon
+                        className="album-cover icon"
+                        icon={faRecordVinyl}
+                      />
+                    )}
+                    <p className="album-title profile">
+                      {albums[albumId].title}
+                    </p>
+                  </div>
                   <p className="album-time profile">{`${timestamper(
                     albums[albumId].createdAt
                   )} ago`}</p>

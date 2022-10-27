@@ -68,17 +68,7 @@ asyncHandler(async (req, res, next) => {
         include: [Album]
     });
     if (artist) {
-        const albums = artist.Albums.map((albumObj) => (
-            {
-                id: albumObj.id,
-                userId: albumObj.userId,
-                title: albumObj.title,
-                description: albumObj.description,
-                createdAt: albumObj.createdAt,
-                updatedAt: albumObj.updatedAt,
-                previewImage: albumObj.previewImage,
-            })
-        )
+        const albums = artist.Albums;
         res.status(200);
         return res.json(albums);
     } else {
