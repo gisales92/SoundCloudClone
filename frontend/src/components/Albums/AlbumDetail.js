@@ -2,10 +2,9 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouteMatch } from "react-router-dom";
 import {
-  fetchAlbums,
   albumIdSelector,
-  getAlbumArtist,
   albumArtistSelector,
+  getAlbumDetails
 } from "../../store/albums";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRecordVinyl } from "@fortawesome/free-solid-svg-icons";
@@ -13,34 +12,24 @@ import "./Albums.css";
 
 function AlbumDetail() {
   const dispatch = useDispatch();
-  const [loaded, setLoaded] = useState(false);
   const [updated, setUpdated] = useState(false);
   const match = useRouteMatch({
     path: "/albums/:albumId",
     exact: true,
   });
+  const albumId = match.params.albumId;
   const album = useSelector(albumIdSelector(match.params.albumId));
-  const artist = useSelector(albumArtistSelector);
+  const artist = useSelector(albumArtistSelector(albumId));
 
   useEffect(() => {
-    async function getAlbums() {
-      await dispatch(fetchAlbums());
+    async function loadAlbum(albumId) {
+      await dispatch(getAlbumDetails(albumId));
     }
-    if (!loaded) {
-      getAlbums();
-      setLoaded(true);
-    }
-  }, []);
-
-  useEffect(() => {
-    async function getArtist(id) {
-      await dispatch(getAlbumArtist(id));
-    }
-    if (loaded && album) {
-      getArtist(album.userId);
+    if (!updated) {
+      loadAlbum(albumId);
       setUpdated(true);
     }
-  }, [loaded, album]);
+  }, [updated, album]);
 
   return (
     album &&

@@ -2,7 +2,7 @@ import { csrfFetch } from "./csrf";
 
 // Selectors
 export const albumIdSelector = (id) => (state) => state.albums[id];
-export const albumArtistSelector = (state) => state.albums.artistInfo;
+export const albumArtistSelector = (albumId) => (state) => state.albums[albumId]?.Artist
 export const albumsByArtistsSelector = (state) => state.albums.artist;
 
 // Action types
@@ -11,7 +11,6 @@ const ADD_ALBUM = "albums/ADD_ALBUM";
 const EDIT_ALBUM = "albums/EDIT_ALBUM";
 const DELETE_ALBUM = "albums/DELETE_ALBUM";
 const ADD_SONG = "albums/ADD_SONG";
-const GET_ARTIST = "albums/GET_ARTIST";
 const GET_ARTIST_ALBUMS = "albums/GET_ARTIST_ALBUMS";
 const GET_ALBUM = "albums/GET_ALBUM";
 
@@ -48,13 +47,6 @@ const addSong = (song) => {
   return {
     type: ADD_SONG,
     song,
-  };
-};
-
-const getArtist = (artist) => {
-  return {
-    type: GET_ARTIST,
-    artist,
   };
 };
 
@@ -132,15 +124,6 @@ export const newSong = (song) => async (dispatch) => {
   const formData = new FormData();
 };
 
-export const getAlbumArtist = (artistId) => async (dispatch) => {
-  const res = await csrfFetch(`/api/artists/${artistId}`, {
-    method: "GET",
-  });
-  const data = await res.json();
-  if (res.ok) dispatch(getArtist(data));
-  return res;
-};
-
 export const setArtistAlbums = (artistId) => async (dispatch) => {
   const res = await csrfFetch(`/api/artists/${artistId}/albums`, {
     method: "GET",
@@ -159,9 +142,8 @@ export const getAlbumDetails = (albumId) => async (dispatch) => {
   return res;
 }
 
-const albumsReducer = (state = { artistInfo: {}, artist: {} }, action) => {
+const albumsReducer = (state = { artist: {} }, action) => {
   const newState = { ...state };
-  newState.artistInfo = { ...state.artistInfo };
   newState.artist = { ...state.artist };
   switch (action.type) {
     case SET_ALBUMS:
@@ -169,16 +151,13 @@ const albumsReducer = (state = { artistInfo: {}, artist: {} }, action) => {
         newState[album.id] = album;
       });
       break;
-    case GET_ARTIST:
-      newState.artistInfo = action.artist;
-      break;
     case GET_ARTIST_ALBUMS:
       action.albums.forEach((album) => {
         newState.artist[album.id] = album;
       });
       break;
     case GET_ALBUM:
-      newState.detail = action.album;
+      newState[action.album.id] = action.album;
     default:
       break;
   }
