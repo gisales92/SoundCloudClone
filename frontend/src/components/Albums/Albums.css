@@ -41,7 +41,7 @@
 .album-container {
   background-color: #ffffff;
   width: 90%;
-  min-width: 550px;
+  min-width: 650px;
   max-width: 1250px;
   margin: auto;
 }
@@ -107,6 +107,10 @@
     justify-content: space-between;
 }
 
+.album-header-right {
+    display: flex;
+}
+
 .a-header.lower-left {
     height: 110px;
     width: 110px;
@@ -136,12 +140,11 @@
     width: 120px;
     object-fit: cover;
     border-radius: 50%;
-    margin: 20px 0 0 20px;
+    margin:  0;
 }
 
 .album-artist-name {
     margin: 0;
-    padding-left: 20px;
     font-size: 14px;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -157,9 +160,23 @@
 .album-body {
     display: flex;
     gap: 20px;
+    padding: 20px;
 }
 
 .album-body-right {
     display: flex;
     flex-direction: column;
+}
+
+.album-description {
+    margin: 0;
+}
+
+.album-header-timestamp {
+    color: var(--secondary);
+    width: fit-content;
+    white-space: nowrap;
+    margin: 0 15px 0 0;
+    font-weight: 500;
+    font-size: 16px;
 }
