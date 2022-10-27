@@ -41,6 +41,8 @@
 .album-container {
   background-color: #ffffff;
   width: 90%;
+  min-width: 550px;
+  max-width: 1250px;
   margin: auto;
 }
 
@@ -51,7 +53,7 @@
     var(--accent-2) 0%,
     var(--primary-light) 100%
   );
-  padding: 30px 20px;
+  padding: 20px;
   display: flex;
   flex-direction: row;
   gap: 10px;
@@ -68,4 +70,33 @@
     background-color: rgba(0, 0, 0, 0.8);
     color: #ffffff;
     margin: 0;
+}
+
+.album-artist-detail {
+    width: fit-content;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 100;
+    padding: 5px 4px;
+}
+
+.album-header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.album-cover-detail {
+    height: 340px;
+    width: 340px;
+    background-color: var(--secondary);
+    padding: 10px;
+    margin: 0;
+}
+
+.album-cover-detail.icon {
+    height: 320px;
+    width: 320px;
 }
