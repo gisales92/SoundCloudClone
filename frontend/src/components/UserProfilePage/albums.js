@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { albumsByArtistsSelector } from "../../store/albums";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRecordVinyl } from "@fortawesome/free-solid-svg-icons";
@@ -16,23 +17,27 @@ function UserAlbums() {
               return (
                 <div key={albumId} className="user-album-outer">
                   <div className="user-album-left">
-                    {albums[albumId].previewImage ? (
-                      <img
-                        src={albums[albumId].previewImage}
-                        crossOrigin=""
-                        alt="album cover"
-                        className="album-cover"
-                      />
-                    ) : (
-                      <FontAwesomeIcon
-                        className="album-cover icon"
-                        icon={faRecordVinyl}
-                      />
-                    )}
+                    <Link to={`/albums/${albumId}`}>
+                      {albums[albumId].previewImage ? (
+                        <img
+                          src={albums[albumId].previewImage}
+                          crossOrigin=""
+                          alt="album cover"
+                          className="album-cover"
+                        />
+                      ) : (
+                        <FontAwesomeIcon
+                          className="album-cover icon"
+                          icon={faRecordVinyl}
+                        />
+                      )}
+                    </Link>
                     <div className="album-center">
-                      <p className="album-title profile">
-                        {albums[albumId].title}
-                      </p>
+                      <Link to={`/albums/${albumId}`}>
+                        <p className="album-title profile">
+                          {albums[albumId].title}
+                        </p>
+                      </Link>
                       <p className="album-description profile">
                         {albums[albumId].description}
                       </p>

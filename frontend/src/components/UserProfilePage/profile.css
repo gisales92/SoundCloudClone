@@ -106,7 +106,7 @@
     flex-direction: row;
     padding: 10px 0;
     justify-content: space-between;
-    border-bottom: 1px solid var(--secondary-dark);
+    border-bottom: 1px solid var(--secondary);
 }
 
 .album-time {
@@ -141,6 +141,7 @@
   .album-title.profile {
     margin: 0;
     font-size: 16px;
+    color: var(--primary-dark);
     white-space: nowrap;
     text-overflow: ellipsis;
   }
