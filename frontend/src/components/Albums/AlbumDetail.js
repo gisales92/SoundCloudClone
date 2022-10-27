@@ -7,7 +7,7 @@ import {
   getAlbumDetails,
 } from "../../store/albums";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRecordVinyl } from "@fortawesome/free-solid-svg-icons";
+import { faRecordVinyl, faListUl } from "@fortawesome/free-solid-svg-icons";
 import { timestamper } from "../SongDetail";
 import "./Albums.css";
 
@@ -50,7 +50,9 @@ function AlbumDetail() {
             </div>
           </div>
           <div className="album-header-right">
-            <p className="album-header-timestamp">{`${timestamper(album.createdAt)} ago`}</p>
+            <p className="album-header-timestamp">{`${timestamper(
+              album.createdAt
+            )} ago`}</p>
             {album.previewImage ? (
               <img
                 src={album.previewImage}
@@ -82,7 +84,19 @@ function AlbumDetail() {
           </div>
           <div className="album-body-right">
             <p className="album-description">{album.description}</p>
-            <div className="album-songs-outer"></div>
+            {album.Songs.length ? (
+              "HERES SOME SONGS"
+            ) : (
+              <div className="album-no-songs-outer">
+                <FontAwesomeIcon
+                  className="album-no-songs icon"
+                  icon={faListUl}
+                />
+                <p className="album-no-songs">
+                  No tracks added to this album yet
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>
