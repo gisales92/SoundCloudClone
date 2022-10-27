@@ -4,7 +4,7 @@ import { useRouteMatch } from "react-router-dom";
 import {
   albumIdSelector,
   albumArtistSelector,
-  getAlbumDetails
+  getAlbumDetails,
 } from "../../store/albums";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRecordVinyl } from "@fortawesome/free-solid-svg-icons";
@@ -37,8 +37,14 @@ function AlbumDetail() {
       <div className="album-container">
         <div className="album-header">
           <div className="album-header-left">
-            <h2 className="album-title-detail">{album.title}</h2>
-            <h3 className="album-artist-detail">{artist?.username}</h3>
+            <div className="a-header upper-left">
+              <h2 className="album-title-detail">{album.title}</h2>
+              <h3 className="album-artist-detail">{artist?.username}</h3>
+            </div>
+            <div className="a-header lower-left">
+              <p className="album-song-count">{album.Songs.length}</p>
+              <p className="album-count-label">{album.Songs.length === 1 ? "Track" : "Tracks"}</p>
+            </div>
           </div>
           <div className="album-header-right">
             {album.previewImage ? (

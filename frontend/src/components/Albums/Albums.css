@@ -75,14 +75,14 @@
 .album-artist-detail {
     width: fit-content;
     background-color: rgba(0, 0, 0, 0.8);
-    color: #ffffff;
+    color: var(--secondary-dark);
     margin: 0;
     font-size: 16px;
     font-weight: 100;
     padding: 5px 4px;
 }
 
-.album-header-left {
+.a-header.upper-left {
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -99,4 +99,34 @@
 .album-cover-detail.icon {
     height: 320px;
     width: 320px;
+}
+
+.album-header-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.a-header.lower-left {
+    height: 110px;
+    width: 110px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.album-song-count {
+    color: var(--secondary);
+    margin: 0;
+    width: fit-content;
+    font-size: 32px;
+}
+
+.album-count-label {
+    margin: 0;
+    color: var(--secondary-dark);
+    font-size: 16px;
 }
