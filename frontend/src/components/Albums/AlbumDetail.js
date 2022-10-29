@@ -9,6 +9,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRecordVinyl, faListUl } from "@fortawesome/free-solid-svg-icons";
 import { timestamper } from "../SongDetail";
+import { userSelector } from "../../store/session";
 import SongListThumb from "../SongListThumb";
 import "./Albums.css";
 
@@ -22,6 +23,7 @@ function AlbumDetail() {
   const albumId = match.params.albumId;
   const album = useSelector(albumIdSelector(match.params.albumId));
   const artist = useSelector(albumArtistSelector(albumId));
+  const user = useSelector(userSelector);
 
   useEffect(() => {
     async function loadAlbum(albumId) {
