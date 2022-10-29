@@ -9,6 +9,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRecordVinyl, faListUl } from "@fortawesome/free-solid-svg-icons";
 import { timestamper } from "../SongDetail";
+import SongListThumb from "../SongListThumb";
 import "./Albums.css";
 
 function AlbumDetail() {
@@ -85,7 +86,11 @@ function AlbumDetail() {
           <div className="album-body-right">
             <p className="album-description">{album.description}</p>
             {album.Songs.length ? (
-              "HERES SOME SONGS"
+              (<ul className="album-songs-list">
+                {album.Songs.map((songObj) => {
+                  return (<SongListThumb className="album-song-outer" key={songObj.id} song={songObj}/>)
+                })}
+              </ul>)
             ) : (
               <div className="album-no-songs-outer">
                 <FontAwesomeIcon
